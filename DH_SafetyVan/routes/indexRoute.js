@@ -4,7 +4,7 @@ const routes = express.Router();
 
 
 routes.get('/', (req, res)=>{
-    console.log("ta na home")
+    res.render('index')
 })
 
 module.exports = routes
