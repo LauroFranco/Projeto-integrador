@@ -138,7 +138,11 @@
 }
 
 footer{
-    background-color: black;
     color: white;
     text-align: center;
+}
+hr.line {
+	background-color: #fff;
+    border-top: 2px inline #8c8b8b;
+    width: 60px;
 }
