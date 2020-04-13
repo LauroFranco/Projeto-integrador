@@ -1,15 +1,144 @@
-body {
-    font-family: Arial, Helvetica, sans-serif;
+
+@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
+
+*{
+    padding: 0;
+    border: 0;
+    margin: 9;
+    font-family: 'Roboto';
 }
-header , footer{
-    text-align: center;
+
+
+
+
+#caixa1{
+    display: flex;
+    background-image: urL('../img/background1.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    width: 100%;
+    height: 100vh;
+    align-items: center;
+    justify-content: center;
 }
+
+
+#imagem1{
+    background-image: url('../img/foto1');
+    background-repeat: no-repeat;
+    width: 45%;
+    height: 100vh;
+}
+
+
+#texto1{
+    color: white;
+    padding: 20px;
+    width: 45%;
+    height: 40%;
+}
+
+
+
+
+#caixaInterna1{
+    display: flex;
+    justify-content: space-between;
+    width: 80%;
+    height: 80vh;
+}
+
+
+
+#caixa2{
+    display: flex;
+    width: 100%;
+    height: 100vh;
+    align-items: center;
+    justify-content: center;
+}
+
+
+
+
+#caixaInterna2{
+    display: flex;
+    justify-content: space-between;
+    width: 80%;
+    height: 80vh;
+    flex-direction: row-reverse;
+}
+
+
+#imagem2{
+    background-image: url('../img/foto2.png');
+    background-repeat: no-repeat;
+    background-size: contain;
+    width: 45%;
+    height: 60vh;
+}
+
+
+#texto2{
+    color: black;
+    padding: 20px;
+    width: 45%;
+    height: 40%;
+
+}
+
+
+#texto2 h5{
+    text-align: justify;
+}
+
+
+
+
+
+#caixa3{
+    background-color: whitesmoke;
+    display: flex;
+    width: 100%;
+    height: 100vh;
+    align-items: center;
+    justify-content: center;
+}
+
+
+
+
+
+#caixaInterna3{
+    display: flex;
+    justify-content: space-between;
+    width: 80%;
+    height: 80vh;
+}
+
+
+#imagem3{
+    background-image: url('../img/foto3.jpg');
+    background-repeat: no-repeat;
+    background-size: contain;
+    width: 45%;
+    height: 60vh;
+}
+
+
+#texto3{
+    color: black;
+    padding: 20px;
+    width: 45%;
+    height: 40%;
+}
+
+#texto3 h5{
+    text-align: justify;
+}
+
 footer{
     background-color: black;
-}
-p{
     color: white;
-}
-li{
     text-align: center;
 }
