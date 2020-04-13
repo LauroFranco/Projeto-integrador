@@ -4,3 +4,12 @@ body {
 header , footer{
     text-align: center;
 }
+footer{
+    background-color: black;
+}
+p{
+    color: white;
+}
+li{
+    text-align: center;
+}
