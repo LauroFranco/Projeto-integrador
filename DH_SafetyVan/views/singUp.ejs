@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+    <%- include('includes/head', {title:"Sing Up"}) %>    
+<body>
+    <%- include('includes/header') %>  
+
+    <main class="Lgrad">
+        <BR>
+        <div class="container ">
+            <div class="row">
+                <div class="col-sm-9 col-md-7 col-lg-5 mx-auto ">
+                    <div class="card card-signin my-5 light bg-dark">
+                        <div class="card-body">
+                            <form action="/registro" method="post"  class="form-cadastro">
+                                <h2 class="text-white">Cadastro de Usuario</h2>
+                                <div class="form-group">
+                                    <label for="nome" class="text-white">Nome completo</label>
+                                    <input type="text" name="nome" id="nome" class="form-control"> 
+                                </div>
+                                <div class="form-group">
+                                    <label for="Email" class="text-white">Email</label>
+                                    <input type="Email" name="Email" id="Email" class="form-control">
+                                </div>
+                                <div class="form-group">
+                                    <label for="Senha " class="text-white">Senha</label>
+                                    <input type="password" name="Senha" id="Senha" class="form-control">
+                                </div>
+                                <div class="form-group">
+                                    <button type="button" class="btn btn-warning text-white">Registrar</button>
+                                   
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+    <%- include('includes/footer') %>    
+</body>
+</html>
+
