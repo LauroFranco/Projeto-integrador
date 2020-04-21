@@ -152,3 +152,41 @@ hr.line {
 .Lgrad {
     background-image: linear-gradient(yellow , orange);
   }
+
+#fundoSeguranca{
+    display: flex;
+    background-image: urL('../img/cadeado.png');
+    
+    background-repeat: no-repeat;
+    background-size: cover;
+    width: 100%;
+    height: 100vh;
+    align-items: center;
+    justify-content: center;
+
+}
+
+#tex p{
+    text-align: center ;
+    font-weight: bold;
+    padding-bottom: 250px;
+     opacity: 0.5;
+     color: white;
+    font-size: 20px;
+    text-shadow: 0 0 0.2em #87F, 0 0 0.2em #87F,
+        0 0 0.2em #87F;
+    
+}
+#tex h1{
+    color: #ffc107 ;
+    text-align: center;
+    padding-bottom: 160px;
+    text-shadow: 0.1em 0.1em 0.2em black;
+}
+#cadastroUsuario {
+    color: white;
+}
+#cadastroUsuario p{
+    color: orangered;
+    
+}
