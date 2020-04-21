@@ -3,6 +3,9 @@ const methodOverride = require('method-override')
 
 let rotasIndex = require('./routes/indexRoute.js')
 let rotasLog =require('./routes/logRoute')
+let rotasSeguranca = require('./routes/segurancaRoute')
+let rotascadastroUsuario = require('./routes/cadastroUsRoute')
+
 
 let app = express()
 
@@ -16,5 +19,9 @@ app.use(methodOverride('_method'))
 
 app.use(rotasIndex)
 app.use(rotasLog)
+app.use(rotasSeguranca)
+app.use(rotascadastroUsuario)
+
+
 
 app.listen(3000, ()=>console.log("Servidor rodando "))

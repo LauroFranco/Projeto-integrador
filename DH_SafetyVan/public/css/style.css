@@ -170,18 +170,18 @@ hr.line {
     text-align: center ;
     font-weight: bold;
     padding-bottom: 250px;
-     opacity: 0.5;
-     color: white;
+    color: #ffc107 ;
     font-size: 20px;
-    text-shadow: 0 0 0.2em #87F, 0 0 0.2em #87F,
-        0 0 0.2em #87F;
-    
+    text-shadow: 0.1em 0.1em 0.2em black;
 }
 #tex h1{
-    color: #ffc107 ;
+    font-size: 80px;
+    color: white;
+    opacity: 0.5;
     text-align: center;
-    padding-bottom: 160px;
-    text-shadow: 0.1em 0.1em 0.2em black;
+    padding-bottom: 170px;
+    text-shadow: 0 0 0.2em #87F, 0 0 0.2em #87F,
+    0 0 0.2em #87F;
 }
 #cadastroUsuario {
     color: white;
