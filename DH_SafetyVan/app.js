@@ -7,6 +7,7 @@ let rotasSeguranca = require('./routes/segurancaRoute')
 let rotascadastroUsuario = require('./routes/cadastroUsRoute')
 let rotascadastroParceiro = require('./routes/cadastroParceiroRoute')
 let rotasperfilMotorista=require('./routes/perfilVanroute')
+let rotasCentralAjuda =require('./routes/centralAjudaRoute')
 
 
 let app = express()
@@ -25,6 +26,7 @@ app.use(rotasSeguranca)
 app.use(rotascadastroUsuario)
 app.use(rotascadastroParceiro)
 app.use(rotasperfilMotorista)
+app.use(rotasCentralAjuda)
 
 
 app.listen(3000, ()=>console.log("Servidor rodando "))
