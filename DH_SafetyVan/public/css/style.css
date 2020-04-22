@@ -140,6 +140,7 @@
 footer{
     color: white;
     text-align: center;
+    position: relative;
 }
 hr.line {
 	background-color: #fff;
@@ -207,3 +208,23 @@ hr.line {
     color: orangered;
     
 }
+.botaoWidth{
+    width: 230px;
+}
+/** aqui é pra colorir as estrelas da nota*/
+.checked {
+    color: yellow;
+  }
+  /** aqui é pra deixar só o fundo com opacidade*/
+.vanFundo{
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-image: urL('../img/vanFundo.jpg');
+        background-repeat: no-repeat;
+        background-attachment: fixed;
+        background-size: 100%;
+        opacity: 0.4;
+    }
