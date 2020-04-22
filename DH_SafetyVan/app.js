@@ -5,6 +5,8 @@ let rotasIndex = require('./routes/indexRoute.js')
 let rotasLog =require('./routes/logRoute')
 let rotasSeguranca = require('./routes/segurancaRoute')
 let rotascadastroUsuario = require('./routes/cadastroUsRoute')
+let rotascadastroParceiro = require('./routes/cadastroParceiroRoute')
+
 
 
 let app = express()
@@ -21,6 +23,7 @@ app.use(rotasIndex)
 app.use(rotasLog)
 app.use(rotasSeguranca)
 app.use(rotascadastroUsuario)
+app.use(rotascadastroParceiro)
 
 
 
