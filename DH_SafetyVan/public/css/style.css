@@ -165,10 +165,6 @@ hr.line {
     align-items: center;
     justify-content: center;
     
-    
-    
-    
-    
 }
 
 #fundoSeguranca{
@@ -302,4 +298,7 @@ main {
 }
 #textoinfo{
     text-align: center;
+}
+.background-card{
+    background-color: #343a40;
 }
