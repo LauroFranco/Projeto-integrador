@@ -11,7 +11,9 @@
 
 header{
     margin-bottom: 70px;
+
 }
+
 
 #banner1{
     display: flex;
@@ -181,7 +183,7 @@ hr.line {
 #fundoSeguranca{
     display: flex;
     background-image: urL('../img/cadeado.png');
-    
+    margin-top: -20px;
     background-repeat: no-repeat;
     background-size: cover;
     width: 100%;
@@ -223,6 +225,21 @@ hr.line {
     color: yellow;
 }
   /** aqui é pra deixar só o fundo com opacidade*/
+
+.userFundo {
+    
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: urL('../img/user-background.png');
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover; 
+    opacity: 0.4;
+}
+
 .vanFundo{
         position: fixed;
         top: 0;
