@@ -14,6 +14,9 @@ header{
 
 }
 
+.container{
+    margin-bottom: 90px;
+}
 
 #banner1{
     display: flex;
@@ -323,3 +326,6 @@ hr.line {
 
 }
 
+.background-card{
+    background-color: #343a40;
+}
