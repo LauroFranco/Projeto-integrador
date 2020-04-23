@@ -9,11 +9,13 @@
 }
 
 
+header{
+    margin-bottom: 70px;
+}
 
-
-#caixa1{
+#banner1{
     display: flex;
-    background-image: urL('../img/background1.jpg');
+    background-image: urL('../img/backgroundSection1Index1.jpg');
     background-repeat: no-repeat;
     background-size: cover;
     width: 100%;
@@ -23,7 +25,7 @@
 }
 
 
-#imagem1{
+#imagemBanner1{
     background-image: url('../img/foto1');
     background-repeat: no-repeat;
     width: 45%;
@@ -31,7 +33,7 @@
 }
 
 
-#texto1{
+#textoBanner1{
     color: white;
     padding: 20px;
     width: 45%;
@@ -41,7 +43,7 @@
 
 
 
-#caixaInterna1{
+#caixaInternaBanner1{
     display: flex;
     justify-content: space-between;
     width: 80%;
@@ -50,7 +52,7 @@
 
 
 
-#caixa2{
+#banner2{
     display: flex;
     width: 100%;
     height: 100vh;
@@ -61,7 +63,7 @@
 
 
 
-#caixaInterna2{
+#caixaInternaBanner2{
     display: flex;
     justify-content: space-between;
     width: 80%;
@@ -70,7 +72,7 @@
 }
 
 
-#imagem2{
+#imagemBanner2{
     background-image: url('../img/foto2.png');
     background-repeat: no-repeat;
     background-size: contain;
@@ -79,7 +81,7 @@
 }
 
 
-#texto2{
+#textoBanner2{
     color: black;
     padding: 20px;
     width: 45%;
@@ -88,7 +90,7 @@
 }
 
 
-#texto2 h5{
+#textoBanner2 h5{
     text-align: justify;
 }
 
@@ -96,7 +98,7 @@
 
 
 
-#caixa3{
+#banner3{
     background-color: whitesmoke;
     display: flex;
     width: 100%;
@@ -109,7 +111,7 @@
 
 
 
-#caixaInterna3{
+#caixaInternaBanner3{
     display: flex;
     justify-content: space-between;
     width: 80%;
@@ -117,7 +119,7 @@
 }
 
 
-#imagem3{
+#imagemBanner3{
     background-image: url('../img/foto3.jpg');
     background-repeat: no-repeat;
     background-size: contain;
@@ -126,14 +128,14 @@
 }
 
 
-#texto3{
+#textoBanner3{
     color: black;
     padding: 20px;
     width: 45%;
     height: 40%;
 }
 
-#texto3 h5{
+#textoBanner3 h5{
     text-align: justify;
 }
 
@@ -150,11 +152,20 @@ hr.line {
 .mid{
     background-color: black;
 }
-.Lgrad {
-    background-image: linear-gradient(yellow , orange);
+.telaLogin, .telaCadastroUsuario {
+    background-image: url('../img/backgroundlogin.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100vh;
 }
+
+
 /* mundando cor de fundo cadastro parceiro */
-#Lgrad1{
+.telaCadastroParceiro{
    
     display: flex;
     background-image: urL('../img/vanFundo.jpg');
@@ -224,81 +235,74 @@ hr.line {
         background-size: 100%;
         opacity: 0.4;
 }
-/* configuração do fundo do body*/
-#caixageral{
-    background: url('../img/suporte.jpg') center ;
-    background-repeat: no-repeat;
-    background-size: cover;
-    z-index: -1;
+
+
+.bannerAjuda{
+    background-image: url('../img/suporte.jpg');
     width: 100%;
     height: 100vh;
-   
-   
+    background-size: cover;
+    background-repeat: no-repeat;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
 }
-main {
+
+
+
+.caixaInternaBannerAjuda{
     width: 85%;
-    max-width: 800px;
-    margin: auto;
-    font-family: 'Lato';
-    line-height: 1.5;
+    height: 95vh;
+    background-color:#00000054;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
     color: white;
-  }
-  /* configuração da logo */
-.containnerAjuda{
-    background: #00000054;
-    padding: 50px 40px;
-    margin-top: 100px;
-    margin-bottom: 40px;
-    border-radius: 10px;
-  }
-  
-  .logo, .band-name, .headline {
-    margin: 0;
+    border-radius: 5%;
+}
+
+
+.textoBannerAjuda{
+    width: 80%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
     text-align: center;
-  }
-  /* configuração do plano central e suas informações*/
-  .concerts {
-    margin: 30px 0;
-    text-align: center;
-    width: 100%;
-    border-radius: 10px;
-    padding: 10px;
-    margin: 0 auto;
-     
-  }
-  /* a principio tinha feito através de tabelas e linhas posterior mudei porém nao consegui retirar essas conf. pois quebra o layout */
-  .concerts table {
-    background: #cb3a3ab3;
-    border-radius: 10px;
-    padding: 10px;
-    margin: 0 auto;
-  }
-  .btn{
-      font-size: 30px;
-      text-transform: uppercase;
-      font-weight: 700;
-      border: none;
-      padding: 10px;
-      cursor: pointer;
-  }
-  .btn-grey{
-      background:white;
-      color:black;
-      box-shadow:0 5px 0 #3a3a39 ;
-  }
-  .btn-grey:hover{
+}
+
+.textoBannerAjuda h1{
+    margin-top: 16px;
+}
+
+.textoBannerAjuda p{
+    text-align: justify;
+    font-size: 24px;
+}
+
+
+.caixaInternaBannerAjuda .textoBannerAjuda .btn-ajuda{
+    margin-top: 18px;
+    background: white;
+    box-shadow:0 5px 0 #3a3a39;
+    width: 200px;
+}
+
+.caixaInternaBannerAjuda .textoBannerAjuda .btn-ajuda:hover{
     background:  grey;
     color:#fff;
     box-shadow:0 5px 0 #1b1b1b;
+    transition: 200ms ease-in-out;
+
 }
-.btn-grey:active{
+
+
+.caixaInternaBannerAjuda .textoBannerAjuda .btn-ajuda:active{
     position: relative;
     top: 5px;
     box-shadow:none;
+
 }
-#textoinfo{
-    text-align: center;
-}
-.background-card{
-    background-color: #343a40;
-}
+
