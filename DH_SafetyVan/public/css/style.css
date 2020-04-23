@@ -8,7 +8,9 @@
     font-family: 'Roboto';
 }
 
-
+.container {
+    margin-top: 90px;
+}
 
 
 #caixa1{
@@ -217,6 +219,21 @@ hr.line {
     color: yellow;
   }
   /** aqui é pra deixar só o fundo com opacidade*/
+
+.userFundo {
+    
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: urL('../img/user-background.png');
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover; 
+    opacity: 0.4;
+}
+
 .vanFundo{
         position: fixed;
         top: 0;
@@ -241,7 +258,7 @@ hr.line {
         margin-top: 9%;
     }
     .background-card{
-        background-color: #2c3e50;
+        background-color: #343a40;
     }
     .card-form button{
         background-color:#3498db;
