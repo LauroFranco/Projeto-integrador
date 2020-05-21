@@ -17,6 +17,7 @@ module.exports = {
         },
         street: Sequelize.STRING,
         complemento: Sequelize.STRING,
+        district: Sequelize.STRING,
         city: Sequelize.STRING,
         uf: Sequelize.STRING,
         users_id:
