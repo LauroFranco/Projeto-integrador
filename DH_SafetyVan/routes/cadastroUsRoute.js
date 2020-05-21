@@ -1,10 +1,8 @@
 const express = require('express');
-
 const routes = express.Router();
 
-
 routes.get('/cadastroUsuario', (req, res)=>{
-    res.render('cadastroUsuario')
+    res.render('cadastroUsuario' );
 })
 
 

@@ -1,6 +1,9 @@
 const express = require('express')
 const methodOverride = require('method-override')
 
+const path = require('path')
+const session = require('express-session')
+
 let rotasIndex = require('./routes/indexRoute.js')
 let rotasLog =require('./routes/logRoute')
 let rotasSeguranca = require('./routes/segurancaRoute')
@@ -19,6 +22,12 @@ app.use(express.urlencoded({
     extended:true
 }))
 app.use(methodOverride('_method'))
+
+app.use(session({
+    secret:'Safetyvan', ///senha de segurança, verificar a necessidade de alterar
+    resave:true,
+    saveUninitialized:true,
+}))
 
 app.use(rotasIndex)
 app.use(rotasLog)

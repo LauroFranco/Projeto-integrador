@@ -1,81 +1,83 @@
 <!DOCTYPE html>
 <html lang="pt-br">
 <%- include('includes/head', {title:"Login"}) %>
+<%- include('includes/cepComplete') %>
+<script src="https://cdn.jsdelivr.net/npm/cep-promise/dist/cep-promise.min.js"></script>
 
 <body class="align">
-    <%- include('includes/header') %>
-    <main class="telaCadastroUsuario">
-        <BR>
-        <div class="container">
-            <div class="row">
-                <div class="col-sm-9 col-md-7 col-lg-5 mx-auto ">
-                    <div class="card card-signin my-5 light bg-dark">
-                        <div class="card-body">
-                            <form id="cadastroUsuario">
-                               <h1>Cadastro Usuario</h1>
-                               <p>É obrigatório preencher todos os campos *</p>
-                                <div class="form-row">
-                                    <label for="nome">Nome completo *</label>
-                                      <input type="text"class="form-control" id="nome" placeholder="Digite seu nome completo">
+  <%- include('includes/header') %>
+  <script src="teste.js"></script>
+  <main class="telaCadastroUsuario">
+    <BR>
+    <div class="container">
+      <div class="row">
+        <div class="col-sm-9 col-md-7 col-lg-5 mx-auto ">
+          <div class="card card-signin my-5 light bg-dark">
+            <div class="card-body">
+              <form id="cadastroUsuario">
+                <h1>Cadastro Usuario</h1>
+                <p>É obrigatório preencher todos os campos *</p>
+                <div class="form-row">
+                  <label for="nome">Nome completo *</label>
+                  <input type="text" class="form-control" id="nome" placeholder="Digite seu nome completo">
 
-                                  <div class="form-group col-md-6">
-                                    <label for="cpf">CPF: *</label>
-                                    <input type="number" class="form-control" id="cpf" placeholder="Número cpf">
-                                  </div>
-                                  <div class="form-group col-md-6">
-                                    <label for="rg">RG: *</label>
-                                    <input type="number" class="form-control" id="rg" placeholder="Número RG">
-                                  </div>
-                                </div>
-                                <div class="form-group">
-                                  <label for="inputAddress">Endereço *</label>
-                                  <input type="text" class="form-control" id="inputAddress" placeholder="Rua dos Bobos, nº 0">
-                                </div>
-                                
-                                <div class="form-row">
-                                  <div class="form-group col-md-5">
-                                    <label for="inputCity">Cidade *</label>
-                                    <input type="text" class="form-control" id="inputCity" placeholder="Cidade">
-                                  </div>
-                                  <div class="form-group col-md-3">
-                                    <label for="inputEstado">Estado *</label>
-                                    <select id="inputEstado" class="form-control">
-                                      <option selected>UF</option>
-                                      <option>...</option>
-                                    </select>
-                                  </div>
-                                  <div class="form-group col-md-4">
-                                    <label for="inputCEP">CEP *</label>
-                                    <input type="text" class="form-control" id="inputCEP" placeholder="CEP">
-                                  </div>
-                                  <div class="form-row" >
-                                    <label >Nome do Aluno *</label>
-                                    <input type="text" class="form-control" id="nomeCrianca" placeholder="Digite aqui o nome do seu filho">
-                    
-                                    <label >Colégio *</label>
-                                    <input type="text" class="form-control" id="nomeCrianca" placeholder="Digite o nome da Escola">
-                                    
-                                  </div>
-                                  
-                                </div>
-                                <div class="form-group">
-                                  <div class="form-check">
-                                    <input class="form-check-input" type="checkbox" id="gridCheck">
-                                    <label class="form-check-label" for="gridCheck">
-                                      <a href="https://modeloinicial.com.br/peticao/11199497/contrato-transporte-escolar">Concordo com os termos e condições</a> 
-                                    </label>
-                                  </div>
-                                </div>
-                                <button type="submit" class="btn btn-primary">Enviar</button>
-                              </form>
-                            </form>
-                        </div>
-                    </div>
+                  <div class="form-group col-md-6">
+                    <label for="cpf">CPF: *</label>
+                    <input type="number" class="form-control" id="cpf" placeholder="Número cpf">
+                  </div>
+                  <div class="form-group col-md-6">
+                    <label for="rg">RG: *</label>
+                    <input type="number" class="form-control" id="rg" placeholder="Número RG">
+                  </div>
                 </div>
+                <div class="form-group">
+                  <label for="rua">Endereço *</label>
+                  <input type="text" class="form-control" id="rua" placeholder="Rua dos Bobos, nº 0">
+                </div>
+
+                <div class="form-row">
+                  <div class="form-group col-md-5">
+                    <label for="cidade">Cidade *</label>
+                    <input type="text" class="form-control" id="cidade" placeholder="Cidade">
+                  </div>
+                  <div class="form-group col-md-3">
+                    <label for="uf">Estado *</label>
+                    <input type="text" class="form-control" id="uf" placeholder="uf">
+                  </div>
+                  <div class="form-group col-md-4">
+                    <label for="inputCEP">CEP *</label>
+                    <input type="text" class="form-control" id="inputCEP" placeholder="CEP" onblur="pesquisacep(this.value)">
+                  </div>
+                  <div class="form-row">
+                    <label>Nome do Aluno *</label>
+                    <input type="text" class="form-control" id="nomeCrianca"
+                      placeholder="Digite aqui o nome do seu filho">
+
+                    <label>Colégio *</label>
+                    <input type="text" class="form-control" id="nomeCrianca" placeholder="Digite o nome da Escola">
+
+                  </div>
+
+                </div>
+                <div class="form-group">
+                  <div class="form-check">
+                    <input class="form-check-input" type="checkbox" id="gridCheck">
+                    <label class="form-check-label" for="gridCheck">
+                      <a href="https://modeloinicial.com.br/peticao/11199497/contrato-transporte-escolar">Concordo com
+                        os termos e condições</a>
+                    </label>
+                  </div>
+                </div>
+                <button type="submit" class="btn btn-primary">Enviar</button>
+              </form>
+              </form>
             </div>
+          </div>
         </div>
-    </main>
-    <%- include('includes/footer') %>
+      </div>
+    </div>
+  </main>
+  <%- include('includes/footer') %>
 </body>
 
 </html>
