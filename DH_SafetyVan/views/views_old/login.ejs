@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<%- include('includes/head', {title:"Login"}) %>
+
+<body class="align">
+    <%- include('includes/header') %>
+    <main class="telaLogin">
+        <BR>
+        <div class="container ">
+            <div class="row">
+                <div class="col-sm-9 col-md-7 col-lg-5 mx-auto ">
+                    <div class="card card-signin my-5 light bg-dark">
+                        <div class="card-body card-form">
+                            <form action="/login" method="post" enctype="multipart/form-data" class="form login">
+                                <h2 class="text-white">Login de Usuario</h2>
+                                <div class="form-group">
+                                    <label for="Email" class="text-white">Email</label>
+                                    <input type="Email" name="Email" id="Email" class="form-control">
+                                </div>
+                                <div class="form-group">
+                                    <label for="Senha " class="text-white">Senha</label>
+                                    <input type="password" name="Senha" id="Senha" class="form-control">
+                                </div>
+                                <div class="form-group">
+                                    <button type="button" class="btn text-white">logar</button>
+                                    <p class="text--center text-white">Não é um membro? <a href="#" class="text-info">Cadastre-se agora</a></p>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+    <%- include('includes/footer') %>
+</body>
+
+</html>

@@ -1,19 +1,20 @@
 const express = require('express')
 const methodOverride = require('method-override')
-
 const path = require('path')
 const session = require('express-session')
 
-let rotasIndex = require('./routes/indexRoute.js')
-let rotasLog =require('./routes/logRoute')
-let rotasSeguranca = require('./routes/segurancaRoute')
-let rotascadastroUsuario = require('./routes/cadastroUsRoute')
-let rotascadastroParceiro = require('./routes/cadastroParceiroRoute')
-let rotasperfilMotorista=require('./routes/perfilVanroute')
-let rotasCentralAjuda =require('./routes/centralAjudaRoute')
+// const rotasIndex = require('./routes/indexRoute.js')
+// const rotasLog =require('./routes/logRoute')
+// const rotasSeguranca = require('./routes/segurancaRoute')
+// const rotascadastroUsuario = require('./routes/cadastroUsRoute')
+// const rotascadastroParceiro = require('./routes/cadastroParceiroRoute')
+// const rotasperfilMotorista=require('./routes/perfilVanroute')
+// const rotasCentralAjuda =require('./routes/centralAjudaRoute')
 
+const indexRouter = require('./routes/index');
+const userRouter = require('./routes/user');
 
-let app = express()
+const app = express()
 
 app.set('view engine', 'ejs')
 
@@ -29,13 +30,15 @@ app.use(session({
     saveUninitialized:true,
 }))
 
-app.use(rotasIndex)
-app.use(rotasLog)
-app.use(rotasSeguranca)
-app.use(rotascadastroUsuario)
-app.use(rotascadastroParceiro)
-app.use(rotasperfilMotorista)
-app.use(rotasCentralAjuda)
+// app.use(rotasIndex)
+// app.use(rotasLog)
+// app.use(rotasSeguranca)
+// app.use(rotascadastroUsuario)
+// app.use(rotascadastroParceiro)
+// app.use(rotasperfilMotorista)
+// app.use(rotasCentralAjuda)
 
+app.use(indexRouter);
+app.use('/user', userRouter);
 
 app.listen(3000, ()=>console.log("Servidor rodando "))
