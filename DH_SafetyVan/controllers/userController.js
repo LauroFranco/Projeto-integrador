@@ -1,13 +1,23 @@
 const bcrypt = require('bcrypt');
-const {User} = require('../models');
+const moment = require('moment');
+const {User, Address, Driver} = require('../models');
 
 const userController = {
-    index: (_req, res) => {
-        return res.render('usuario');
+    index: async (req, res) => {
+        const usuario = await User.findByPk(req.session.user.id);
+        const [address] = await usuario.getAddresses();
+                
+        return res.render('usuario', {usuario, endereco:address, moment});
     },
 
-    show: (_req, res) => {
-        return res.render('perfil');
+    show: async (req, res) => {
+        const { id } = req.params;
+
+        const driver = await Driver.findByPk(id, {
+            include: User,
+        });
+        console.log(driver);
+        return res.render('perfil', {driver});
     },
 
     create: (_req, res) => {
@@ -23,27 +33,31 @@ const userController = {
                 name,
                 email,
                 password: passwordHash,
+                roles_id: 2,
             });
 
             req.session.user = {
                 id: user.id,
                 name: user.name,
                 email: user.email,
+                roles_id: 2,
             };
 
             return res.redirect('/user/parent');
         }
-        if (user == 'driver') {
+        if (role == 'driver') {
             const user = await User.create({
                 name,
                 email,
                 password: passwordHash,
+                roles_id: 3,
             });
 
             req.session.user = {
                 id: user.id,
                 name: user.name,
                 email: user.email,
+                roles_id: 3,
             };
 
             return res.redirect('/user/driver');
@@ -59,7 +73,6 @@ const userController = {
 
     storeParent: async (req, res) => {
         const { cpf, birthdate, phone, cep, rua, complemento, bairro, cidade, uf, termos } = req.body;
-
         const id = req.session.user.id;
 
         const user = await User.findByPk(id);
@@ -69,8 +82,17 @@ const userController = {
         user.cpf = cpf;
         user.birthdate = birthdate;
         user.phone = phone;
-
         await user.save();
+
+        const address = await Address.create({
+            cep,
+            street: rua,
+            complemento,
+            district: bairro,
+            city: cidade,
+            uf,
+            users_id: user.id,
+        })
 
         return res.redirect('/user');
     },
@@ -79,8 +101,41 @@ const userController = {
         return res.render('cadastroDriver');
     },
 
-    storeDriver: () => {
-        
+    storeDriver: async (req, res) => {
+        const { cpf, birthdate, phone, cep, rua, complemento, bairro, cidade, uf, cnh, crm, marca, modelo, ano, placa, crmc, termos } = req.body;
+        const id = req.session.user.id;
+
+        const user = await User.findByPk(id);
+
+        if (!user) return res.redirect('/login');
+
+        user.cpf = cpf;
+        user.birthdate = birthdate;
+        user.phone = phone;
+        await user.save();
+
+        const address = await Address.create({
+            cep,
+            street: rua,
+            complemento,
+            district: bairro,
+            city: cidade,
+            uf,
+            users_id: user.id,
+        });
+
+        const driver = await Driver.create({
+            cnh,
+            crm,
+            marca,
+            modelo,
+            ano,
+            placa,
+            crmc,
+            users_id: user.id,
+        });
+
+        return res.redirect('/user');
     },
     
     child: (_req, res) => {

@@ -2,8 +2,10 @@ const bcrypt = require('bcrypt');
 const {User} = require('../models');
 
 const authController = {
-    index: (_req, res) => {
-        return res.render('login');
+    index: (req, res) => {
+        if(req.session.user) return res.redirect('/user');
+
+        return res.render('login')
     },
 
     login: async (req, res) => {
@@ -28,6 +30,11 @@ const authController = {
         };
 
         return res.redirect('/user');
+    },
+
+    destroy: (req, res) => {
+        req.session.user = undefined;
+        return res.redirect('/');
     }
 };
 

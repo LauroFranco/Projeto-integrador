@@ -12,6 +12,7 @@ router.get('/seguranca', indexController.seguranca);
 
 router.get('/login', authController.index);
 router.post('/login', authController.login);
+router.get('/logout', authController.destroy);
 
 router.get('/cadastro', userController.create);
 router.post('/cadastro', userController.store);
