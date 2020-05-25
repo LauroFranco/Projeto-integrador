@@ -7,7 +7,7 @@
             <div class="col-md-10">
                 <div class="card bg-dark">
                     <div class="card-body">
-                        <h2 class="font-weight-bold text-center">Tio João</h2>
+                        <h2 class="font-weight-bold text-center"><%= driver.User.name %></h2>
                         <ul class="list-group">
                             <h3>Escolas em que ele atua</h3>
                             <p>Eu entrego crianças nas escolas maquenzie, adventista e externato são luiz</p>
@@ -21,8 +21,8 @@
             </div>
             <div class="col-md-2">
                 <div class="profile-img">
-                    <img src="/images/perfil-brown.png" alt="" height="200px" width="200px" style="grid-row: auto;"/>
-                    <div class="text-dark text-center">
+                    <img src="/images/avatar-default.png" alt="" height="200px" width="200px" style="grid-row: auto;"/>
+                    <div class="text-dark ml-5 bg-secondary">
                         <span class="fa fa-star checked"></span>
                         <span class="fa fa-star checked"></span>
                         <span class="fa fa-star checked"></span>
@@ -37,8 +37,8 @@
                 <div class="card bg-dark h-100">
                     <div class="card-body">
                         <h2 class="text-center font-weight-bold">Informações da van</h2>
-                        <h3>Pontos na carteira</h3>
-                        <p>0/21</p>
+                        <h3>Marca e Modelo</h3>
+                        <p><%= driver.marca %> <%= driver.modelo %>  </p>
                         <h3>Data da última vistoria</h3>
                         <p>20/04/2020</p>
                         <h3>Números de alunos na van</h3>
