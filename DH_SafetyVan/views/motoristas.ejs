@@ -1,0 +1,36 @@
+<%- include('includes/head', {title:"safeVan - Ajuda"}) %>
+
+<body>
+    <%- include('includes/header') %>
+    <div class="row justify-content-md-center">
+        <h1>ENCONTRE MOTORISTAS AQUI!!</h1>
+    </div>
+     <% ListDrivers.forEach(listDrivers => { %> 
+    <div class="row justify-content-md-center card-body background-card">
+        <div class="col-md-1">
+            <img src="/images/avatar-default.png" alt="" height="100px" width="100px" class="rounded">
+        </div>
+        <div class="col-md-2 border">
+            <br>
+            <p><%=listDrivers.User.name%></p>
+            <span class="fa fa-star checked"></span>
+            <span class="fa fa-star checked"></span>
+            <span class="fa fa-star checked"></span>
+            <span class="fa fa-star"></span>
+            <span class="fa fa-star"></span>
+        </div>
+        <div class="col-md-2 border">
+            <p><%=listDrivers.marca%></p>
+            <p><%=listDrivers.modelo%></p>
+            <p><%=listDrivers.placa%></p>
+        </div>
+        <div class="col-md-3 border">
+            <br>
+            <p>SOBRE</p>
+        </div>
+    </div>
+   <% }) %>
+    <%- include('includes/footer') %>
+</body>
+
+</html>

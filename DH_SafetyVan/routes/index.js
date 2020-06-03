@@ -17,4 +17,6 @@ router.get('/logout', authController.destroy);
 router.get('/cadastro', userController.create);
 router.post('/cadastro', userController.store);
 
+router.get('/motoristas', indexController.ListaMotoristas);
+
 module.exports = router;

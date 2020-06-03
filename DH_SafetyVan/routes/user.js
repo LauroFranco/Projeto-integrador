@@ -15,4 +15,6 @@ router.post('/child', userController.storeChild);
 
 router.get('/:id', auth, userController.show);
 
+
+
 module.exports = router;
