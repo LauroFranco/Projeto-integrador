@@ -280,7 +280,7 @@ hr.line {
     justify-content: center;
     flex-direction: column;
     color: white;
-    border-radius: 5%;
+    border-radius: 10%;
 }
 
 
@@ -329,3 +329,4 @@ hr.line {
 .background-card{
     background-color: #343a40;
 }
+

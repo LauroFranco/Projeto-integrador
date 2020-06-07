@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<%- include('includes/head', {title:"Login"}) %>
+<%- include('includes/cepComplete') %>
+
+<body class="align">
+    <%- include('includes/header') %>
+    <main class="telaCadastroParceiro">
+
+        <BR>
+
+        <div class="container ">
+            <div class="row">
+                <div class="col-sm-9 col-md-7 col-lg-5 mx-auto ">
+                    <div class="card card-signin my-5 light bg-dark">
+                        <div class="card-body">
+                            <form id="cadastroUsuario">
+                                <h1>Cadastro Motorista Parceiro</h1>
+                                <p>É obrigatório preencher todos os campos *</p>
+                                <div class="form-row">
+                                    <label for="nome">Nome completo *</label>
+                                    <input type="text" class="form-control" id="nome"
+                                        placeholder="Digite seu nome completo">
+
+                                    <div class="form-group col-md-6">
+                                        <label for="cnh">CNH: *</label>
+                                        <input type="number" class="form-control" id="cnh" placeholder="Número cnh">
+                                    </div>
+                                    <div class="form-group col-md-6">
+                                        <label for="crm">CRM: *</label>
+                                        <input type="number" class="form-control" id="crm" placeholder="Número CRM">
+                                    </div>
+                                    <div class="form-group col-md-12">
+                                        <div class="form-group">
+                                            <label for="rua">Endereço *</label>
+                                            <input type="text" class="form-control" id="rua"
+                                                placeholder="Rua dos Bobos, nº 0">
+                                        </div>
+
+                                        <div class="form-row">
+                                            <div class="form-group col-md-5">
+                                                <label for="cidade">Cidade *</label>
+                                                <input type="text" class="form-control" id="cidade"
+                                                    placeholder="Cidade">
+                                            </div>
+                                            <div class="form-group col-md-3">
+                                                <label for="uf">Estado *</label>
+                                                <input type="text" class="form-control" id="uf" placeholder="uf">
+                                                </select>
+                                            </div>
+                                            <div class="form-group col-md-4">
+                                                <label for="inputCEP">CEP *</label>
+                                                <input type="text" class="form-control" id="inputCEP" placeholder="CEP"
+                                                    onblur="pesquisacep(this.value)">
+                                            </div>
+                                            <h3>Dados do Veículo</h3>
+                                            <div class="form-group col-md-6">
+
+                                                <label for="veiculo">Tipo veículo: *</label>
+                                                <input type="text" class="form-control" id="veiculo"
+                                                    placeholder="Marca/Modelo">
+                                            </div>
+                                            <div class="form-group col-md-6">
+                                                <label for="ano/fab">ANO/FAB.: *</label>
+                                                <input type="date" class="form-control" id="ano/fab"
+                                                    placeholder="Ano de fabricação">
+                                            </div>
+                                            <div class="form-group col-md-6">
+                                                <label for="placa">Placa: *</label>
+                                                <input type="text" class="form-control" id="placa"
+                                                    placeholder="Placa do veículo">
+                                            </div>
+                                            <div class="form-group col-md-6">
+                                                <label for="crm">CRMC: *</label>
+                                                <input type="number" class="form-control" id="crmc"
+                                                    placeholder="Número CRM">
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                    <div class="form-group">
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="checkbox" id="gridCheck">
+                                            <label class="form-check-label" for="gridCheck">
+                                                <a
+                                                    href="https://modeloinicial.com.br/peticao/11199497/contrato-transporte-escolar">Concordo
+                                                    com os termos e condições</a>
+                                            </label>
+                                        </div>
+                                    </div>
+                                    <button type="submit" class="btn btn-primary">Enviar</button>
+                            </form>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </main>
+    <%- include('includes/footer') %>
+</body>
+
+</html>

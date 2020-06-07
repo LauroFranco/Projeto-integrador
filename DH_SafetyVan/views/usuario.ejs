@@ -1,0 +1,126 @@
+<%- include('includes/head', {title:"safeVan"}) %>
+<body>
+    <%- include('includes/header') %>
+    <div class="perfil-fundo w-100 h-100 position-fixed"></div>
+    <div class="container text-white p-5">
+        <div class="row">
+            <div class="col-md-3">
+                <div class="card bg-dark h-100">
+                    <div class="card-body m-auto">
+                        <div class="profile-img">
+                            <img src="/images/avatar-default.png" alt="" height="200px" width="200px" style="grid-row: auto;"/>
+                            <h2 class="font-weight-bold text-center"><%= usuario.name %></h2>
+                            <div class="text-dark text-center mb-2">
+                                <span class="fa fa-star checked"></span>
+                                <span class="fa fa-star checked"></span>
+                                <span class="fa fa-star checked"></span>
+                                <span class="fa fa-star checked"></span>
+                                <span class="fa fa-star"></span>
+                            </div>                            
+                        </div>
+                        <a href="" class="d-block">Editar informações</a>
+                        <a href="/user/child" class="d-block">Cadastrar criança</a>
+                        <a href="" class="d-block">Procurar motorista</a>
+                        <a href="/logout" class="d-block">Sair</a>
+                    </div>                    
+                </div>
+            </div>
+            <div class="col-md-9">
+                <div class="card bg-dark h-100">
+                    <div class="card-body">
+                        <!-- <h2 class="font-weight-bold text-center"><%= usuario.name %></h2> -->
+                        <div class="row">
+                            <div class="col-md-6">
+                                <h3>E-mail</h3>
+                                <p><%= usuario.email %></p>
+                                <h3>Telefone</h3>
+                                <p><%= usuario.phone %></p>
+                                <h3>Data de nascimento</h3>
+                                <p><%= moment(usuario.birthdate).format('DD/MM/YYYY') %></p>
+                                <h3>CPF</h3>
+                                <p><%= usuario.cpf %></p>                                
+                            </div>
+                            <div class="col-md-6">
+                                <h3>Endereço Principal</h3>
+                                <p><%= endereco.street %>, <%= endereco.complemento %> - <%= endereco.district %> </p>
+                                <h3>Cidade</h3>
+                                <p><%= endereco.city %></p>
+                                <h3>Estado</h3>
+                                <p><%= endereco.uf %></p>
+                                <form action="" method="post">
+                                    <button type="submit" class="btn btn-warning">Adicionar Endereço</button>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row my-5">
+            <div class="col-md-12">
+                <div class="card bg-dark h-100">
+                    <div class="card-body">
+                        <h2 class="font-weight-bold">Crianças</h2>
+                        <div class="row ">                                
+                            <div class="card bg-dark col-md-4 border-0">
+                                <div class="card-body">
+                                    <img src="/images/perfil-brown.png" alt="" height="150px" width="150px" style="grid-row: auto;"/>
+                                    <h3>Maninho</h3>
+                                    <p>Escola Novos Horizontes</p>
+                                </div>                                
+                            </div>
+                            <div class="card bg-dark col-md-4 border-0">
+                                <div class="card-body">
+                                    <img src="/images/perfil-brown.png" alt="" height="150px" width="150px" style="grid-row: auto;"/>
+                                    <h3>Maninha</h3>
+                                    <p>Escola Novos Rumos</p>
+                                </div>                                
+                            </div>
+                            <div class="card bg-dark col-md-4 border-0">
+                                <div class="card-body">
+                                    <img src="/images/perfil-brown.png" alt="" height="150px" width="150px" style="grid-row: auto;"/>
+                                    <h3>Maninha</h3>
+                                    <p>Escola Novos Rumos</p>
+                                </div>                                
+                            </div>
+                            <div class="card bg-dark col-md-4 border-0">
+                                <div class="card-body">
+                                    <img src="/images/perfil-brown.png" alt="" height="150px" width="150px" style="grid-row: auto;"/>
+                                    <h3>Maninha</h3>
+                                    <p>Escola Novos Rumos</p>
+                                </div>                                
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row my-5">
+            <div class="col-md-12">
+                <div class="card bg-dark h-100">
+                    <div class="card-body">
+                        <h2 class="font-weight-bold">Motoristas</h2>
+                        <div class="row">
+                            <div class="card bg-dark col-md-4 border-0">
+                                <div class="card-body">
+                                    <a href="/user/1"><img src="/images/perfil-brown.png" alt="" height="150px" width="150px" style="grid-row: auto;"/></a>
+                                    <a href="/user/1"><h3>Jorge</h3></a>
+                                    <p>-"João tá sempre na hora"</p>
+                                </div>
+                            </div>
+                            <div class="card bg-dark col-md-4 border-0">
+                                <div class="card-body">
+                                    <img src="/images/perfil-brown.png" alt="" height="150px" width="150px" style="grid-row: auto;"/>
+                                    <h3>Maria</h3>
+                                    <p>-"Sempre atencioso com meu filho"</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <%- include('includes/footer') %>
+</body>
+</html>

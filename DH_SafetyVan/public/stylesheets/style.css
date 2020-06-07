@@ -1,0 +1,107 @@
+/* Configurações de estilo em todas as páginas */
+
+@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
+
+body {
+  font-family: "Roboto";
+}
+a {
+  color: orange;
+  /* color: #00B7FF; */
+}
+a:hover {
+  color: orangered;
+}
+hr.line {
+	background-color: #fff;
+  border-top: 2px inline #8c8b8b;
+  width: 60px;
+}
+
+/* Configurações de estilo da página inicial */
+.index {
+  background-color: whitesmoke;
+}
+.banner-1 {
+  background-image: url('/images/banner-1.jpg');
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+.banner-2 {
+  background-image: url('/images/banner-2.png');
+  background-repeat: no-repeat;
+  background-size: contain;
+  height: 66vh;
+}
+.banner-3 {
+  background-image: url('../images/banner-3.jpg');
+  background-repeat: no-repeat;
+  background-size: contain;
+  height: 66vh;
+}
+
+/* Configurações de estilo da página de ajuda */
+.central-ajuda{
+  background: url('/images/background-ajuda.jpg');
+  background-repeat: no-repeat;
+  background-size: cover;  
+  line-height: 1.5;
+}
+.ajuda-background {  
+  background: #00000054;
+}
+.central-ajuda p {
+  font-size: x-large;
+}
+.btn-light{
+  box-shadow:0 5px 0 #3a3a39;
+}
+.btn-light:hover{
+background: grey;
+color: orange;
+box-shadow:0 5px 0 black;
+}
+
+/* Configurações de estilo da página de segurança */
+.seguranca {  
+  background-image: url('/images/background-seguranca.png');  
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+.p-seg{
+  font-size: 20px;
+  text-shadow: 0.1em 0.1em 0.2em black;
+}
+.h1-seg{
+  font-size: 80px;  
+  opacity: 0.8;
+  /* padding-bottom: 170px; */
+  text-shadow: 0 0 0.2em #87F, 0 0 0.2em #87F, 0 0 0.2em #87F;
+}
+
+/* Configurações de estilo das páginas de login e cadastro */
+.auth-fundo {
+  background-image: url('/images/background-auth.jpg');
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+/* Configurações de estilo da página de cadastro de motorista */
+.cad-driver{
+  background-image: url('/images/background-van.jpg');  
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+/* Configurações de estilo da página de perfil */
+.perfil-fundo{
+  /* top: 0;
+  left: 0; */
+  background-image: urL('/images/background-van.jpg');
+  background-repeat: no-repeat;
+  background-size: cover;
+  opacity: 0.4;
+}
+.checked {
+  color: yellow;
+}
