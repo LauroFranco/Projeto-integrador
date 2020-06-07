@@ -18,7 +18,7 @@ module.exports = (sequelize, DataTypes) => {
             district: DataTypes.STRING,
             city: DataTypes.STRING,
             uf: DataTypes.STRING,
-            users_id:DataTypes.INTEGER,            
+            users_id:DataTypes.INTEGER,          
             }, {
                 paranoid: true,
             }

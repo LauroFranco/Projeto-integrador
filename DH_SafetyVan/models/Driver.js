@@ -24,6 +24,14 @@ module.exports = (sequelize, DataTypes) => {
     Driver.associate = (models) => {
       Driver.belongsTo(models.User, {
         foreignKey: 'users_id',
+      });
+      Driver.belongsToMany(models.Parent, {
+        through: 'parents-drivers',
+        foreignKey: 'parents_id'
+      });
+      Driver.belongsToMany(models.School, {
+        through: 'drivers-schools',
+        foreignKey: 'schools_id'
       })
     }
 

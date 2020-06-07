@@ -1,23 +1,80 @@
 const bcrypt = require('bcrypt');
 const moment = require('moment');
-const {User, Address, Driver} = require('../models');
+const {User, Address, Parent, Driver} = require('../models');
 
 const userController = {
     index: async (req, res) => {
-        const usuario = await User.findByPk(req.session.user.id);
-        const [address] = await usuario.getAddresses();
-                
-        return res.render('usuario', {usuario, endereco:address, moment});
+        if (req.session.user.roles_id == 1) return res.redirect('/admin');
+        
+        const usuario = await User.findByPk(req.session.user.id, {include: Address});
+        
+        if (usuario.roles_id == 2) {
+            const parent = await Parent.findOne({
+                where: {
+                    users_id: usuario.id,
+                },
+                include: {
+                    model: Driver,
+                    include: {
+                        model: User,
+                    }
+                },                
+            });
+            
+            return res.render('usuario', {usuario, parent, moment});
+        }
+
+        if (usuario.roles_id == 3) {
+            const driver = await Driver.findOne({
+                where: {
+                    users_id: usuario.id
+                },
+                include: {
+                    model: Parent,
+                    include: {
+                        model: User,
+                    }
+                }
+            });
+            
+            return res.render('usuario', {usuario, driver, moment});
+        }        
     },
 
     show: async (req, res) => {
         const { id } = req.params;
+        
+        const usuario = await User.findByPk(id);
 
-        const driver = await Driver.findByPk(id, {
-            include: User,
-        });
-        console.log(driver);
-        return res.render('perfil', {driver});
+        if (usuario.roles_id == 2) {
+            const parent = await Parent.findOne({
+                where:
+                {
+                    users_id: id
+                },
+                include:
+                {
+                    model: Driver,
+                    include: User
+                }
+            });
+            return res.render('perfil', {usuario, parent});
+        };
+
+        if (usuario.roles_id == 3) {
+            const driver = await Driver.findOne({
+                where:
+                {
+                    users_id: id
+                },
+                include: 
+                {
+                    model: Parent, 
+                    include: User
+                }
+            });
+            return res.render('perfil', {usuario, driver});
+        }
     },
 
     create: (_req, res) => {
@@ -63,7 +120,7 @@ const userController = {
             return res.redirect('/user/driver');
         }
 
-        return res.redirect('/cadastro', { msg: "Erro ao fazer o cadastro. Por favor, tente novamente."});        
+        return res.redirect('/cadastro', {msg:"Erro ao fazer o cadastro. Por favor, tente novamente."});
 
     },
 
@@ -92,6 +149,10 @@ const userController = {
             city: cidade,
             uf,
             users_id: user.id,
+        });
+
+        const Parent = await Parent.create({
+            users_id: user.id
         })
 
         return res.redirect('/user');
@@ -138,12 +199,22 @@ const userController = {
         return res.redirect('/user');
     },
     
-    child: (_req, res) => {
-        return res.render('cadastroChild');
+    child: async (req, res) => {
+        const user = await User.findByPk(req.session.user.id);
+        const [endereco] = await user.getAddresses();
+        
+        return res.render('cadastroChild', {endereco});
     },
 
     storeChild: () => {
         
+    },
+
+    edit: async (req, res) => {
+        const {id} = req.body;
+        const user = await User.findByPk(id);
+        if (user.roles_id == 2) return res.render('editParent', {user});
+        if (user.roles_id == 3) return res.render('editDriver', {user});
     }
 };
 
