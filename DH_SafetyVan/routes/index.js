@@ -17,6 +17,12 @@ router.get('/logout', authController.destroy);
 router.get('/cadastro', userController.create);
 router.post('/cadastro', userController.store);
 
+router.get('/change', userController.changeInfos);
+
+router.post('/editar/carro'  ,userController.editarCarro);
+router.post('/editar/sobre' ,userController.editarSobre);
+
+
 router.get('/motoristas', indexController.ListaMotoristas);
 
 module.exports = router;

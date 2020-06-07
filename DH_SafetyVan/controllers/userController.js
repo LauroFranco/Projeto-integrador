@@ -141,9 +141,24 @@ const userController = {
     child: (_req, res) => {
         return res.render('cadastroChild');
     },
+    editarCarro: async (req, res) => {
+        const Us = await Driver.findOne({ where: {users_id: req.session.user.id}}).then((result)=>{console.log(result)});
+        console.log(req.body);
+        return res.redirect('/user');
+         
+    },
+    editarSobre: async (req, res) => {
+        const Us = await Driver.findOne({ where: {users_id: req.session.user.id}}).then((result)=>{console.log(result)});
 
-    storeChild: () => {
+        console.log(req.body);
+        return res.redirect('/user');
+    },
+
+    storeChild: (req,res) => {
         
+    },
+    changeInfos:(_req ,res)=>{
+        return res.render('MudarInfosMotoristas');
     }
 };
 
