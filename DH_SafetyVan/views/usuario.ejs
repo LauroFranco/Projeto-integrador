@@ -18,10 +18,15 @@
                                 <span class="fa fa-star"></span>
                             </div>                            
                         </div>
-                        <a href="" class="d-block">Editar informações</a>
-                        <a href="/change" class="d-block">Editar informações de motorista</a>
-                        <a href="/user/child" class="d-block">Cadastrar criança</a>
-                        <a href="/motoristas" class="d-block">Procurar motorista</a>
+                        <a href="/user/edit/<%= user.id %>" class="d-block">Editar informações</a>
+                        <% if (user.roles_id == 2) { %>
+                            <a href="/user/child" class="d-block">Cadastrar criança</a>
+                            <a href="" class="d-block">Procurar motorista</a>
+                        <% } %>
+                        <% if (user.roles_id == 3) { %>
+                            <a href="/search/school" class="d-block">Procurar Escola</a>
+                            <a href="/change" class="d-block">Editar informações de motorista</a>   
+                        <% } %>
                         <a href="/logout" class="d-block">Sair</a>
                     </div>                    
                 </div>
@@ -43,11 +48,11 @@
                             </div>
                             <div class="col-md-6">
                                 <h3>Endereço Principal</h3>
-                                <p><%= endereco.street %>, <%= endereco.complemento %> - <%= endereco.district %> </p>
+                                <p><%= usuario.Addresses[0].street %>, <%= usuario.Addresses[0].complemento %> - <%= usuario.Addresses[0].district %> </p>
                                 <h3>Cidade</h3>
-                                <p><%= endereco.city %></p>
+                                <p><%= usuario.Addresses[0].city %></p>
                                 <h3>Estado</h3>
-                                <p><%= endereco.uf %></p>
+                                <p><%= usuario.Addresses[0].uf %></p>
                                 <form action="" method="post">
                                     <button type="submit" class="btn btn-warning">Adicionar Endereço</button>
                                 </form>
@@ -57,70 +62,152 @@
                 </div>
             </div>
         </div>
-        <div class="row my-5">
-            <div class="col-md-12">
-                <div class="card bg-dark h-100">
-                    <div class="card-body">
-                        <h2 class="font-weight-bold">Crianças</h2>
-                        <div class="row ">                                
-                            <div class="card bg-dark col-md-4 border-0">
-                                <div class="card-body">
-                                    <img src="/images/perfil-brown.png" alt="" height="150px" width="150px" style="grid-row: auto;"/>
-                                    <h3>Maninho</h3>
-                                    <p>Escola Novos Horizontes</p>
-                                </div>                                
-                            </div>
-                            <div class="card bg-dark col-md-4 border-0">
-                                <div class="card-body">
-                                    <img src="/images/perfil-brown.png" alt="" height="150px" width="150px" style="grid-row: auto;"/>
-                                    <h3>Maninha</h3>
-                                    <p>Escola Novos Rumos</p>
-                                </div>                                
-                            </div>
-                            <div class="card bg-dark col-md-4 border-0">
-                                <div class="card-body">
-                                    <img src="/images/perfil-brown.png" alt="" height="150px" width="150px" style="grid-row: auto;"/>
-                                    <h3>Maninha</h3>
-                                    <p>Escola Novos Rumos</p>
-                                </div>                                
-                            </div>
-                            <div class="card bg-dark col-md-4 border-0">
-                                <div class="card-body">
-                                    <img src="/images/perfil-brown.png" alt="" height="150px" width="150px" style="grid-row: auto;"/>
-                                    <h3>Maninha</h3>
-                                    <p>Escola Novos Rumos</p>
-                                </div>                                
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="row my-5">
-            <div class="col-md-12">
-                <div class="card bg-dark h-100">
-                    <div class="card-body">
-                        <h2 class="font-weight-bold">Motoristas</h2>
-                        <div class="row">
-                            <div class="card bg-dark col-md-4 border-0">
-                                <div class="card-body">
-                                    <a href="/user/1"><img src="/images/perfil-brown.png" alt="" height="150px" width="150px" style="grid-row: auto;"/></a>
-                                    <a href="/user/1"><h3>Jorge</h3></a>
-                                    <p>-"João tá sempre na hora"</p>
+        <% if (user.roles_id == 2) { %>
+            <div class="row my-5">
+                <div class="col-md-12">
+                    <div class="card bg-dark h-100">
+                        <div class="card-body">
+                            <h2 class="font-weight-bold">Crianças</h2>
+                            <div class="row ">                                
+                                <div class="card bg-dark col-md-4 border-0">
+                                    <div class="card-body">
+                                        <img src="/images/perfil-brown.png" alt="" height="150px" width="150px" style="grid-row: auto;"/>
+                                        <h3>Maninho</h3>
+                                        <p>Escola Novos Horizontes</p>
+                                    </div>                                
                                 </div>
-                            </div>
-                            <div class="card bg-dark col-md-4 border-0">
-                                <div class="card-body">
-                                    <img src="/images/perfil-brown.png" alt="" height="150px" width="150px" style="grid-row: auto;"/>
-                                    <h3>Maria</h3>
-                                    <p>-"Sempre atencioso com meu filho"</p>
+                                <div class="card bg-dark col-md-4 border-0">
+                                    <div class="card-body">
+                                        <img src="/images/perfil-brown.png" alt="" height="150px" width="150px" style="grid-row: auto;"/>
+                                        <h3>Maninha</h3>
+                                        <p>Escola Novos Rumos</p>
+                                    </div>                                
+                                </div>
+                                <div class="card bg-dark col-md-4 border-0">
+                                    <div class="card-body">
+                                        <img src="/images/perfil-brown.png" alt="" height="150px" width="150px" style="grid-row: auto;"/>
+                                        <h3>Maninha</h3>
+                                        <p>Escola Novos Rumos</p>
+                                    </div>                                
+                                </div>
+                                <div class="card bg-dark col-md-4 border-0">
+                                    <div class="card-body">
+                                        <img src="/images/perfil-brown.png" alt="" height="150px" width="150px" style="grid-row: auto;"/>
+                                        <h3>Maninha</h3>
+                                        <p>Escola Novos Rumos</p>
+                                    </div>                                
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
+            </div>        
+            <div class="row my-5">
+                <div class="col-md-12">
+                    <div class="card bg-dark h-100">
+                        <div class="card-body">
+                            <h2 class="font-weight-bold">Motoristas</h2>
+                            <div class="row">
+                                <% parent.Drivers.forEach(motorista => { %>
+                                    <div class="card bg-dark col-md-4 border-0">
+                                        <div class="card-body">
+                                            <a href="/user/<%= motorista.User.id %>"><img src="/images/perfil-brown.png" alt="" height="150px" width="150px" style="grid-row: auto;"/></a>
+                                            <a href="/user/<%= motorista.User.id %>"><h3><%= motorista.User.name %></h3></a>
+                                            <p>-"João tá sempre na hora"</p>
+                                        </div>
+                                    </div>
+                                <% }) %>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
-        </div>
+        <% } %>
+        <% if(user.roles_id == 3) { %>
+            <div class="row my-5">
+                <div class="col-md-6">
+                    <div class="card bg-dark h-100">
+                        <div class="card-body">
+                            <h2 class="text-center font-weight-bold">Informações da van</h2>
+                            <h3>Marca e Modelo</h3>
+                            <p><%= driver.marca %> <%= driver.modelo %>  </p>
+                            <h3>Data da última vistoria</h3>
+                            <p>20/04/2020</p>
+                            <h3>Números de alunos na van</h3>
+                            <p>10/15</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="card bg-dark h-100">
+                        <div class="card-body">
+                            <h2 class="text-center font-weight-bold">Acessibilidade</h2>
+                            <h3>Fala quais idiomas</h3>
+                            <p>Portugues e Ingles</p>
+                            <h3>Possui assento de elevação</h3>
+                            <p>Sim</p>
+                            <h3>Espaço para cadeira de rodas</h3>
+                            <p>Sim</p>
+                            <h3>Modificações na van</h3>
+                            <p>Rampa adaptada</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row my-5">
+                <div class="col-md-12">
+                    <div class="card bg-dark h-100">
+                        <div class="card-body">
+                            <h2 class="font-weight-bold">Mães, Pais e Responsáveis</h2>
+                            <div class="row">
+                                <% driver.Parents.forEach(parent => { %>
+                                    <div class="card bg-dark col-md-4 border-0">
+                                        <div class="card-body">
+                                            <a href="/user/<%= parent.User.id %>"><img src="/images/perfil-brown.png" alt="" height="150px" width="150px" style="grid-row: auto;"/></a>
+                                            <a href="/user/<%= parent.User.id %>"><h3><%= parent.User.name %></h3></a>
+                                        </div>
+                                    </div>
+                                <% }) %>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row my-5">
+                <div class="col-md-12">
+                    <div class="card bg-dark h-100">
+                        <div class="card-body">
+                            <h2 class="font-weight-bold">Escolas</h2>
+                            <div class="row">
+                                
+                                    <div class="card bg-dark col-md-4 border-0">
+                                        <div class="card-body">
+                                            <a href=""><img src="/images/perfil-brown.png" alt="" height="150px" width="150px" style="grid-row: auto;"/></a>
+                                            <a href="/user/"><h4>Escola Novos Horizontes</h4></a>
+                                        </div>
+                                    </div>
+
+                                    <div class="card bg-dark col-md-4 border-0">
+                                        <div class="card-body">
+                                            <a href=""><img src="/images/perfil-brown.png" alt="" height="150px" width="150px" style="grid-row: auto;"/></a>
+                                            <a href="/user/"><h4>Escola Novos Horizontes</h4></a>
+                                        </div>
+                                    </div>
+                                    <div class="card bg-dark col-md-4 border-0">
+                                        <div class="card-body">
+                                            <a href=""><img src="/images/perfil-brown.png" alt="" height="150px" width="150px" style="grid-row: auto;"/></a>
+                                            <a href="/user/"><h4>Escola Novos Horizontes</h4></a>
+                                        </div>
+                                    </div>
+                                
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        <% } %>
+        
     </div>
     <%- include('includes/footer') %>
 </body>

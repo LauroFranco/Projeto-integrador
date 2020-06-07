@@ -4,7 +4,7 @@ const router = express.Router();
 const userController = require('../controllers/userController');
 const auth = require('../middlewares/auth');
 
-router.get('/', userController.index);
+router.get('/', auth, userController.index);
 
 router.get('/parent', auth, userController.parent);
 router.post('/parent', userController.storeParent);

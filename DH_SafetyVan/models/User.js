@@ -26,8 +26,8 @@ module.exports = (sequelize, DataTypes) => {
             cpf: DataTypes.STRING,
             birthdate: DataTypes.DATE,
             phone: DataTypes.STRING,
-            roles_id: DataTypes.INTEGER,
             picture: DataTypes.STRING,
+            roles_id: DataTypes.INTEGER,
         }, {
             paranoid: true,
         }
