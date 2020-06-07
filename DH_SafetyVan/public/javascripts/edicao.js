@@ -49,7 +49,7 @@ botaoinfo.addEventListener("click", function () {
 <div class="form-group">
     <label for="sobre">Sobre_mim</label>
 </div>
-<textarea id="story" name="story"
+<textarea id="sobre" name="sobre"
 rows="5" cols="33">
 conte um pouco sobre voce
 </textarea>

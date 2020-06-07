@@ -221,18 +221,14 @@ const userController = {
 
     },
     editarSobre: async (req, res) => {
+
         Driver.update({
-            marca: req.body.marca,
-            modelo: req.body.modelo,
-            ano: req.body.ano,
-            placa: req.body.placa,
-            crmc: req.body.crmc
+            sobre:req.body.sobre
         },{where:{
             users_id:req.session.user.id 
         }}
 
         )
-        console.log(Us);
         return res.redirect('/user');
 
     },
