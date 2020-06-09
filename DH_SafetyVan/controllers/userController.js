@@ -21,7 +21,7 @@ const userController = {
                 },                
             });
             
-            return res.render('usuario', {usuario, parent, moment});
+            return res.render('usuario', {usuario, parent});
         }
 
         if (usuario.roles_id == 3) {
@@ -37,7 +37,7 @@ const userController = {
                 }
             });
             
-            return res.render('usuario', {usuario, driver, moment});
+            return res.render('usuario', {usuario, driver});
         }        
     },
 
@@ -58,7 +58,7 @@ const userController = {
                     include: User
                 }
             });
-            return res.render('perfil', {usuario, parent});
+            return res.render('perfil', {usuario, parent, moment});
         };
 
         if (usuario.roles_id == 3) {
@@ -73,7 +73,7 @@ const userController = {
                     include: User
                 }
             });
-            return res.render('perfil', {usuario, driver});
+            return res.render('perfil', {usuario, driver, moment});
         }
     },
 
