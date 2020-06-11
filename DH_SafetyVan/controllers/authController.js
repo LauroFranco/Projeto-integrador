@@ -27,7 +27,10 @@ const authController = {
             id: user.id,
             name: user.name,
             email: user.email,
+            roles_id: user.roles_id,
         };
+
+        if (user.roles_id == 1) return res.redirect('/admin');
 
         return res.redirect('/user');
     },
