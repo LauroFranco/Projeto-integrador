@@ -18,7 +18,7 @@ const authController = {
         });
 
         if (!user || !bcrypt.compareSync(password, user.password)) {
-            return res.render('/login', {
+                return res.render('login', {
                 msg: "Email ou senha errado!"
             });
         }

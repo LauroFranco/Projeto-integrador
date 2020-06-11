@@ -8,52 +8,49 @@
     font-family: 'Roboto';
 }
 
-
-header{
-    margin-bottom: 70px;
-
-}
-
 .container{
     margin-bottom: 90px;
 }
 
+
 #banner1{
+
     display: flex;
     background-image: urL('../img/backgroundSection1Index1.jpg');
     background-repeat: no-repeat;
     background-size: cover;
     width: 100%;
     height: 100vh;
-    align-items: center;
     justify-content: center;
+    position: relative;
 }
 
-
-#imagemBanner1{
-    background-image: url('../img/foto1');
-    background-repeat: no-repeat;
-    width: 45%;
+#background1{
+    position: absolute;
+    background-color: rgba(0,0,0,0.2);
+    width: 100%;
     height: 100vh;
+    z-index: 0;
 }
-
 
 #textoBanner1{
     color: white;
-    padding: 20px;
-    width: 45%;
-    height: 40%;
+    max-width: 90%;
+    max-height: 30vh;
+    margin-top: 100px;
+    z-index: 1;
 }
 
-
-
-
-#caixaInternaBanner1{
-    display: flex;
-    justify-content: space-between;
-    width: 80%;
-    height: 80vh;
+#textoBanner1 h1{
+    font-size: 48px;
+    font-weight: bolder;
 }
+
+#textoBanner1 h5{
+    font-size: 24px;
+    text-align: center;
+}
+
 
 
 
@@ -145,15 +142,42 @@ header{
 }
 
 footer{
+    background-color: black;
+    width: 100%;
     color: white;
     text-align: center;
     position: relative;
 }
-hr.line {
+
+
+#footerContent{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+}
+
+
+footer hr.line {
 	background-color: #fff;
     border-top: 2px inline #8c8b8b;
     width: 60px;
 }
+
+
+footer .listFooter{
+    list-style-type: none;
+}
+
+
+footer h6{
+    font-weight: bolder;
+    padding-top: 30px;
+}
+
+footer span{
+    color: white;
+    text-align: center;
+}
+
 .mid{
     background-color: black;
 }
@@ -329,3 +353,138 @@ hr.line {
 .background-card{
     background-color: #343a40;
 }
+
+
+
+
+
+
+
+
+@media( min-width: 320px) and (max-width: 767px){
+
+
+    #textoBanner1{
+        margin-top: 50px;
+    }
+    
+    #textoBanner1 h1{
+        font-size: 32px;
+        text-align: center;
+        margin-bottom: 30px;
+
+    }
+
+    #textoBanner1 h5{
+        font-size: 18px;
+    }
+
+
+    #banner2{
+        background-image: url('../images/driver.jpg');
+        background-size: cover;
+        background-repeat: no-repeat;
+        position: relative;
+    }
+
+    #background2{
+        position: absolute;
+        width: 100%;
+        height: 100vh;
+        background-color: rgba(0,0,0,0.2);
+        z-index: 0;
+    }
+
+    #caixaInternaBanner2{
+        width: 100%;
+  
+    }
+
+    #textoBanner2{
+        color: white;
+        width: 100%;
+        z-index: 1;
+        margin-top: 20px;
+
+    }
+
+    #textoBanner2 h1{
+        text-align: center;
+        margin-bottom: 30px;
+        font-size: 32px;
+    }
+
+    #textoBanner2 h5{
+        font-size: 18px;
+    }
+
+
+    #imagemBanner2{
+        display: none;
+    }
+
+
+    #banner3{
+        background-image: url('../images/bg3.jpg');
+        background-size: cover;
+        background-repeat: no-repeat;
+        position: relative;
+    }
+
+    #background3{
+        position: absolute;
+        width: 100%;
+        height: 100vh;
+        background-color: rgba(0,0,0,0.2);
+        z-index: 0;
+    }
+
+    #caixaInternaBanner3{
+        width: 100%;
+  
+    }
+
+    #textoBanner3{
+        color: white;
+        width: 100%;
+        z-index: 1;
+        margin-top: 20px;
+    
+    }
+
+    #textoBanner3 h1{
+        text-align: center;
+        font-size: 32px;
+        margin-bottom: 30px;
+    }
+
+    #textoBanner3 h5{
+        font-size: 18px;
+
+    }
+
+    #imagemBanner3{
+        display: none;
+    }
+
+
+    footer #footerContent{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+
+
+    footer .content{
+        max-width: 80%;
+    }
+
+
+    footer img{
+        margin-bottom: 20px;
+    }
+
+
+}
+
