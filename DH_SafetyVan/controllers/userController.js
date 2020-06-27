@@ -62,12 +62,18 @@ const userController = {
                     users_id: id
                 },
                 include:
-                {
-                    model: Driver,
-                    include: User
-                }
+                [
+                    {
+                        model: Driver,
+                        include: User
+                    },
+                    {
+                        model: Kid,
+                        include: School
+                    }
+                ]
             });
-            return res.render('perfil', { usuario, parent });
+            return res.render('perfil', { usuario, parent, moment });
         };
 
         if (usuario.roles_id == 3) {
@@ -76,13 +82,18 @@ const userController = {
                 {
                     users_id: id
                 },
-                include:
-                {
-                    model: Parent,
-                    include: User
-                }
+                include: 
+                [
+                    {
+                        model: Parent, 
+                        include: User
+                    },
+                    {
+                        model: School,
+                    }
+                ]
             });
-            return res.render('perfil', { usuario, driver });
+            return res.render('perfil', { usuario, driver, moment });
         }
     },
 
