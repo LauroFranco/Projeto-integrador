@@ -13,6 +13,7 @@ const session = require('express-session')
 
 const indexRouter = require('./routes/index');
 const userRouter = require('./routes/user');
+const adminRouter = require('./routes/admin');
 
 const app = express()
 
@@ -40,5 +41,6 @@ app.use(session({
 
 app.use(indexRouter);
 app.use('/user', userRouter);
+app.use('/admin', adminRouter);
 
 app.listen(3000, ()=>console.log("Servidor rodando "))

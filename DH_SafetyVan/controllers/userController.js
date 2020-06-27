@@ -151,7 +151,8 @@ const userController = {
             users_id: user.id,
         });
 
-        const Parent = await Parent.create({
+        const parent = await Parent.create({
+
             users_id: user.id
         })
 
