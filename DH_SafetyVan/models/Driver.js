@@ -16,6 +16,7 @@ module.exports = (sequelize, DataTypes) => {
             placa: DataTypes.STRING,
             crmc: DataTypes.STRING,
             users_id: DataTypes.INTEGER,
+            sobre: DataTypes.STRING,
         }, {
             paranoid: true,
         }

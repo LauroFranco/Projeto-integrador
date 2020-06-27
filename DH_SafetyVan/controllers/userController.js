@@ -1,13 +1,13 @@
 const bcrypt = require('bcrypt');
 const moment = require('moment');
-const {User, Address, Parent, Driver} = require('../models');
+const { User, Address, Parent, Driver } = require('../models');
 
 const userController = {
     index: async (req, res) => {
         if (req.session.user.roles_id == 1) return res.redirect('/admin');
-        
-        const usuario = await User.findByPk(req.session.user.id, {include: Address});
-        
+
+        const usuario = await User.findByPk(req.session.user.id, { include: Address });
+
         if (usuario.roles_id == 2) {
             const parent = await Parent.findOne({
                 where: {
@@ -18,10 +18,10 @@ const userController = {
                     include: {
                         model: User,
                     }
-                },                
+                },
             });
-            
-            return res.render('usuario', {usuario, parent});
+
+            return res.render('usuario', { usuario, parent, moment });
         }
 
         if (usuario.roles_id == 3) {
@@ -36,14 +36,14 @@ const userController = {
                     }
                 }
             });
-            
-            return res.render('usuario', {usuario, driver});
-        }        
+
+            return res.render('usuario', { usuario, driver, moment });
+        }
     },
 
     show: async (req, res) => {
         const { id } = req.params;
-        
+
         const usuario = await User.findByPk(id);
 
         if (usuario.roles_id == 2) {
@@ -58,7 +58,7 @@ const userController = {
                     include: User
                 }
             });
-            return res.render('perfil', {usuario, parent, moment});
+            return res.render('perfil', { usuario, parent });
         };
 
         if (usuario.roles_id == 3) {
@@ -67,13 +67,13 @@ const userController = {
                 {
                     users_id: id
                 },
-                include: 
+                include:
                 {
-                    model: Parent, 
+                    model: Parent,
                     include: User
                 }
             });
-            return res.render('perfil', {usuario, driver, moment});
+            return res.render('perfil', { usuario, driver });
         }
     },
 
@@ -82,7 +82,7 @@ const userController = {
     },
 
     store: async (req, res) => {
-        const {name, email, password, role} = req.body;
+        const { name, email, password, role } = req.body;
         const passwordHash = bcrypt.hashSync(password, 10);
 
         if (role == 'parent') {
@@ -120,7 +120,7 @@ const userController = {
             return res.redirect('/user/driver');
         }
 
-        return res.redirect('/cadastro', {msg:"Erro ao fazer o cadastro. Por favor, tente novamente."});
+        return res.redirect('/cadastro', { msg: "Erro ao fazer o cadastro. Por favor, tente novamente." });
 
     },
 
@@ -198,23 +198,46 @@ const userController = {
 
         return res.redirect('/user');
     },
-    
+
     child: async (req, res) => {
         const user = await User.findByPk(req.session.user.id);
         const [endereco] = await user.getAddresses();
-        
-        return res.render('cadastroChild', {endereco});
+
+        return res.render('cadastroChild', { endereco });
+    },
+    editarCarro: async (req, res) => {
+        Driver.update({
+            marca: req.body.marca,
+            modelo: req.body.modelo,
+            ano: req.body.ano,
+            placa: req.body.placa,
+            crmc: req.body.crmc
+        },{where:{
+            users_id:req.session.user.id 
+        }}
+
+        )
+        return res.redirect('/user');
+
+    },
+    editarSobre: async (req, res) => {
+
+        Driver.update({
+            sobre:req.body.sobre
+        },{where:{
+            users_id:req.session.user.id 
+        }}
+
+        )
+        return res.redirect('/user');
+
     },
 
-    storeChild: () => {
-        
-    },
+    storeChild: (req, res) => {
 
-    edit: async (req, res) => {
-        const {id} = req.body;
-        const user = await User.findByPk(id);
-        if (user.roles_id == 2) return res.render('editParent', {user});
-        if (user.roles_id == 3) return res.render('editDriver', {user});
+    },
+    changeInfos: (_req, res) => {
+        return res.render('MudarInfosMotoristas');
     }
 };
 
