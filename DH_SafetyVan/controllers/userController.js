@@ -251,6 +251,75 @@ const userController = {
         return res.redirect('/user');        
     },
 
+    edit: async (req, res) => {
+        const {id} = req.params;
+        const user = await User.findByPk(id);
+        if (user.roles_id == 1) return res.render('editAdmin', {user});
+        if (user.roles_id == 2) {
+            const parent = await Parent.findOne({
+                where: {
+                    users_id: user.id
+                },
+                include: {model: User, include: Address}
+            })
+            return res.render('editParent', {parent});
+        }
+        if (user.roles_id == 3) {
+            const driver = await Driver.findOne({
+                where: {
+                    users_id: user.id
+                },
+                include: {model: User, include: Address}
+            })
+            return res.render('editDriver', {driver});
+        }
+    },
+
+    update: async(req, res) => {
+        const { id } = req.params;
+        const { name, cpf, birthdate, phone, about, cep, rua, complemento, bairro, cidade, uf } = req.body;
+
+        const user = await User.findByPk(id, {include: Address});
+
+        user.name = name;
+        user.cpf = cpf;
+        user.birthdate = birthdate;
+        user.phone = phone;
+
+        user.Addresses.forEach(async (address) => {
+            address.cep = cep;
+            address.street = rua;
+            address.complemento = complemento;
+            address.district = bairro;
+            address.city = cidade;
+            address.uf = uf;
+            await address.save();
+        });
+
+        await user.save();
+
+        if (user.roles_id == 2) {            
+            return res.redirect('/user');
+        }
+
+        if (user.roles_id == 3) {
+            const { cnh, crm, marca, modelo, ano, placa, crmc } = req.body;
+            const driver = await Driver.findOne({where: {users_id: user.id}});
+
+            driver.cnh = cnh;
+            driver.crm = crm;
+            driver.marca = marca;
+            driver.modelo = modelo;
+            driver.ano = ano;
+            driver.placa = placa;
+            driver.crmc = crmc;
+            driver.sobre = about;
+            await driver.save();
+
+            return res.redirect('/user');
+        }
+    },
+
     editarCarro: async (req, res) => {
         Driver.update({
             marca: req.body.marca,
