@@ -1,6 +1,6 @@
 const bcrypt = require('bcrypt');
 const moment = require('moment');
-const { User, Address, Parent, Driver } = require('../models');
+const { User, Address, Parent, Driver, Kid, School } = require('../models');
 
 const userController = {
     index: async (req, res) => {
@@ -13,12 +13,17 @@ const userController = {
                 where: {
                     users_id: usuario.id,
                 },
-                include: {
+                include: [{
                     model: Driver,
                     include: {
                         model: User,
                     }
                 },
+                {
+                    model: Kid,
+                    include: School,
+                }
+            ],
             });
 
             return res.render('usuario', { usuario, parent, moment });
@@ -29,12 +34,16 @@ const userController = {
                 where: {
                     users_id: usuario.id
                 },
-                include: {
+                include: [{
                     model: Parent,
                     include: {
                         model: User,
                     }
+                },
+                {
+                    model: School,
                 }
+            ]
             });
 
             return res.render('usuario', { usuario, driver, moment });

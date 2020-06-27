@@ -13,7 +13,7 @@ module.exports = (sequelize, DataTypes) => {
                 type: DataTypes.STRING,
                 notNull: false,
             },                
-            birthdate: DataTypes.DATE,
+            birthdate: DataTypes.DATEONLY,
             avatar: DataTypes.STRING,
             parents_id: DataTypes.INTEGER,
             schools_id: DataTypes.INTEGER,

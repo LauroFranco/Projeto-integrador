@@ -26,7 +26,7 @@ module.exports = {
           allowNull: false,
         },
         cpf: Sequelize.STRING,
-        birthdate: Sequelize.DATE,
+        birthdate: Sequelize.DATEONLY,
         phone: Sequelize.STRING,
         roles_id:
         {
