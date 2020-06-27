@@ -2,7 +2,7 @@
 
 <body>
     <%- include('includes/header') %>
-    <div class="row justify-content-md-center">
+    <div class="row justify-content-md-center w-100">
         <h1>ENCONTRE MOTORISTAS AQUI!!</h1>
     </div>
      <% ListDrivers.forEach(listDrivers => { %> 
@@ -28,6 +28,8 @@
             <br>
             <p><%=listDrivers.sobre%></p>
         </div>
+        
+        
     </div>
    <% }) %>
     <%- include('includes/footer') %>
