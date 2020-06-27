@@ -34,7 +34,6 @@
             <div class="col-md-9">
                 <div class="card bg-dark h-100">
                     <div class="card-body">
-                        <!-- <h2 class="font-weight-bold text-center"><%= usuario.name %></h2> -->
                         <div class="row">
                             <div class="col-md-6">
                                 <h3>E-mail</h3>
@@ -49,10 +48,7 @@
                             <div class="col-md-6">
                                 <h3>Endereço Principal</h3>
                                 <p><%= usuario.Addresses[0].street %>, <%= usuario.Addresses[0].complemento %> - <%= usuario.Addresses[0].district %> </p>
-                                <h3>Cidade</h3>
-                                <p><%= usuario.Addresses[0].city %></p>
-                                <h3>Estado</h3>
-                                <p><%= usuario.Addresses[0].uf %></p>
+                                <p><%= usuario.Addresses[0].city %>/<%= usuario.Addresses[0].uf %></p>
                                 <form action="" method="post">
                                     <button type="submit" class="btn btn-warning">Adicionar Endereço</button>
                                 </form>
@@ -63,45 +59,29 @@
             </div>
         </div>
         <% if (user.roles_id == 2) { %>
-            <div class="row my-5">
-                <div class="col-md-12">
-                    <div class="card bg-dark h-100">
-                        <div class="card-body">
-                            <h2 class="font-weight-bold">Crianças</h2>
-                            <div class="row ">                                
-                                <div class="card bg-dark col-md-4 border-0">
-                                    <div class="card-body">
-                                        <img src="/images/perfil-brown.png" alt="" height="150px" width="150px" style="grid-row: auto;"/>
-                                        <h3>Maninho</h3>
-                                        <p>Escola Novos Horizontes</p>
-                                    </div>                                
-                                </div>
-                                <div class="card bg-dark col-md-4 border-0">
-                                    <div class="card-body">
-                                        <img src="/images/perfil-brown.png" alt="" height="150px" width="150px" style="grid-row: auto;"/>
-                                        <h3>Maninha</h3>
-                                        <p>Escola Novos Rumos</p>
-                                    </div>                                
-                                </div>
-                                <div class="card bg-dark col-md-4 border-0">
-                                    <div class="card-body">
-                                        <img src="/images/perfil-brown.png" alt="" height="150px" width="150px" style="grid-row: auto;"/>
-                                        <h3>Maninha</h3>
-                                        <p>Escola Novos Rumos</p>
-                                    </div>                                
-                                </div>
-                                <div class="card bg-dark col-md-4 border-0">
-                                    <div class="card-body">
-                                        <img src="/images/perfil-brown.png" alt="" height="150px" width="150px" style="grid-row: auto;"/>
-                                        <h3>Maninha</h3>
-                                        <p>Escola Novos Rumos</p>
-                                    </div>                                
+            <% if(parent.Kids.length > 0) { %>
+                <div class="row my-5">
+                    <div class="col-md-12">
+                        <div class="card bg-dark h-100">
+                            <div class="card-body">
+                                <h2 class="font-weight-bold">Crianças</h2>
+                                <div class="row ">
+                                    <% parent.Kids.forEach(kid => { %>
+                                        <div class="card bg-dark col-md-4 border-0">
+                                            <div class="card-body">
+                                                <img src="/images/avatar-default.png" alt="" height="150px" width="150px" style="grid-row: auto;"/>
+                                                <h3><%= kid.name %></h3>
+                                                <p><%= kid.School.name %></p>
+                                            </div>
+                                        </div>
+                                    <% }) %>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
-            </div>        
+                <% } %>
+            <% if (parent.Drivers.length > 0) { %>   
             <div class="row my-5">
                 <div class="col-md-12">
                     <div class="card bg-dark h-100">
@@ -122,6 +102,7 @@
                     </div>
                 </div>
             </div>
+            <% } %> 
         <% } %>
         <% if(user.roles_id == 3) { %>
             <div class="row my-5">
@@ -154,57 +135,50 @@
                     </div>
                 </div>
             </div>
-            <div class="row my-5">
-                <div class="col-md-12">
-                    <div class="card bg-dark h-100">
-                        <div class="card-body">
-                            <h2 class="font-weight-bold">Mães, Pais e Responsáveis</h2>
-                            <div class="row">
-                                <% driver.Parents.forEach(parent => { %>
-                                    <div class="card bg-dark col-md-4 border-0">
-                                        <div class="card-body">
-                                            <a href="/user/<%= parent.User.id %>"><img src="/images/perfil-brown.png" alt="" height="150px" width="150px" style="grid-row: auto;"/></a>
-                                            <a href="/user/<%= parent.User.id %>"><h3><%= parent.User.name %></h3></a>
+            <% if(driver.Parents.length > 0) { %> 
+                <div class="row my-5">
+                    <div class="col-md-12">
+                        <div class="card bg-dark h-100">
+                            <div class="card-body">
+                                <h2 class="font-weight-bold">Mães, Pais e Responsáveis</h2>
+                                <div class="row">
+                                    
+                                    <% driver.Parents.forEach(parent => { %>
+                                        <div class="card bg-dark col-md-4 border-0">
+                                            <div class="card-body">
+                                                <a href="/user/<%= parent.User.id %>"><img src="/images/avatar-default.png" alt="" height="150px" width="150px" style="grid-row: auto;"/></a>
+                                                <a href="/user/<%= parent.User.id %>"><h3><%= parent.User.name %></h3></a>
+                                            </div>
                                         </div>
-                                    </div>
-                                <% }) %>
+                                    <% })  %>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
-            </div>
-            <div class="row my-5">
-                <div class="col-md-12">
-                    <div class="card bg-dark h-100">
-                        <div class="card-body">
-                            <h2 class="font-weight-bold">Escolas</h2>
-                            <div class="row">
-                                
-                                    <div class="card bg-dark col-md-4 border-0">
-                                        <div class="card-body">
-                                            <a href=""><img src="/images/perfil-brown.png" alt="" height="150px" width="150px" style="grid-row: auto;"/></a>
-                                            <a href="/user/"><h4>Escola Novos Horizontes</h4></a>
+                <% } %> 
+                <% if(driver.Schools.length > 0) { %>
+                <div class="row my-5">
+                    <div class="col-md-12">
+                        <div class="card bg-dark h-100">
+                            <div class="card-body">
+                                <h2 class="font-weight-bold">Escolas</h2>
+                                <div class="row">
+                                    
+                                    <% driver.Schools.forEach(school => { %>
+                                        <div class="card bg-dark col-md-4 border-0">
+                                            <div class="card-body">
+                                                <a href=""><img src="/images/perfil-brown.png" alt="" height="150px" width="150px" style="grid-row: auto;"/></a>
+                                                <a href="/user/"><h4><%= school.name %> </h4></a>
+                                            </div>
                                         </div>
-                                    </div>
-
-                                    <div class="card bg-dark col-md-4 border-0">
-                                        <div class="card-body">
-                                            <a href=""><img src="/images/perfil-brown.png" alt="" height="150px" width="150px" style="grid-row: auto;"/></a>
-                                            <a href="/user/"><h4>Escola Novos Horizontes</h4></a>
-                                        </div>
-                                    </div>
-                                    <div class="card bg-dark col-md-4 border-0">
-                                        <div class="card-body">
-                                            <a href=""><img src="/images/perfil-brown.png" alt="" height="150px" width="150px" style="grid-row: auto;"/></a>
-                                            <a href="/user/"><h4>Escola Novos Horizontes</h4></a>
-                                        </div>
-                                    </div>
-                                
+                                    <% }) %>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
-            </div>
+                <% } %> 
 
         <% } %>
         

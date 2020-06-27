@@ -1,0 +1,86 @@
+<%- include('includes/head', {title:"safeVan"}) %>
+<body>
+    <%- include('includes/header') %>
+    <main class="perfil-fundo w-100 vh-100 position-fixed"></main>
+    <div class="container text-white p-5">
+        <div class="row">
+            <div class="col-md-3">
+                <div class="card bg-dark h-100">
+                    <div class="card-body">
+                        <div class="profile-img">
+                            <img src="/images/avatar-default.png" alt="" height="200px" width="200px" style="grid-row: auto;"/>
+                            <h2 class="font-weight-bold text-center"><%= admin.name %></h2>
+                        </div>
+                        <a href="" class="d-block">Editar informações</a>
+                        <a href="/admin/school" class="d-block">Cadastrar escola</a>
+                        <a href="/search/driver" class="d-block">Procurar motorista</a>
+                        <a href="/search/parent" class="d-block">Procurar responsáveis</a>
+                        <a href="/logout" class="d-block">Sair</a>
+                    </div>                    
+                </div>
+            </div>
+            <div class="col-md-9">
+                <div class="card bg-dark h-100">
+                    <div class="card-body">
+                        
+                        <div class="row">
+                            <!-- <div class="col-md-6">
+                                <h3>E-mail</h3>
+                                <p><%= admin.email %></p>
+                                <h3>Telefone</h3>
+                                <p></p>
+                                <h3>Data de nascimento</h3>
+                                <p></p>
+                                <h3>CPF</h3>
+                                <p></p>
+                            </div>
+                            <div class="col-md-6">
+                                <h3>Endereço Principal</h3>
+                                <p></p>
+                                <h3>Cidade</h3>
+                                <p></p>
+                                <h3>Estado</h3>
+                                <p></p>
+                            </div>
+                        </div> -->
+                        <ul class="nav nav-tabs" id="myTab" role="tablist">
+                            <li class="nav-item">
+                                <a class="nav-link active" id="home-tab" data-toggle="tab" href="#principal" role="tab" aria-controls="home" aria-selected="true">Principal</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" id="profile-tab" data-toggle="tab" href="#usuarios" role="tab" aria-controls="profile" aria-selected="false">Usuários</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" id="contact-tab" data-toggle="tab" href="#extras" role="tab" aria-controls="contact" aria-selected="false">Extras</a>
+                            </li>
+                        </ul>
+                        </div>
+                        <div class="row">
+                            <div class="tab-content" id="myTabContent">
+                                <div class="tab-pane fade show active" id="principal" role="tabpanel" aria-labelledby="home-tab">
+                                    <div class="container">
+                                        Tela principal do adm
+                                    </div>
+                                </div>
+                                <div class="tab-pane fade" id="usuarios" role="tabpanel" aria-labelledby="profile-tab">
+                                    <div class="container">
+                                        lista os usuarios tudo
+                                    </div>
+                                </div>
+                                <div class="tab-pane fade" id="extras" role="tabpanel" aria-labelledby="contact-tab">
+                                    <div class="container">
+                                        hmm
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        
+    </div>
+    <%- include('includes/footer') %>
+</body>
+</html>

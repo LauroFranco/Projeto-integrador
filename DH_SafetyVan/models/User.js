@@ -24,7 +24,7 @@ module.exports = (sequelize, DataTypes) => {
               allowNull: false,
             },
             cpf: DataTypes.STRING,
-            birthdate: DataTypes.DATE,
+            birthdate: DataTypes.DATEONLY,
             phone: DataTypes.STRING,
             picture: DataTypes.STRING,
             roles_id: DataTypes.INTEGER,

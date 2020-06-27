@@ -1,0 +1,118 @@
+<%- include('includes/head', {title:"safeVan"}) %>
+<body>
+    <%- include('../public/javascripts/buscaCep.js') %>
+    <%- include('includes/header') %>
+    <main class="cad-driver text-white">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-sm-9 col-md-7 col-lg-5 mx-auto">
+                    <div class="card card-signin my-5 light bg-dark">
+                        <div class="card-body">
+                            <form action="/user/edit/<%= driver.User.id %> " method="POST">
+                                <h2>Editar Informações</h2>
+                                <div class="form-group">
+                                    <label for="name">Nome completo*</label>
+                                    <input type="text"class="form-control" name="name" value="<%= driver.User.name %> ">
+                                </div>
+
+                                <div class="form-row">
+                                    <div class="form-group col-md-4">
+                                        <label for="cpf">CPF*</label>
+                                        <input type="text" class="form-control" name="cpf" value="<%= driver.User.cpf %>">
+                                    </div>
+                                    <div class="form-group col-md-4">
+                                        <label for="birthdate">Data de Nascimento*</label>
+                                        <input type="date" class="form-control" name="birthdate" value="<%= driver.User.birthdate %>">
+                                    </div>
+                                    <div class="form-group col-md-4">
+                                        <label for="phone">Telefone*</label>
+                                        <input type="tel" class="form-control" name="phone" value="<%= driver.User.phone %>">
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="about">Descrição*</label>
+                                    <textarea class="form-control" name="about" placeholder="Sobre mim"></textarea>
+                                </div>
+                                <% driver.User.Addresses.forEach(address => { %> 
+                                <div class="form-group">
+                                    <label for="cep">CEP*</label>
+                                    <input type="text" class="form-control w-50" name="cep" value="<%= address.cep %>" onblur="pesquisacep(this.value)">
+                                </div>
+
+                                <div class="form-row">
+                                    <div class="form-group col-md-9">
+                                        <label for="rua">Endereço*</label>
+                                        <input type="text" class="form-control" name="rua" id="rua" value="<%= address.street %>">
+                                    </div>
+                                    <div class="form-group col-md-3">
+                                        <label for="complemento">Número*</label>
+                                        <input type="text" class="form-control" name="complemento" value="<%= address.complemento %>">
+                                    </div>
+                                    <div class="form-group col-md-5">
+                                        <label for="bairro">Bairro *</label>
+                                        <input type="text" class="form-control" name="bairro" id="bairro" value="<%= address.district %>">
+                                    </div>
+                                    <div class="form-group col-md-5">
+                                        <label for="cidade">Cidade *</label>
+                                        <input type="text" class="form-control" name="cidade" id="cidade" value="<%= address.street %>">
+                                    </div>
+                                    <div class="form-group col-md-2">
+                                        <label for="uf">Estado*</label>
+                                        <input type="text" name="uf" id="uf" class="form-control" value="<%= address.uf %>">
+                                    </div>
+                                </div>
+                                <% }) %>
+                                <div class="form-row">
+                                    <div class="form-group col-md-6">
+                                        <label for="cnh">CNH:*</label>
+                                        <input type="text" class="form-control" name="cnh" value="<%= driver.cnh %>">
+                                    </div>
+                                    
+                                    <div class="form-group col-md-6">
+                                        <label for="crm">CRM:*</label>
+                                        <input type="text" class="form-control" name="crm" value="<%= driver.crm %>">
+                                    </div>
+                                </div>                               
+
+                                <h3>Dados do Veículo</h3>
+
+                                <div class="form-row">
+                                    <div class="form-group col-md-4">
+                                        <label for="veiculo">Marca:*</label>
+                                        <input type="text" class="form-control" name="marca" value="<%= driver.marca %>">
+                                    </div>
+                                    <div class="form-group col-md-4">
+                                        <label for="veiculo">Modelo:*</label>
+                                        <input type="text" class="form-control" name="modelo" value="<%= driver.modelo %>">
+                                    </div>
+                                    <div class="form-group col-md-4">
+                                        <label for="ano">Ano de Fabricação: *</label>
+                                        <input type="text" class="form-control" name="ano" value="<%= driver.ano %>">
+                                    </div>
+                                </div>
+                                
+                                <div class="form-row">
+                                    <div class="form-group col-md-4">
+                                        <label for="placa">Placa:*</label>
+                                        <input type="text" class="form-control" name="placa" value="<%= driver.placa %>">
+                                    </div>    
+                                    <div class="form-group col-md-8">
+                                        <label for="crm">CRMC: *</label>
+                                        <input type="text" class="form-control" name="crmc" value="<%= driver.crmc %>">
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <button type="submit" class="btn btn-warning">Enviar</button>
+                                </div>
+
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+    <%- include('includes/footer') %>
+</body>
+</html>
