@@ -223,9 +223,34 @@ const userController = {
     child: async (req, res) => {
         const user = await User.findByPk(req.session.user.id);
         const [endereco] = await user.getAddresses();
-
-        return res.render('cadastroChild', { endereco });
+        const schools = await School.findAll();
+                
+        return res.render('cadastroChild', {endereco, schools});
     },
+
+    storeChild: async (req, res) => {
+        const {nameCrianca, birthdateCrianca, alergic, idEscola, emailParent} = req.body;
+
+        const user = await User.findOne({
+            where: {
+                email: emailParent
+            }
+        });
+        const parent = await Parent.findOne({
+            where: {
+                users_id: user.id
+            }
+        })
+        const crianca = await Kid.create({
+            name: nameCrianca,
+            birthdate: birthdateCrianca,
+            parents_id: parent.id,
+            schools_id: idEscola
+        });
+
+        return res.redirect('/user');        
+    },
+
     editarCarro: async (req, res) => {
         Driver.update({
             marca: req.body.marca,
@@ -254,9 +279,7 @@ const userController = {
 
     },
 
-    storeChild: (req, res) => {
-
-    },
+    
     changeInfos: (_req, res) => {
         return res.render('MudarInfosMotoristas');
     }
