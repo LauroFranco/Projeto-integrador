@@ -320,6 +320,19 @@ const userController = {
         }
     },
 
+    adicionaDriver: async(req, res) => {
+        const { idDriver } = req.body;
+        const parent = await Parent.findOne({where: {users_id: req.session.user.id}});
+        const driver = await Driver.findByPk(idDriver);
+
+        if(await parent.hasDriver(driver)) {
+            return res.redirect('/');
+        } else {
+            await parent.addDriver(driver);
+            return res.redirect('/user');
+        }
+    },
+
     editarCarro: async (req, res) => {
         Driver.update({
             marca: req.body.marca,
