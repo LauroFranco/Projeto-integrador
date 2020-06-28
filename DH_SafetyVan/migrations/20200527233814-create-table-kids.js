@@ -14,7 +14,7 @@ module.exports = {
         type: Sequelize.STRING,
         notNUll: false,
       },
-      birthdate: Sequelize.DATE,
+      birthdate: Sequelize.DATEONLY,
       avatar: Sequelize.STRING,
       parents_id:
       {

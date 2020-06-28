@@ -11,9 +11,9 @@
                             <h2 class="font-weight-bold text-center"><%= usuario.name %></h2>
                             <ul class="list-group">
                                 <h3>Descrição</h3>
-                                <p>Eu entrego crianças nas escolas da região em que trabalho</p>
-                                <h3>Tempo no ramo</h3>
-                                <p>Eu dirijo vans escolares a 9 anos</p>
+                                <p><%= driver.sobre %> </p>
+                                <h3>Idade</h3>
+                                <p><%= (moment().diff(usuario.birthdate, 'years')) %> anos</p>
                                 <h3>Possui ajudantes</h3>
                                 <p>Eu trabalho sozinho</p>
                             </ul>
@@ -30,10 +30,12 @@
                             <span class="fa fa-star"></span>
                             <span class="fa fa-star"></span>
                         </div>
-                        <form action="/addDriver" method="post">
+                        <% if (user.roles_id == 2) { %> 
+                        <form action="/user/addDriver" method="post">
                             <input type="hidden" name="idDriver" value="<%= driver.id %>">
-                            <button type="submit" class="btn btn-warning">Adicionar Motorista</button>
+                            <button type="submit" class="btn btn-warning">Contratar Motorista</button>
                         </form>
+                        <% } %> 
                     </div>
                 </div>
             </div>
@@ -67,57 +69,50 @@
                     </div>
                 </div>
             </div>
-            <div class="row my-5">
-                <div class="col-md-10">
-                    <div class="card bg-dark h-100">
-                        <div class="card-body">
-                            <h2 class="font-weight-bold">Mães, Pais e Responsáveis</h2>
-                            <div class="row">
-                                <% driver.Parents.forEach(parent => { %>
-                                    <div class="card bg-dark col-md-4 border-0">
-                                        <div class="card-body">
-                                            <a href="/user/<%= parent.User.id %>"><img src="/images/perfil-brown.png" alt="" height="150px" width="150px" style="grid-row: auto;"/></a>
-                                            <a href="/user/<%= parent.User.id %>"><h3><%= parent.User.name %></h3></a>
+            <% if (driver.Parents.length > 0) { %> 
+                <div class="row my-5">
+                    <div class="col-md-10">
+                        <div class="card bg-dark h-100">
+                            <div class="card-body">
+                                <h2 class="font-weight-bold">Mães, Pais e Responsáveis</h2>
+                                <div class="row">
+                                    
+                                    <% driver.Parents.forEach(parent => { %>
+                                        <div class="card bg-dark col-md-4 border-0">
+                                            <div class="card-body">
+                                                <a href="/user/<%= parent.User.id %>"><img src="/images/perfil-brown.png" alt="" height="150px" width="150px" style="grid-row: auto;"/></a>
+                                                <a href="/user/<%= parent.User.id %>"><h3><%= parent.User.name %></h3></a>
+                                            </div>
                                         </div>
-                                    </div>
-                                <% }) %>
+                                    <% }) %>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
-            </div>
-            <div class="row my-5">
-                <div class="col-md-10">
-                    <div class="card bg-dark h-100">
-                        <div class="card-body">
-                            <h2 class="font-weight-bold">Escolas</h2>
-                            <div class="row">
-                                
-                                    <div class="card bg-dark col-md-3 border-0">
-                                        <div class="card-body">
-                                            <a href=""><img src="/images/perfil-brown.png" alt="" height="150px" width="150px" style="grid-row: auto;"/></a>
-                                            <a href="/user/"><h4>Escola Novos Horizontes</h4></a>
+                <% } %>
+                <% if (driver.Schools.length > 0) {%>
+                <div class="row my-5">
+                    <div class="col-md-10">
+                        <div class="card bg-dark h-100">
+                            <div class="card-body">
+                                <h2 class="font-weight-bold">Escolas</h2>
+                                <div class="row">
+                                    
+                                        <% driver.Schools.forEach(school => { %>
+                                            <div class="card bg-dark col-md-3 border-0">
+                                            <div class="card-body">
+                                                <a href=""><img src="/images/perfil-brown.png" alt="" height="150px" width="150px" style="grid-row: auto;"/></a>
+                                                <a href="/user/"><h4> <%= school.name %>  </h4></a>
+                                            </div>
                                         </div>
-                                    </div>
-
-                                    <div class="card bg-dark col-md-3 border-0">
-                                        <div class="card-body">
-                                            <a href=""><img src="/images/perfil-brown.png" alt="" height="150px" width="150px" style="grid-row: auto;"/></a>
-                                            <a href="/user/"><h4>Escola Novos Rumos</h4></a>
-                                        </div>
-                                    </div>
-                                    <div class="card bg-dark col-md-3 border-0">
-                                        <div class="card-body">
-                                            <a href=""><img src="/images/perfil-brown.png" alt="" height="150px" width="150px" style="grid-row: auto;"/></a>
-                                            <a href="/user/"><h4>Escola Futuro Brilhante</h4></a>
-                                        </div>
-                                    </div>
-                                
+                                    <% }) %>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
-            </div>
+                <% } %> 
             <div class="row">
                 <div class="col-md-10">
                     <div class="card bg-dark">
@@ -161,9 +156,13 @@
                                 <h3>Descrição</h3>
                                 <p>Eu sou eu mesmo enquanto você é você mesmo e, por isso, nós somos diferentes.</p>
                                 <h3>Idade</h3>
-                                <p>Hoje menos minha data de nascimento</p>
+                                <p><%= (moment().diff(usuario.birthdate, 'years')) %> anos</p>
                                 <h3>Possui crianças</h3>
-                                <p>if(parente.hasChildren())</p>
+                                <% if (parent.Kids.length > 0) { %>
+                                    <p>Sim</p>
+                                <%} else { %>
+                                    <p>Não</p>
+                                <% } %>
                             </ul>
                         </div>
                     </div>
@@ -181,49 +180,51 @@
                     </div>
                 </div>
             </div>
-            <div class="row my-5">
-                <div class="col-md-10">
-                    <div class="card bg-dark h-100">
-                        <div class="card-body">
-                            <h2 class="font-weight-bold">Escolas</h2>
-                            <div class="row ">                                
-                                <div class="card bg-dark col-md-3 border-0">
-                                    <div class="card-body">
-                                        <img src="/images/perfil-brown.png" alt="" height="150px" width="150px" style="grid-row: auto;"/>
-                                        <h3>Escola Novos Horizontes</h3>
-                                    </div>                                
-                                </div>
-                                <div class="card bg-dark col-md-3 border-0">
-                                    <div class="card-body">
-                                        <img src="/images/perfil-brown.png" alt="" height="150px" width="150px" style="grid-row: auto;"/>
-                                        <h3>Escola Novos Rumos</h3>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="row my-5">
-                <div class="col-md-10">
-                    <div class="card bg-dark h-100">
-                        <div class="card-body">
-                            <h2 class="font-weight-bold">Motoristas</h2>
-                            <div class="row">
-                                <% parent.Drivers.forEach(motorista => { %>
-                                    <div class="card bg-dark col-md-3 border-0">
+            <% if(parent.Kids.length > 0) { %>
+                <div class="row my-5">
+                    <div class="col-md-10">
+                        <div class="card bg-dark h-100">
+                            <div class="card-body">
+                                <h2 class="font-weight-bold">Escolas</h2>
+                                <div class="row ">
+                                    
+                                    <% parent.Kids.forEach(kid => { %>
+                                        <div class="card bg-dark col-md-4 border-0">
                                         <div class="card-body">
-                                            <a href="/user/<%= motorista.User.id %>"><img src="/images/perfil-brown.png" alt="" height="150px" width="150px" style="grid-row: auto;"/></a>
-                                            <a href="/user/<%= motorista.User.id %>"><h3><%= motorista.User.name %></h3></a>
-                                            <p>-"João tá sempre na hora"</p>
-                                        </div>
+                                            <img src="/images/perfil-brown.png" alt="" height="150px" width="150px" style="grid-row: auto;"/>
+                                            <h3><%= kid.School.name %></h3>
+                                        </div>                                
                                     </div>
                                 <% }) %>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
-            </div>
+                <% } %> 
+                <% if(parent.Drivers.length > 0) { %> 
+                <div class="row my-5">
+                    <div class="col-md-10">
+                        <div class="card bg-dark h-100">
+                            <div class="card-body">
+                                <h2 class="font-weight-bold">Motoristas</h2>
+                                <div class="row">
+                                    
+                                    <% parent.Drivers.forEach(motorista => { %>
+                                        <div class="card bg-dark col-md-3 border-0">
+                                            <div class="card-body">
+                                                <a href="/user/<%= motorista.User.id %>"><img src="/images/perfil-brown.png" alt="" height="150px" width="150px" style="grid-row: auto;"/></a>
+                                                <a href="/user/<%= motorista.User.id %>"><h3><%= motorista.User.name %></h3></a>
+                                                <p>-"João tá sempre na hora"</p>
+                                            </div>
+                                        </div>
+                                    <% })  %>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <% } %> 
         <% } %>
     </div>
     <%- include('includes/footer') %>

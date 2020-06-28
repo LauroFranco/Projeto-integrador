@@ -1,37 +1,89 @@
 <%- include('includes/head', {title:"safeVan - Cadastro"}) %>
 <body>
     <%- include('includes/header') %>
-    <main class="auth-fundo vh-100 w-100 text-white">        
+    <main class="auth-fundo text-white">        
         <div class="container-fluid justify-content-center align-items-center">
             <div class="row">
                 <div class="col-sm-9 col-md-7 col-lg-5 mx-auto">
                     <div class="card card-signin my-5 light bg-dark">
                         <div class="card-body">
                             <form method="POST">
-                               <h2>Dados da Criança</h2>
-                               <p class="text-warning">É obrigatório preencher todos os campos*</p>
+                                <h2>Dados da Criança</h2>
+                                <p class="text-warning">É obrigatório preencher todos os campos*</p>
                                 <div class="form-group">
                                     <label for="nameCrianca">Nome da Criança*</label>
                                     <input type="text" class="form-control" name="nameCrianca" placeholder="Digite aqui o nome da sua criança">
                                 </div>
+                                <div class="form-group">
+                                    <label for="birthdateCrianca">Data de Nascimento da <span class="text-warning">Criança</span>*</label>
+                                <input type="date" name="birthdateCrianca" class="form-control w-50">
+                                </div>
+                                <div class="form-group">
+                                    <label for="alergic">Alergias*</label>
+                                    <input type="text" class="form-control" id="alergic" name="alergic" placeholder="Alergias e informações importantes">
+                                </div>                                    
+
+                                <div class="form-row d-flex align-items-center">
+                                    <div class="form-group col-md-6">
+                                        <label for="idEscola">Escola*</label>
+                                        <select name="idEscola">
+                                            <option value="0" selected>Escolha uma escola...</option>
+                                            <% schools.forEach((escola) => { %>
+                                                <option value="<%= escola.id %>"><%= escola.name %></option>
+                                            <% }) %>
+                                        </select>
+                                    </div>
+                                    <div class="form-group-col md-6">
+                                        <a href=""><button class="btn btn-warning">Não encontrou a escola?</button></a>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="nameParent">Nome do Responsável*</label>
+                                    <input type="text" name="nameParent" class="form-control" value="<%= user.name %>">
+                                </div>
                                 <div class="form-row">
                                     <div class="form-group col-md-6">
-                                        <label for="birthdateCrianca">Data de Nascimento da Criança*</label>
-                                    <input type="date" name="birthdateCriança" class="form-control">
+                                        <label for="emailParent">E-mail do Responsável*</label>
+                                        <input type="email" class="form-control" value="<%= user.email %>" name="emailParent">
                                     </div>
                                     <div class="form-group col-md-6">
-                                        <label for="nomeEscola">Escola*</label>
-                                    <input type="text" class="form-control" id="nomeEscola" placeholder="Digite o nome da Escola">
-                                    </div>                                    
+                                        <label for="cep">CEP*</label>
+                                        <input type="text" class="form-control" name="cep" value="<%= endereco.cep %>" onblur="pesquisacep(this.value)">
+                                    </div>    
+                                </div>
+                                
+                                <div class="form-row">
+                                    <div class="form-group col-md-9">
+                                        <label for="rua">Endereço*</label>
+                                        <input type="text" class="form-control" name="rua" id="rua" value="<%= endereco.street %>">
+                                    </div>
+                                    <div class="form-group col-md-3">
+                                        <label for="complemento">Número*</label>
+                                        <input type="text" class="form-control" name="complemento" value="<%= endereco.complemento %>">
+                                    </div>
+                                    <div class="form-group col-md-5">
+                                        <label for="bairro">Bairro *</label>
+                                        <input type="text" class="form-control" name="bairro" id="bairro" value="<%= endereco.district %>">
+                                    </div>
+                                    <div class="form-group col-md-5">
+                                        <label for="cidade">Cidade *</label>
+                                        <input type="text" class="form-control" name="cidade" id="cidade" value="<%= endereco.city %>">
+                                    </div>
+                                    <div class="form-group col-md-2">
+                                        <label for="uf">Estado*</label>
+                                        <input type="text" name="uf" id="uf" class="form-control" value="<%= endereco.uf %>">
+                                    </div>
                                 </div>
 
-                                <div class="form-group">
-                                  <div class="form-check">
+                                <div class="form-group-col md-6">
+                                    <a href=""><button class="btn btn-warning mb-2">Cadastrar outro responsável</button></a>
+                                </div>
+
+                                <div class="form-group form-check">
                                     <input class="form-check-input" type="checkbox" name="termos" checked>
                                     <label class="form-check-label" for="termos">
                                         <a href="https://modeloinicial.com.br/peticao/11199497/contrato-transporte-escolar">Concordo com os termos e condições</a> 
                                     </label>
-                                  </div>
                                 </div>
 
                                 <div class="form-group">
