@@ -334,7 +334,7 @@ const userController = {
     },
 
     editarCarro: async (req, res) => {
-        Driver.update({
+        await Driver.update({
             marca: req.body.marca,
             modelo: req.body.modelo,
             ano: req.body.ano,
@@ -350,7 +350,7 @@ const userController = {
     },
     editarSobre: async (req, res) => {
 
-        Driver.update({
+        await Driver.update({
             sobre:req.body.sobre
         },{where:{
             users_id:req.session.user.id 

@@ -36,6 +36,7 @@ botaocarro.addEventListener("click", function () {
     <br>
     <div class="form-group">
     <button type="submit" class="btn btn-warning">Alterar</button>
+    <a href="/user"><button class="btn btn-warning">Voltar</button></a>
     </div>
 </div>
 </form>
