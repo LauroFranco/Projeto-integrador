@@ -21,6 +21,8 @@ router.get('/change', userController.changeInfos);
 
 router.post('/editar/carro'  ,userController.editarCarro);
 router.post('/editar/sobre' ,userController.editarSobre);
+router.post('/editar/email'  ,userController.editarEmail);
+router.post('/editar/telefone' ,userController.editarTelefone);
 
 
 router.get('/motoristas', indexController.ListaMotoristas);

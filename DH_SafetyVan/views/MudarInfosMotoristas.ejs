@@ -8,7 +8,7 @@
                 <div class="col-sm-9 col-md-7 col-lg-5 mx-auto ">
                     <div class="card card-signin my-5 light bg-dark">
                         <div class="card-body card-form">
-                            <h2 id="tituloMsg">Editar o perfil</h2>
+                            <h2 id="tituloMsg" class="text-white">Editar o perfil</h2>
                             <div id="botoes">
                                 <div class="form-group mt-2">
                                     <lauer id="car_change" class="btn btn-warning text-white">Alterar informações
@@ -16,26 +16,29 @@
                                         carro</lauer>
                                 </div>
                                 <div class="form-group mt-2">
-                                    <lauer id="info_change" class="btn btn-warning text-white">Alterar informações
-                                        sobre mim</lauer>
+                                    <lauer id="info_change" class="btn btn-warning text-white">Alterar "sobre mim"</lauer>
+                                </div>
+                                <div class="form-group mt-2">
+                                    <lauer id="telefone_change" class="btn btn-warning text-white">Alterar meu telefone</lauer>
+                                </div>
+                                <div class="form-group mt-2">
+                                    <lauer id="email_change" class="btn btn-warning text-white">Alterar meu email</lauer>
                                 </div>
                             </div>
 
                             <div id="carro">
                                  <form action="/editar/carro" method="POST">
-                                    <h3>Dados do Veículo</h3>
-
                                     <div class="form-row">
                                         <div class="form-group col-md-4">
-                                            <label for="veiculo">Marca:*</label>
+                                            <label for="veiculo" class="text-white">Marca:*</label>
                                             <input type="text" class="form-control" name="marca" placeholder="Marca">
                                         </div>
                                         <div class="form-group col-md-3">
-                                            <label for="veiculo">Modelo:*</label>
+                                            <label for="veiculo" class="text-white">Modelo:*</label>
                                             <input type="text" class="form-control" name="modelo" placeholder="Modelo">
                                         </div>
                                         <div class="form-group col-md-4">
-                                            <label for="ano">Ano *</label>
+                                            <label for="ano" class="text-white">Ano *</label>
                                             <input type="text" class="form-control" name="ano"
                                                 placeholder="Ano de fabricação">
                                         </div>
@@ -43,12 +46,12 @@
 
                                     <div class="form-row">
                                         <div class="form-group col-md-4">
-                                            <label for="placa">Placa:*</label>
+                                            <label for="placa" class="text-white">Placa:*</label>
                                             <input type="text" class="form-control" name="placa"
                                                 placeholder="Placa do veículo">
                                         </div>
                                         <div class="form-group col-md-8">
-                                            <label for="crm">CRMC: *</label>
+                                            <label for="crm" class="text-white">CRMC: *</label>
                                             <input type="text" class="form-control" name="crmc"
                                                 placeholder="Número CRMC">
                                         </div>
@@ -65,9 +68,6 @@
 
                             <div id="pessoa">
                                 <form action='/editar/sobre' method='POST'>
-                                    <div class="form-group">
-                                        <label for="sobre">Sobre_mim</label>
-                                    </div>
                                     <textarea id="sobre" name="sobre" rows="5"
                                         cols="33">conte um pouco sobre voce</textarea>
                                     <br>
@@ -77,6 +77,30 @@
                                 </form>
                                 <lauer id="voltarPessoa" class="voltar btn btn-warning text-white">voltar</lauer>
 
+                            </div>
+                            <div id="telefoneConfig">
+                                <form action='/editar/telefone' method='POST'>
+                                    <div class="form-group col-md-4">
+                                        <label for="telefone" class="text-white">Seu novo telefone:*</label>
+                                        <input  style="width: auto;" type="text" class="form-control" name="telefone" placeholder="Telefone">
+                                    </div>
+                                    <div class="form-group">
+                                        <button type="submit" class="btn btn-warning text-white">Alterar</button>
+                                    </div>
+                                </form>
+                                <lauer id="voltarTelefone" class="voltar btn btn-warning text-white">voltar</lauer>
+                            </div>
+                            <div id="emailConfig">
+                                <form action='/editar/email' method='POST'>
+                                    <div class="form-group col-md-4">
+                                        <label for="email" class="text-white">Seu novo Email:*</label>
+                                        <input  style="width: auto;" type="text" class="form-control" name="email" placeholder="Email">
+                                    </div>
+                                    <div class="form-group">
+                                        <button type="submit" class="btn btn-warning text-white">Alterar</button>
+                                    </div>
+                                </form>
+                                <lauer id="voltarEmail" class="voltar btn btn-warning text-white">voltar</lauer>
                             </div>
                         </div>
                     </div>

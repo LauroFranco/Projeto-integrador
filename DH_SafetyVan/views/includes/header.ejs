@@ -6,14 +6,14 @@
           <a class="nav-item nav-link text-white ml-3" href="#LaisTeam">Quem somos</a>
           <a class="nav-item nav-link text-white ml-3" href="#contact">Contato</a>
           <a class="nav-item nav-link text-white ml-3" href="/ajuda">Ajuda</a>
-          <%var teste = "nao logado"%>
-        <%if(user != undefined){teste = user.name}%>
-
+          <%if(user != undefined){%>
+            <a class="nav-item nav-link text-white ml-3" href="/motoristas">Encontre motoristas</a> 
+            <%}%>
         </div>
       </div>        
       <div class="navbar-nav">
         <%if(user != undefined){%>
-        <a class="nav-item nav-link text-white ml-3" href="/user"><span class="ocultar">Ola<strong> <%=teste%></strong></span></a>
+        <a class="nav-item nav-link text-white ml-3" href="/user"><span class="ocultar">Ola<strong> <%=user.name%></strong></span></a>
         <a class="nav-item nav-link text-white ml-3" href="/logout"><span class="ocultar">Sair</span></a>
         <%}else {%>
         <a class="nav-item nav-link text-white ml-3" href="/cadastro"><span class="ocultar">Cadastre-se</span></a>
