@@ -409,6 +409,30 @@ const userController = {
         return res.redirect('/user');
 
     },
+    editarEmail: async (req, res) => {
+
+        Driver.update({
+            email:req.body.telefone
+        },{where:{
+            users_id:req.session.user.id 
+        }}
+
+        )
+        return res.redirect('/user');
+
+    },
+    editarTelefone: async (req, res) => {
+
+        Driver.update({
+            telefone:req.body.email
+        },{where:{
+            users_id:req.session.user.id 
+        }}
+
+        )
+        return res.redirect('/user');
+
+    },
 
     
     changeInfos: (_req, res) => {
