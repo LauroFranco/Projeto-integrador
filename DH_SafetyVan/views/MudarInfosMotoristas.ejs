@@ -22,9 +22,6 @@
                             </div>
 
                             <div id="carro">
-                                <div class="form-group mt-2">
-                                    <button id="voltar1" class="voltar btn btn-warning text-white">voltar</button>
-                                </div>
                                  <form action="/editar/carro" method="POST">
                                     <h3>Dados do Veículo</h3>
 
@@ -56,19 +53,17 @@
                                                 placeholder="Número CRMC">
                                         </div>
                                         <br>
-                                        <!-- <div class="form-group">
-                                            <button type="submit" class="btn btn-warning">Alterar</button>
-                                        </div> -->
+                                         <div class="form-group">
+                                            <button type="submit" class="btn btn-warning  text-white">Alterar</button>
+                                        </div> 
                                     </div>
                                     
                                 </form> 
+                                <button id="voltarCarro" class="btn btn-warning text-white fixed-right">voltar</button>
                             </div> 
 
 
                             <div id="pessoa">
-                                <div class="form-group mt-2">
-                                    <lauer id="voltar2" class="voltar btn btn-warning text-white">voltar</lauer>
-                                </div>
                                 <form action='/editar/sobre' method='POST'>
                                     <div class="form-group">
                                         <label for="sobre">Sobre_mim</label>
@@ -77,9 +72,10 @@
                                         cols="33">conte um pouco sobre voce</textarea>
                                     <br>
                                     <div class="form-group">
-                                        <button type="submit" class="btn btn-warning">Alterar</button>
+                                        <button type="submit" class="btn btn-warning text-white">Alterar</button>
                                     </div>
                                 </form>
+                                <lauer id="voltarPessoa" class="voltar btn btn-warning text-white">voltar</lauer>
 
                             </div>
                         </div>
