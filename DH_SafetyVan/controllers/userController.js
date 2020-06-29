@@ -320,6 +320,42 @@ const userController = {
         }
     },
 
+    search: async(req, res) => {
+        const { type } = req.params;
+
+        if (type == "parent") {
+            await Parent.findAll({
+                include: User
+            })
+            .then(parents => {
+                return res.render("search", {parents, type});
+            })
+            .catch(error => {
+                return res.render("search", {error});
+            })
+        }
+        if (type == "driver") {
+            await Driver.findAll({
+                include: User
+            })
+            .then(drivers => {
+                return res.render("search", {drivers, type});
+            })
+            .catch(error => {
+                return res.render("search", {error});
+            })
+        }
+        if (type == "school") {
+            await School.findAll()
+            .then(schools => {
+                return res.render("search", {schools, type});
+            })
+            .catch(error => {
+                return res.render("search", {error});
+            })
+        }
+    },
+
     adicionaDriver: async(req, res) => {
         const { idDriver } = req.body;
         const parent = await Parent.findOne({where: {users_id: req.session.user.id}});
@@ -329,6 +365,19 @@ const userController = {
             return res.redirect('/');
         } else {
             await parent.addDriver(driver);
+            return res.redirect('/user');
+        }
+    },
+
+    adicionaSchool: async(req, res) => {
+        const { idSchool } = req.body;
+        const driver = await Driver.findOne({where: {users_id: req.session.user.id}});
+        const school = await School.findByPk(idSchool);
+
+        if(await driver.hasSchool(school)) {
+            return res.redirect('/');
+        } else {
+            await driver.addSchool(school);
             return res.redirect('/user');
         }
     },
