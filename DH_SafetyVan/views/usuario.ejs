@@ -18,14 +18,15 @@
                                 <span class="fa fa-star"></span>
                             </div>                            
                         </div>
-                        <a href="/user/edit/<%= user.id %>" class="d-block">Editar informações</a>
+                        
                         <% if (user.roles_id == 2) { %>
+                            <a href="/user/edit/<%= user.id %>" class="d-block">Editar informações</a>
                             <a href="/user/child" class="d-block">Cadastrar criança</a>
-                            <a href="" class="d-block">Procurar motorista</a>
+                            <a href="/search/driver" class="d-block">Procurar motorista</a>
                         <% } %>
                         <% if (user.roles_id == 3) { %>
+                            <a href="/user/edit/<%= user.id %>" class="d-block">Editar informações</a>
                             <a href="/search/school" class="d-block">Procurar Escola</a>
-                            <a href="/change" class="d-block">Editar informações de motorista</a>   
                         <% } %>
                         <a href="/logout" class="d-block">Sair</a>
                     </div>                    

@@ -25,6 +25,7 @@ router.post('/editar/sobre' ,auth,userController.editarSobre);
 router.post('/editar/email' ,auth ,userController.editarEmail);
 router.post('/editar/telefone' ,auth,userController.editarTelefone);
 
+router.get('/search/:type', userController.search);
 
 router.get('/motoristas' ,auth, indexController.ListaMotoristas);
 
