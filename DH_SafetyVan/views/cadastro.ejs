@@ -7,25 +7,33 @@
                 <div class="col-sm-9 col-md-7 col-lg-5 mx-auto ">
                     <div class="card card-signin my-5 light bg-dark">
                         <div class="card-body card-form">
-                            <form action="/cadastro" method="POST" class="text-white">
+                            <form action="/cadastro" method="POST" class="text-white" id="form-cadastro">
                                 <h2>Faça seu cadastro</h2>
                                 <div class="form-group">
                                     <label for="name">Nome completo</label>
-                                    <input type="text" name="name" class="form-control" placeholder="Digite seu nome completo"> 
+                                    <input type="text" id="name" name="name" class="form-control" placeholder="Digite seu nome completo"> 
                                 </div>
                                 <div class="form-group">
                                     <label for="email">E-mail</label>
-                                    <input type="email" name="email" class="form-control" placeholder="Digite seu e-mail">
+                                    <input type="email" id="email" name="email" class="form-control" placeholder="Digite seu e-mail">
                                 </div>
                                 <div class="form-group">
                                     <label for="password">Senha</label>
-                                    <input type="password" name="password" class="form-control" placeholder="Digite sua senha">
+                                    <input type="password" id="senha" name="password" class="form-control" placeholder="Digite sua senha">
                                 </div>
                                 <div class="form-check mt-1">
-                                    <input class="form-check-input" type="radio" name="role" value="parent">
+                                    <input class="form-check-input" type="radio" id="selecResp" name="role" value="parent" >
                                     <label class="form-check-label d-block" for="parent">Sou pai/mãe/responsável</label>
-                                    <input class="form-check-input" type="radio" name="role" value="driver">
+                                    <input class="form-check-input" type="radio" id="selecMotorista" name="role" value="driver" >
                                     <label class="form-check-label" for="driver">Sou motorista</label>
+                                </div>
+                                <div id="error-list" class="alert alert-danger alert-dismissible fade show" role="alert" hidden >
+                                    <ul>
+
+                                    </ul>
+                                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
                                 </div>
                                 <div class="form-group mt-2">
                                     <button type="submit" class="btn btn-warning text-white">Cadastrar</button>
@@ -38,6 +46,7 @@
             </div>
         </div>
     </main>
+    <%- include('../public/javascripts/validarLogin.js')  %>
     <%- include('includes/footer') %>    
 </body>
 </html>
