@@ -1,4 +1,5 @@
 <script type="text/javascript">
+
 //busca o elemento
 function selectId(id){
     return document.getElementById(id);
@@ -12,10 +13,10 @@ function errorMassage(message){
     errorListUl.innerHTML+= "<li>" + message +"</li>"
 }
 
-let formulario = selectId("form-cadastro");
-let nome = selectId("nome");
+let formulario = selectId("form");
+let nome = selectId("name");
 let cpf = selectId("cpf");
-let date = selectId("date");
+let date = selectId("birthdate ");
 let fone = selectId("fone");
 let cep = selectId("cep");
 let endereco = selectId("end");
@@ -106,4 +107,9 @@ formulario.addEventListener("submit", function(ev){
         
     }
 })
+
 </script>
+
+
+
+
