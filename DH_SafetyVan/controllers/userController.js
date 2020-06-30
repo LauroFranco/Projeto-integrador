@@ -320,8 +320,70 @@ const userController = {
         }
     },
 
+    search: async(req, res) => {
+        const { type } = req.params;
+
+        if (type == "parent") {
+            await Parent.findAll({
+                include: User
+            })
+            .then(parents => {
+                return res.render("search", {parents, type});
+            })
+            .catch(error => {
+                return res.render("search", {error});
+            })
+        }
+        if (type == "driver") {
+            await Driver.findAll({
+                include: User
+            })
+            .then(drivers => {
+                return res.render("search", {drivers, type});
+            })
+            .catch(error => {
+                return res.render("search", {error});
+            })
+        }
+        if (type == "school") {
+            await School.findAll()
+            .then(schools => {
+                return res.render("search", {schools, type});
+            })
+            .catch(error => {
+                return res.render("search", {error});
+            })
+        }
+    },
+
+    adicionaDriver: async(req, res) => {
+        const { idDriver } = req.body;
+        const parent = await Parent.findOne({where: {users_id: req.session.user.id}});
+        const driver = await Driver.findByPk(idDriver);
+
+        if(await parent.hasDriver(driver)) {
+            return res.redirect('/');
+        } else {
+            await parent.addDriver(driver);
+            return res.redirect('/user');
+        }
+    },
+
+    adicionaSchool: async(req, res) => {
+        const { idSchool } = req.body;
+        const driver = await Driver.findOne({where: {users_id: req.session.user.id}});
+        const school = await School.findByPk(idSchool);
+
+        if(await driver.hasSchool(school)) {
+            return res.redirect('/');
+        } else {
+            await driver.addSchool(school);
+            return res.redirect('/user');
+        }
+    },
+
     editarCarro: async (req, res) => {
-        Driver.update({
+        await Driver.update({
             marca: req.body.marca,
             modelo: req.body.modelo,
             ano: req.body.ano,
@@ -337,8 +399,32 @@ const userController = {
     },
     editarSobre: async (req, res) => {
 
-        Driver.update({
+        await Driver.update({
             sobre:req.body.sobre
+        },{where:{
+            users_id:req.session.user.id 
+        }}
+
+        )
+        return res.redirect('/user');
+
+    },
+    editarEmail: async (req, res) => {
+
+        Driver.update({
+            email:req.body.telefone
+        },{where:{
+            users_id:req.session.user.id 
+        }}
+
+        )
+        return res.redirect('/user');
+
+    },
+    editarTelefone: async (req, res) => {
+
+        Driver.update({
+            telefone:req.body.email
         },{where:{
             users_id:req.session.user.id 
         }}

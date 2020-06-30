@@ -31,7 +31,7 @@
                             <span class="fa fa-star"></span>
                         </div>
                         <% if (user.roles_id == 2) { %> 
-                        <form action="/addDriver" method="post">
+                        <form action="/user/addDriver" method="post">
                             <input type="hidden" name="idDriver" value="<%= driver.id %>">
                             <button type="submit" class="btn btn-warning">Contratar Motorista</button>
                         </form>
