@@ -4,6 +4,7 @@ const router = express.Router();
 const indexController = require('../controllers/indexController');
 const authController = require('../controllers/authController');
 const userController = require('../controllers/userController');
+const auth = require('../middlewares/auth');
 
 /* GET home page. */
 router.get('/', indexController.index);
@@ -12,17 +13,20 @@ router.get('/seguranca', indexController.seguranca);
 
 router.get('/login', authController.index);
 router.post('/login', authController.login);
-router.get('/logout', authController.destroy);
+router.get('/logout',auth, authController.destroy);
 
 router.get('/cadastro', userController.create);
 router.post('/cadastro', userController.store);
 
-router.get('/change', userController.changeInfos);
+router.get('/change',auth, userController.changeInfos);
 
-router.post('/editar/carro'  ,userController.editarCarro);
-router.post('/editar/sobre' ,userController.editarSobre);
+router.post('/editar/carro' ,auth ,userController.editarCarro);
+router.post('/editar/sobre' ,auth,userController.editarSobre);
+router.post('/editar/email' ,auth ,userController.editarEmail);
+router.post('/editar/telefone' ,auth,userController.editarTelefone);
 
+router.get('/search/:type', userController.search);
 
-router.get('/motoristas', indexController.ListaMotoristas);
+router.get('/motoristas' ,auth, indexController.ListaMotoristas);
 
 module.exports = router;

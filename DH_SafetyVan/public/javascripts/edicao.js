@@ -2,61 +2,100 @@ const botaocarro = document.getElementById("car_change");
 
 const botaoinfo = document.getElementById("info_change");
 
-let div = document.getElementById("botoes");
+const botaoTelefone = document.getElementById("telefone_change");
 
-botaocarro.addEventListener("click", function () {
-    div.innerHTML = `    
-    <form action="/editar/carro" method="POST">
-<h3>Dados do Veículo</h3>
+const botaoEmail = document.getElementById("email_change");
 
-<div class="form-row">
-    <div class="form-group col-md-4">
-        <label for="veiculo">Marca:*</label>
-        <input type="text" class="form-control" name="marca" placeholder="Marca">
-    </div>
-    <div class="form-group col-md-3">
-        <label for="veiculo">Modelo:*</label>
-        <input type="text" class="form-control" name="modelo" placeholder="Modelo">
-    </div>
-    <div class="form-group col-md-4">
-        <label for="ano">Ano  *</label>
-        <input type="text" class="form-control" name="ano" placeholder="Ano de fabricação">
-    </div>
-</div>
 
-<div class="form-row">
-    <div class="form-group col-md-4">
-        <label for="placa">Placa:*</label>
-        <input type="text" class="form-control" name="placa" placeholder="Placa do veículo">
-    </div>    
-    <div class="form-group col-md-8">
-        <label for="crm">CRMC: *</label>
-        <input type="text" class="form-control" name="crmc" placeholder="Número CRMC">
-    </div>
-    <br>
-    <div class="form-group">
-    <button type="submit" class="btn btn-warning">Alterar</button>
-    </div>
-</div>
-</form>
-    `
-})
 
+const botaovoltarCarro = document.getElementById("voltarCarro");
+const botaovoltarPessoa = document.getElementById("voltarPessoa");
+const botaovoltarTelefone = document.getElementById("voltarTelefone");
+const botaovoltarEmail = document.getElementById("voltarEmail");
+
+const titulo = document.getElementById("tituloMsg");
+
+
+let botoes = document.getElementById("botoes");
+let carroConfig = document.getElementById("carro");
+let pessoaConfig = document.getElementById("pessoa");
+let telefoneConfig = document.getElementById("telefoneConfig");
+let emailConfig = document.getElementById("emailConfig");
+
+carroConfig.style.display = "none";
+pessoaConfig.style.display = "none";
+emailConfig.style.display = "none";
+telefoneConfig.style.display = "none";
+botoes.style.display = "block";
+titulo.innerHTML = "Editar o perfil"
 
 botaoinfo.addEventListener("click", function () {
-    div.innerHTML = `    
-    <form action='/editar/sobre' method='POST'> 
-<div class="form-group">
-    <label for="sobre">Sobre_mim</label>
-</div>
-<textarea id="sobre" name="sobre"
-rows="5" cols="33">
-conte um pouco sobre voce
-</textarea>
-<br>
-    <div class="form-group">
-    <button type="submit" class="btn btn-warning">Alterar</button>
-    </div>
-    </form>
-    `
+    console.log("me apertou");
+    carroConfig.style.display = "none";
+    pessoaConfig.style.display = "block";
+    emailConfig.style.display = "none";
+    telefoneConfig.style.display = "none";
+    botoes.style.display = "none";
+    titulo.innerHTML = "Editar suas informações"
+})
+
+botaocarro.addEventListener("click", function () {
+    console.log("me apertou");
+    carroConfig.style.display = "block";
+    pessoaConfig.style.display = "none";
+    emailConfig.style.display = "none";
+    telefoneConfig.style.display = "none";
+    botoes.style.display = "none";
+    titulo.innerHTML = "Editar informações da sua van"
+})
+
+botaovoltarCarro.addEventListener("click", function () {
+    carroConfig.style.display = "none";
+    pessoaConfig.style.display = "none";
+    emailConfig.style.display = "none";
+    telefoneConfig.style.display = "none";
+    botoes.style.display = "block";
+    titulo.innerHTML = "Editar o perfil"
+})
+botaovoltarPessoa.addEventListener("click", function () {
+    carroConfig.style.display = "none";
+    pessoaConfig.style.display = "none";
+    emailConfig.style.display = "none";
+    telefoneConfig.style.display = "none";
+    botoes.style.display = "block";
+    titulo.innerHTML = "Editar o perfil"
+})
+botaovoltarTelefone.addEventListener("click", function () {
+    carroConfig.style.display = "none";
+    pessoaConfig.style.display = "none";
+    emailConfig.style.display = "none";
+    telefoneConfig.style.display = "none";
+    botoes.style.display = "block";
+    titulo.innerHTML = "Editar o perfil"
+})
+botaovoltarEmail.addEventListener("click", function () {
+    carroConfig.style.display = "none";
+    pessoaConfig.style.display = "none";
+    emailConfig.style.display = "none";
+    telefoneConfig.style.display = "none";
+    botoes.style.display = "block";
+    titulo.innerHTML = "Editar o perfil"
+})
+
+botaoEmail.addEventListener("click", function () {
+    carroConfig.style.display = "none";
+    pessoaConfig.style.display = "none";
+    emailConfig.style.display = "block";
+    telefoneConfig.style.display = "none";
+    botoes.style.display = "none";
+    titulo.innerHTML = "Editar seu email"
+})
+botaoTelefone.addEventListener("click", function () {
+    console.log("me apertou");
+    carroConfig.style.display = "none";
+    pessoaConfig.style.display = "none";
+    emailConfig.style.display = "none";
+    telefoneConfig.style.display = "block";
+    botoes.style.display = "none";
+    titulo.innerHTML = "Editar seu telefone"
 })
