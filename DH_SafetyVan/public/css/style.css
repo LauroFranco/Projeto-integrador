@@ -533,4 +533,16 @@ footer span{
     }
 
 
+    .attEnd{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+
+    .card-body h3{
+        color: orangered;
+        
+    }
+
 }
