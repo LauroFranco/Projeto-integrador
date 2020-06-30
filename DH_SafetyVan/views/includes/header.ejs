@@ -6,9 +6,12 @@
           <a class="nav-item nav-link text-white ml-3" href="#LaisTeam">Quem somos</a>
           <a class="nav-item nav-link text-white ml-3" href="#contact">Contato</a>
           <a class="nav-item nav-link text-white ml-3" href="/ajuda">Ajuda</a>
-          <%if(user != undefined){%>
-            <a class="nav-item nav-link text-white ml-3" href="/motoristas">Encontre motoristas</a> 
+          <%if(user != undefined && user.roles_id == 3){%>
+            <a class="nav-item nav-link text-white ml-3" href="/search/school">Encontre Escolas</a> 
             <%}%>
+          <%if(user != undefined && user.roles_id == 2){%>
+            <a class="nav-item nav-link text-white ml-3" href="/search/driver">Encontre motoristas</a> 
+          <%}%>
         </div>
       </div>        
       <div class="navbar-nav">
@@ -25,6 +28,6 @@
         <img src="/images/safevan.png" width="40" height="40" alt="safeVan">
       </a>    
     </nav>
-    <script src="/js/esconderMenu.js"></script>
+    
 </header>
 

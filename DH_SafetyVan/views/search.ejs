@@ -4,11 +4,11 @@
     <%- include('includes/header') %>
     <div class="perfl-fundo w-100 h-100 position-fixed"></div>
         <% if (type == "school") { %>
-            <div class="container justify-content-md-center card-body bg-dark text-white mt-3 mb-3">
-            <h2 class="text-center">Escolas</h2>
+            <div class="container card-body bg-secondary text-white mt-3 mb-3 text-center d-flex flex-column align-items-md-center">
+            <h2>Escolas</h2>
             <% if (schools.length > 0) { %> 
                 <% schools.forEach(school => { %>
-                    <div class="row justify-content-md-center w-100">
+                    <div class="row justify-content-md-center bg-dark w-75">
                         <div class="col-md-3 border-bottom">
                             <img src="/images/avatar-default.png" alt="" height="100px" width="100px" class="rounded">
                         </div>
@@ -27,7 +27,7 @@
                     </div>
                 <% }) %>
             <% } else { %>
-                <div class="row">
+                <div class="row bg-dark w-75">
                     <div class="col-md-12 border-bottom">
                         <p>Não há escolas disponíveis no momento.</p>
                     </div>
@@ -36,11 +36,11 @@
             </div>
         <% } %>
         <% if (type == "parent") { %>
-            <div class="container justify-content-md-center card-body bg-dark text-white mt-3 mb-3">
-            <h2 class="text-center">Mães, Pais e Responsáveis</h2>
+            <div class="container card-body bg-secondary text-white mt-3 mb-3 text-center d-flex flex-column align-items-md-center">
+            <h2>Mães, Pais e Responsáveis</h2>
             <% if (parents.length > 0) { %>
                 <% parents.forEach(parent => { %>
-                    <div class="row justify-content-md-center w-100">
+                    <div class="row justify-content-md-center w-75 bg-dark">
                         <div class="col-md-3">
                             <a href="/user/<%= parent.User.id %>"><img src="/images/avatar-default.png" alt="" height="100px" width="100px" class="rounded"></a>
                         </div>
@@ -55,7 +55,7 @@
                     </div>
                 <% }) %>
                 <% } else { %>
-                    <div class="row">
+                    <div class="row bg-dark w-75">
                         <div class="col-md-12 border-bottom">
                             <p>Não há responsáveis disponíveis.</p>
                         </div>
@@ -64,11 +64,11 @@
             </div>
         <% } %>
         <% if (type == "driver") { %>
-            <div class="container card-body bg-dark text-white mt-3 mb-3 text-center">
+            <div class="container card-body bg-secondary text-white mt-3 mb-3 text-center d-flex flex-column align-items-md-center">
             <h2>Motoristas</h2>
             <% if (drivers.length > 0) { %>
                 <% drivers.forEach(driver => { %>
-                    <div class="row justify-content-md-center w-100">
+                    <div class="row justify-content-md-center bg-dark my-2 w-75">
                         <div class="col-md-2 border-bottom">
                             <a href="/user/<%= driver.User.id %>"><img src="/images/avatar-default.png" alt="" height="100px" width="100px" class="rounded"></a>
                         </div>
@@ -91,7 +91,7 @@
                     </div>
                 <% }) %>
             <% } else { %>
-                <div class="row">
+                <div class="row bg-dark w-75">
                     <div class="col-md-12 border-bottom">
                         <p>Não há motoristas disponíveis no momento.</p>
                     </div>

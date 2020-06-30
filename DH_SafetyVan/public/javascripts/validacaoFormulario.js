@@ -1,6 +1,6 @@
-<script type="text/javascript">
 
-//busca o elemento
+
+ //busca o elemento
 function selectId(id){
     return document.getElementById(id);
 }
@@ -32,14 +32,10 @@ let fabricacao = selectId("anoFab");
 let placa = selectId("placa");
 let crmc = selectId("crmc");
 
-
-
-
 let errorListUl= document.querySelector('#error-list ul');
 let errorList= selectId('error-list');
 
 formulario.addEventListener("submit", function(ev){
-    
 
     errorListUl.innerHTML='';
 
@@ -108,7 +104,6 @@ formulario.addEventListener("submit", function(ev){
     }
 })
 
-</script>
 
 
 

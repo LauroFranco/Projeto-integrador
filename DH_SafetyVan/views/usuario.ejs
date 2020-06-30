@@ -1,6 +1,7 @@
 <%- include('includes/head', {title:"safeVan"}) %>
 <body>
     <%- include('includes/header') %>
+
     <div class="perfil-fundo w-100 h-100 position-fixed"></div>
     <div class="container text-white p-5">
         <div class="row">
@@ -94,7 +95,6 @@
                                         <div class="card-body">
                                             <a href="/user/<%= motorista.User.id %>"><img src="/images/perfil-brown.png" alt="" height="150px" width="150px" style="grid-row: auto;"/></a>
                                             <a href="/user/<%= motorista.User.id %>"><h3><%= motorista.User.name %></h3></a>
-                                            <p>-"João tá sempre na hora"</p>
                                         </div>
                                     </div>
                                 <% }) %>
@@ -184,6 +184,7 @@
         <% } %>
         
     </div>
+    
     <%- include('includes/footer') %>
 </body>
 </html>
