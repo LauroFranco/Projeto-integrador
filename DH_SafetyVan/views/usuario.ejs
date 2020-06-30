@@ -48,10 +48,7 @@
                             <div class="col-md-6">
                                 <h3>Endereço Principal</h3>
                                 <p><%= usuario.Addresses[0].street %>, <%= usuario.Addresses[0].complemento %> - <%= usuario.Addresses[0].district %> </p>
-                                <h3>Cidade</h3>
-                                <p><%= usuario.Addresses[0].city %></p>
-                                <h3>Estado</h3>
-                                <p><%= usuario.Addresses[0].uf %></p>
+                                <p><%= usuario.Addresses[0].city %>/<%= usuario.Addresses[0].uf %></p>
                                 <form action="" method="post">
                                     <button type="submit" class="btn btn-warning">Adicionar Endereço</button>
                                 </form>
