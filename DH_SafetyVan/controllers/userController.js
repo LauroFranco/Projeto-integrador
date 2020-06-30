@@ -411,8 +411,8 @@ const userController = {
     },
     editarEmail: async (req, res) => {
 
-        Driver.update({
-            email:req.body.telefone
+        user.update({
+            phone:req.body.telefone
         },{where:{
             users_id:req.session.user.id 
         }}
@@ -422,8 +422,9 @@ const userController = {
 
     },
     editarTelefone: async (req, res) => {
-
-        Driver.update({
+        const { id } = req.params;
+        const user = await User.findByPk(id);
+        user.update({
             telefone:req.body.email
         },{where:{
             users_id:req.session.user.id 

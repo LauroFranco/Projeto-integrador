@@ -383,7 +383,31 @@ footer span{
     background-color: #343a40;
 }
 
+.stars-outer {
+    display: inline-block;
+    position: relative;
+    font-family: FontAwesome;
+}
 
+.stars-outer::before {
+    content: "\f006 \f006 \f006 \f006 \f006";
+    /* content: "\f005 \f005 \f005 \f005 \f005"; */
+}
+
+.stars-inner {
+    /* display: none; */
+    position: absolute;
+    top: 0;
+    left: 0;
+    white-space: nowrap;
+    overflow: hidden;
+    width: 0;
+}
+
+.stars-inner::before {
+    /* content: "\f005 \f005 \f005 \f005 \f005"; */
+    color: #f8ce0b;
+}
 
 
 
@@ -532,5 +556,17 @@ footer span{
         flex-direction: column;
     }
 
+
+    .attEnd{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+
+    .card-body h3{
+        color: orangered;
+        
+    }
 
 }
