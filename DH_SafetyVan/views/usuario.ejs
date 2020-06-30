@@ -1,22 +1,21 @@
 <%- include('includes/head', {title:"safeVan"}) %>
 <body>
     <%- include('includes/header') %>
+
     <div class="perfil-fundo w-100 h-100 position-fixed"></div>
     <div class="container text-white p-5">
         <div class="row">
             <div class="col-md-3">
                 <div class="card bg-dark h-100">
                     <div class="card-body m-auto">
-                        <div class="profile-img">
+                        <div class="profile-img text-center">
                             <img src="/images/avatar-default.png" alt="" height="200px" width="200px" style="grid-row: auto;"/>
-                            <h2 class="font-weight-bold text-center"><%= usuario.name %></h2>
-                            <div class="text-dark text-center mb-2">
-                                <span class="fa fa-star checked"></span>
-                                <span class="fa fa-star checked"></span>
-                                <span class="fa fa-star checked"></span>
-                                <span class="fa fa-star checked"></span>
-                                <span class="fa fa-star"></span>
-                            </div>                            
+                            <h2 class="font-weight-bold"><%= usuario.name %></h2>
+                            <div class="stars-outer">
+                                <div class="stars-inner">
+                                    <i class="fas fa-star"></i>
+                                </div>
+                            </div>         
                         </div>
                         
                         <% if (user.roles_id == 2) { %>
@@ -94,7 +93,6 @@
                                         <div class="card-body">
                                             <a href="/user/<%= motorista.User.id %>"><img src="/images/perfil-brown.png" alt="" height="150px" width="150px" style="grid-row: auto;"/></a>
                                             <a href="/user/<%= motorista.User.id %>"><h3><%= motorista.User.name %></h3></a>
-                                            <p>-"João tá sempre na hora"</p>
                                         </div>
                                     </div>
                                 <% }) %>
@@ -184,6 +182,7 @@
         <% } %>
         
     </div>
+    
     <%- include('includes/footer') %>
 </body>
 </html>

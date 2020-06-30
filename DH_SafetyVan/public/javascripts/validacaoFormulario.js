@@ -31,14 +31,10 @@ let fabricacao = selectId("anoFab");
 let placa = selectId("placa");
 let crmc = selectId("crmc");
 
-
-
-
 let errorListUl= document.querySelector('#error-list ul');
 let errorList= selectId('error-list');
 
 formulario.addEventListener("submit", function(ev){
-    
 
     errorListUl.innerHTML='';
 
