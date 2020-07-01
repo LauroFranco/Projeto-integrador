@@ -19,13 +19,17 @@ module.exports = {
         {
           type: Sequelize.STRING,
           allowNull: false,
+          unique: true,
         },
         password:
         {
           type: Sequelize.STRING,
           allowNull: false,
         },
-        cpf: Sequelize.STRING,
+        cpf: {
+          type: Sequelize.STRING,
+          unique: true,
+        },
         birthdate: Sequelize.DATEONLY,
         phone: Sequelize.STRING,
         roles_id:

@@ -8,13 +8,25 @@ module.exports = {
         primaryKey: true,
         autoIncrement: true,
       },
-      cnh: Sequelize.STRING,
-      crm: Sequelize.STRING,
+      cnh: {
+        type: Sequelize.STRING,
+        unique: true,
+      },
+      crm: {
+        type: Sequelize.STRING,
+        unique: true,
+      },
       marca: Sequelize.STRING,
       modelo: Sequelize.STRING,
       ano: Sequelize.STRING,
-      placa: Sequelize.STRING,
-      crmc: Sequelize.STRING,
+      placa: {
+        type: Sequelize.STRING,
+        unique: true,
+      },
+      crmc: {
+        type: Sequelize.STRING,
+        unique: true,
+      },
       users_id:
         {
           type: Sequelize.INTEGER,

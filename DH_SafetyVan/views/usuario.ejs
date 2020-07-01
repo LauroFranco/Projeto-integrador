@@ -70,7 +70,7 @@
                                 <div class="row ">
                                     <% parent.Kids.forEach(kid => { %>
                                         <div class="card bg-dark col-md-4 border-0">
-                                            <div class="card-body">
+                                            <div class="card-body text-center">
                                                 <img src="/images/avatar-default.png" alt="" height="150px" width="150px" style="grid-row: auto;"/>
                                                 <h3><%= kid.name %></h3>
                                                 <p><%= kid.School.name %></p>
@@ -92,7 +92,7 @@
                             <div class="row">
                                 <% parent.Drivers.forEach(motorista => { %>
                                     <div class="card bg-dark col-md-4 border-0">
-                                        <div class="card-body">
+                                        <div class="card-body text-center">
                                             <a href="/user/<%= motorista.User.id %>"><img src="/images/perfil-brown.png" alt="" height="150px" width="150px" style="grid-row: auto;"/></a>
                                             <a href="/user/<%= motorista.User.id %>"><h3><%= motorista.User.name %></h3></a>
                                         </div>

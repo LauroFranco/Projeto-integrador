@@ -45,7 +45,7 @@ module.exports = (sequelize, DataTypes) => {
             }),
             School.belongsToMany(models.Driver, {
                 through: 'drivers-schools',
-                foreignKey: 'drivers_id'
+                foreignKey: 'schools_id'
             })
         }
     
