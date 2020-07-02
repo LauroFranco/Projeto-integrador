@@ -1,39 +1,37 @@
 'use strict';
 
+const { sequelize } = require("../models");
+
 module.exports = {
   up: (queryInterface, Sequelize) => {
-    return queryInterface.createTable('drivers', {
+    return queryInterface.createTable('driverInfos', {
       id: {
         type: Sequelize.INTEGER,
         primaryKey: true,
         autoIncrement: true,
       },
-      cnh: {
+      ajudante:{
         type: Sequelize.STRING,
-        unique: true,
       },
-      crm: {
+      qntCriancas:{
+        type: Sequelize.INTEGER,
+      },
+      Idiomas:{
         type: Sequelize.STRING,
-        unique: true,
       },
-      marca: Sequelize.STRING,
-      modelo: Sequelize.STRING,
-      ano: Sequelize.STRING,
-      placa: {
-        type: Sequelize.STRING,
-        unique: true,
+      cadeirinha:{
+        type: Sequelize.BOOLEAN,
       },
-      crmc: {
-        type: Sequelize.STRING,
-        unique: true,
+      cadeiraRoda:{
+        type: Sequelize.BOOLEAN,
       },
-      users_id:
+      driver_id:
         {
           type: Sequelize.INTEGER,
           references: {
             model: 
             {
-              tableName: 'users'
+              tableName: 'drivers'
             },
             key: 'id'
           }
@@ -45,6 +43,6 @@ module.exports = {
   },
 
   down: (queryInterface, Sequelize) => {
-    return queryInterface.dropTable('drivers');
+    return queryInterface.dropTable('driverInfos');
   }
 };

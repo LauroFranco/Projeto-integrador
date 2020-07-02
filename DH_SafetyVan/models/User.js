@@ -17,13 +17,17 @@ module.exports = (sequelize, DataTypes) => {
             {
               type: DataTypes.STRING,
               allowNull: false,
+              unique: true,
             },
             password:
             {
               type: DataTypes.STRING,
               allowNull: false,
             },
-            cpf: DataTypes.STRING,
+            cpf: {
+              type: DataTypes.STRING,
+              unique: true,
+            },
             birthdate: DataTypes.DATEONLY,
             phone: DataTypes.STRING,
             picture: DataTypes.STRING,

@@ -20,7 +20,7 @@ module.exports = (sequelize, DataTypes) => {
             }),
             Parent.belongsToMany(models.Driver, {
                 through: 'parents-drivers',
-                foreignKey: 'drivers_id'
+                foreignKey: 'parents_id'
             }),
             Parent.hasMany(models.Kid, {
                 foreignKey: 'parents_id'

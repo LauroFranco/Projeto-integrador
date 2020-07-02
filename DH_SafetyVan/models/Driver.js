@@ -8,13 +8,25 @@ module.exports = (sequelize, DataTypes) => {
               primaryKey: true,
               autoIncrement: true,
             },
-            cnh: DataTypes.STRING,
-            crm: DataTypes.STRING,
+            cnh: {
+              type: DataTypes.STRING,
+              unique: true,
+            },
+            crm: {
+              type: DataTypes.STRING,
+              unique: true,
+            },
             marca: DataTypes.STRING,
             modelo: DataTypes.STRING,
             ano: DataTypes.STRING,
-            placa: DataTypes.STRING,
-            crmc: DataTypes.STRING,
+            placa: {
+              type: DataTypes.STRING,
+              unique: true,
+            },
+            crmc: {
+              type: DataTypes.STRING,
+              unique: true,
+            },
             users_id: DataTypes.INTEGER,
             sobre: DataTypes.STRING,
         }, {
@@ -28,11 +40,11 @@ module.exports = (sequelize, DataTypes) => {
       });
       Driver.belongsToMany(models.Parent, {
         through: 'parents-drivers',
-        foreignKey: 'parents_id'
+        foreignKey: 'drivers_id'
       });
       Driver.belongsToMany(models.School, {
         through: 'drivers-schools',
-        foreignKey: 'schools_id'
+        foreignKey: 'drivers_id'
       })
     }
 

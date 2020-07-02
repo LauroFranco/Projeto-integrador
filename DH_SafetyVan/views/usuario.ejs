@@ -1,15 +1,25 @@
 <%- include('includes/head', {title:"safeVan"}) %>
+
 <body>
     <%- include('includes/header') %>
-
+    <%- include('includes/modal') %>
     <div class="perfil-fundo w-100 h-100 position-fixed"></div>
     <div class="container text-white p-5">
         <div class="row">
             <div class="col-md-3">
                 <div class="card bg-dark h-100 ">
                     <div class="card-body ">
-                        <div class="profile-img">
-                            <img src="/images/avatar-default.png" alt=""  width="100%" style="grid-row: auto;"/>
+                        <div class="profile-img d-flex flex-column align-itens-center">
+                            <% if (usuario.picture==null) {
+                                var caminhoImagem = "/images/avatar-default.png ";
+                            }else{
+                                var caminhoImagem = "/avatares/" +usuario.picture;
+                            } %>
+                            <img src="<%=caminhoImagem%>" alt="" width="100%" style="grid-row: auto; max-height: 200px;" />
+                            <button type="button" class="btn btn-warning mt-2" data-toggle="modal"
+                                data-target="#myModal">Alterar foto de
+                                perfil</button>
+
                             <h2 class="font-weight-bold text-center"><%= usuario.name %></h2>
                             <div class="text-dark text-center mb-2">
                                 <span class="fa fa-star checked"></span>
@@ -17,20 +27,19 @@
                                 <span class="fa fa-star checked"></span>
                                 <span class="fa fa-star checked"></span>
                                 <span class="fa fa-star"></span>
-                            </div>                            
+                            </div>
                         </div>
-                        
                         <% if (user.roles_id == 2) { %>
-                            <a href="/user/edit/<%= user.id %>" class="d-block">Editar informações</a>
-                            <a href="/user/child" class="d-block">Cadastrar criança</a>
-                            <a href="/search/driver" class="d-block">Procurar motorista</a>
+                        <a href="/user/edit/<%= user.id %>" class="d-block">Editar informações</a>
+                        <a href="/user/child" class="d-block">Cadastrar criança</a>
+                        <a href="/search/driver" class="d-block">Procurar motorista</a>
                         <% } %>
                         <% if (user.roles_id == 3) { %>
-                            <a href="/user/edit/<%= user.id %>" class="d-block">Editar informações</a>
-                            <a href="/search/school" class="d-block">Procurar Escola</a>
+                        <a href="/user/edit/<%= user.id %>" class="d-block">Editar informações</a>
+                        <a href="/search/school" class="d-block">Procurar Escola</a>
                         <% } %>
                         <a href="/logout" class="d-block">Sair</a>
-                    </div>                    
+                    </div>
                 </div>
             </div>
             <div class="col-md-9">
@@ -45,15 +54,13 @@
                                 <h3>Data de nascimento</h3>
                                 <p><%= moment(usuario.birthdate).format('DD/MM/YYYY') %></p>
                                 <h3>CPF</h3>
-                                <p><%= usuario.cpf %></p>                                
+                                <p><%= usuario.cpf %></p>
                             </div>
                             <div class="col-md-6">
                                 <h3>Endereço Principal</h3>
-                                <p><%= usuario.Addresses[0].street %>, <%= usuario.Addresses[0].complemento %> - <%= usuario.Addresses[0].district %> </p>
+                                <p><%= usuario.Addresses[0].street %>, <%= usuario.Addresses[0].complemento %> -
+                                    <%= usuario.Addresses[0].district %> </p>
                                 <p><%= usuario.Addresses[0].city %>/<%= usuario.Addresses[0].uf %></p>
-                                <form action="" method="post" class="attEnd">
-                                    <button type="submit" class="btn btn-warning btnAttEnd">Adicionar Endereço</button>
-                                </form>
                             </div>
                         </div>
                     </div>
@@ -61,130 +68,141 @@
             </div>
         </div>
         <% if (user.roles_id == 2) { %>
-            <% if(parent.Kids.length > 0) { %>
-                <div class="row my-5">
-                    <div class="col-md-12">
-                        <div class="card bg-dark h-100">
-                            <div class="card-body">
-                                <h2 class="font-weight-bold">Crianças</h2>
-                                <div class="row ">
-                                    <% parent.Kids.forEach(kid => { %>
-                                        <div class="card bg-dark col-md-4 border-0">
-                                            <div class="card-body">
-                                                <img src="/images/avatar-default.png" alt="" height="150px" width="150px" style="grid-row: auto;"/>
-                                                <h3><%= kid.name %></h3>
-                                                <p><%= kid.School.name %></p>
-                                            </div>
-                                        </div>
-                                    <% }) %>
+        <% if(parent.Kids.length > 0) { %>
+        <div class="row my-5">
+            <div class="col-md-12">
+                <div class="card bg-dark h-100">
+                    <div class="card-body">
+                        <h2 class="font-weight-bold">Crianças</h2>
+                        <div class="row ">
+                            <% parent.Kids.forEach(kid => { %>
+                            <div class="card bg-dark col-md-4 border-0">
+                                <div class="card-body text-center">
+                                    <img src="/images/avatar-default.png" alt="" height="150px" width="150px"
+                                        style="grid-row: auto;" />
+                                    <h3><%= kid.name %></h3>
+                                    <p><%= kid.School.name %></p>
                                 </div>
                             </div>
-                        </div>
-                    </div>
-                </div>
-                <% } %>
-            <% if (parent.Drivers.length > 0) { %>   
-            <div class="row my-5">
-                <div class="col-md-12">
-                    <div class="card bg-dark h-100">
-                        <div class="card-body">
-                            <h2 class="font-weight-bold">Motoristas</h2>
-                            <div class="row">
-                                <% parent.Drivers.forEach(motorista => { %>
-                                    <div class="card bg-dark col-md-4 border-0">
-                                        <div class="card-body">
-                                            <a href="/user/<%= motorista.User.id %>"><img src="/images/perfil-brown.png" alt="" height="150px" width="150px" style="grid-row: auto;"/></a>
-                                            <a href="/user/<%= motorista.User.id %>"><h3><%= motorista.User.name %></h3></a>
-                                        </div>
-                                    </div>
-                                <% }) %>
-                            </div>
+                            <% }) %>
                         </div>
                     </div>
                 </div>
             </div>
-            <% } %> 
+        </div>
+        <% } %>
+        <% if (parent.Drivers.length > 0) { %>
+        <div class="row my-5">
+            <div class="col-md-12">
+                <div class="card bg-dark h-100">
+                    <div class="card-body">
+                        <h2 class="font-weight-bold">Motoristas</h2>
+                        <div class="row">
+                            <% parent.Drivers.forEach(motorista => { %>
+                            <div class="card bg-dark col-md-4 border-0">
+                                <div class="card-body text-center">
+                                    <a href="/user/<%= motorista.User.id %>"><img src="/images/perfil-brown.png" alt=""
+                                            height="150px" width="150px" style="grid-row: auto;" /></a>
+                                    <a href="/user/<%= motorista.User.id %>">
+                                        <h3><%= motorista.User.name %></h3>
+                                    </a>
+                                </div>
+                            </div>
+                            <% }) %>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <% } %>
         <% } %>
         <% if(user.roles_id == 3) { %>
-            <div class="row my-5">
-                <div class="col-md-6">
-                    <div class="card bg-dark h-100">
-                        <div class="card-body">
-                            <h2 class="text-center font-weight-bold">Informações da van</h2>
-                            <h3>Marca e Modelo</h3>
-                            <p><%= driver.marca %> <%= driver.modelo %>  </p>
-                            <h3>Data da última vistoria</h3>
-                            <p>20/04/2020</p>
-                            <h3>Números de alunos na van</h3>
-                            <p>10/15</p>
-                        </div>
+        <div class="row my-5">
+            <div class="col-md-6">
+                <div class="card bg-dark h-100">
+                    <div class="card-body">
+                        <h2 class="text-center font-weight-bold">Informações da van</h2>
+                        <h3>Marca e Modelo</h3>
+                        <p><%= driver.marca %> <%= driver.modelo %> </p>
+                        <h3>Data da última vistoria</h3>
+                        <p>20/04/2020</p>
+                        <h3>Números de alunos na van</h3>
+                        <p>10/15</p>
                     </div>
                 </div>
-                <div class="col-md-6">
-                    <div class="card bg-dark h-100">
-                        <div class="card-body">
-                            <h2 class="text-center font-weight-bold">Acessibilidade</h2>
-                            <h3>Fala quais idiomas</h3>
-                            <p>Portugues e Ingles</p>
-                            <h3>Possui assento de elevação</h3>
-                            <p>Sim</p>
-                            <h3>Espaço para cadeira de rodas</h3>
-                            <p>Sim</p>
-                            <h3>Modificações na van</h3>
-                            <p>Rampa adaptada</p>
+            </div>
+            <div class="col-md-6">
+                <div class="card bg-dark h-100">
+                    <div class="card-body">
+                        <h2 class="text-center font-weight-bold">Acessibilidade</h2>
+                        <h3>Fala quais idiomas</h3>
+                        <p>Portugues e Ingles</p>
+                        <h3>Possui assento de elevação</h3>
+                        <p>Sim</p>
+                        <h3>Espaço para cadeira de rodas</h3>
+                        <p>Sim</p>
+                        <h3>Modificações na van</h3>
+                        <p>Rampa adaptada</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <% if(driver.Parents.length > 0) { %>
+        <div class="row my-5">
+            <div class="col-md-12">
+                <div class="card bg-dark h-100">
+                    <div class="card-body">
+                        <h2 class="font-weight-bold">Mães, Pais e Responsáveis</h2>
+                        <div class="row">
+
+                            <% driver.Parents.forEach(parent => { %>
+                            <div class="card bg-dark col-md-4 border-0">
+                                <div class="card-body">
+                                    <a href="/user/<%= parent.User.id %>"><img src="/images/avatar-default.png" alt=""
+                                            height="150px" width="150px" style="grid-row: auto;" /></a>
+                                    <a href="/user/<%= parent.User.id %>">
+                                        <h3><%= parent.User.name %></h3>
+                                    </a>
+                                </div>
+                            </div>
+                            <% })  %>
                         </div>
                     </div>
                 </div>
             </div>
-            <% if(driver.Parents.length > 0) { %> 
-                <div class="row my-5">
-                    <div class="col-md-12">
-                        <div class="card bg-dark h-100">
-                            <div class="card-body">
-                                <h2 class="font-weight-bold">Mães, Pais e Responsáveis</h2>
-                                <div class="row">
-                                    
-                                    <% driver.Parents.forEach(parent => { %>
-                                        <div class="card bg-dark col-md-4 border-0">
-                                            <div class="card-body">
-                                                <a href="/user/<%= parent.User.id %>"><img src="/images/avatar-default.png" alt="" height="150px" width="150px" style="grid-row: auto;"/></a>
-                                                <a href="/user/<%= parent.User.id %>"><h3><%= parent.User.name %></h3></a>
-                                            </div>
-                                        </div>
-                                    <% })  %>
+        </div>
+        <% } %>
+        <% if(driver.Schools.length > 0) { %>
+        <div class="row my-5">
+            <div class="col-md-12">
+                <div class="card bg-dark h-100">
+                    <div class="card-body">
+                        <h2 class="font-weight-bold">Escolas</h2>
+                        <div class="row">
+
+                            <% driver.Schools.forEach(school => { %>
+                            <div class="card bg-dark col-md-4 border-0">
+                                <div class="card-body">
+                                    <a href=""><img src="/images/perfil-brown.png" alt="" height="150px" width="150px"
+                                            style="grid-row: auto;" /></a>
+                                    <a href="/user/">
+                                        <h4><%= school.name %> </h4>
+                                    </a>
                                 </div>
                             </div>
+                            <% }) %>
                         </div>
                     </div>
                 </div>
-                <% } %> 
-                <% if(driver.Schools.length > 0) { %>
-                <div class="row my-5">
-                    <div class="col-md-12">
-                        <div class="card bg-dark h-100">
-                            <div class="card-body">
-                                <h2 class="font-weight-bold">Escolas</h2>
-                                <div class="row">
-                                    
-                                    <% driver.Schools.forEach(school => { %>
-                                        <div class="card bg-dark col-md-4 border-0">
-                                            <div class="card-body">
-                                                <a href=""><img src="/images/perfil-brown.png" alt="" height="150px" width="150px" style="grid-row: auto;"/></a>
-                                                <a href="/user/"><h4><%= school.name %> </h4></a>
-                                            </div>
-                                        </div>
-                                    <% }) %>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <% } %> 
+            </div>
+        </div>
+        <% } %>
 
         <% } %>
-        
+
     </div>
-    
+
     <%- include('includes/footer') %>
 </body>
+
 </html>

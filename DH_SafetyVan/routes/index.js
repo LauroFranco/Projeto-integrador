@@ -5,6 +5,7 @@ const indexController = require('../controllers/indexController');
 const authController = require('../controllers/authController');
 const userController = require('../controllers/userController');
 const auth = require('../middlewares/auth');
+const upload = require("../config/uploads");
 
 /* GET home page. */
 router.get('/', indexController.index);
@@ -24,6 +25,8 @@ router.post('/editar/carro' ,auth ,userController.editarCarro);
 router.post('/editar/sobre' ,auth,userController.editarSobre);
 router.post('/editar/email' ,auth ,userController.editarEmail);
 router.post('/editar/telefone' ,auth,userController.editarTelefone);
+router.post('/editar/avatar',auth , upload.any(),userController.postarfoto );
+
 
 router.get('/search/:type', userController.search);
 
