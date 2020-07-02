@@ -26,7 +26,7 @@ module.exports = (sequelize, DataTypes) => {
             crmc: {
               type: DataTypes.STRING,
               unique: true,
-            },,
+            },
             users_id: DataTypes.INTEGER,
             sobre: DataTypes.STRING,
         }, {

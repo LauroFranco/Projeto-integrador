@@ -1,0 +1,24 @@
+<!-- Modal -->
+<div class="modal" id="myModal" role="dialog">
+    <div class="modal-dialog">
+        <!-- Modal content-->
+        <div class="modal-content bg-dark">
+            <div class="modal-header">
+                <h4 class="modal-title text-white" style="text-align: center;">Alterar imagem de perfil</h4>
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+            </div>
+            <div class="modal-body">
+                <form action="/editar/avatar" method="post" enctype="multipart/form-data">
+                    <p class="text-white">Escolha um foto de perfil</p>
+                    <input type="file" class="btn btn-warning " name="photo" id="photo" />
+                    <button type="submit" class="btn btn-warning mt-2">Mudar minha foto</button>
+                </form>
+
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-info btn-lg" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+
+    </div>
+</div>
