@@ -7,7 +7,7 @@ let form = document.getElementById("form");
 
 let nome = document.getElementById("name");
 let cpf = document.getElementById("cpf");
-let data = document.getElementById("birthdate").value;
+let data = document.getElementById("birthdate");
 let fone = document.getElementById("fone");
 let cep = document.getElementById("cep");
 let endereco = document.getElementById("end");

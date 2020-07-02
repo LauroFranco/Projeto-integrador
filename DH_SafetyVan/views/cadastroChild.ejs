@@ -7,16 +7,16 @@
                 <div class="col-sm-9 col-md-7 col-lg-5 mx-auto">
                     <div class="card card-signin my-5 light bg-dark">
                         <div class="card-body">
-                            <form method="POST">
+                            <form method="POST" id="form">
                                 <h2>Dados da Criança</h2>
                                 <p class="text-warning">É obrigatório preencher todos os campos*</p>
                                 <div class="form-group">
                                     <label for="nameCrianca">Nome da Criança*</label>
-                                    <input type="text" class="form-control" name="nameCrianca" placeholder="Digite aqui o nome da sua criança">
+                                    <input type="text" class="form-control" id="name" name="nameCrianca" placeholder="Digite aqui o nome da sua criança">
                                 </div>
                                 <div class="form-group">
                                     <label for="birthdateCrianca">Data de Nascimento da <span class="text-warning">Criança</span>*</label>
-                                <input type="date" name="birthdateCrianca" class="form-control w-50">
+                                <input type="date" id="birthdate" name="birthdateCrianca" class="form-control w-50">
                                 </div>
                                 <div class="form-group">
                                     <label for="alergic">Alergias*</label>
@@ -25,7 +25,7 @@
 
                                 <div class="form-row d-flex align-items-center">
                                     <div class="form-group col-md-6">
-                                        <label for="idEscola">Escola*</label>
+                                        <label for="idEscola">Escola</label>
                                         <select name="idEscola">
                                             <option value="0" selected>Escolha uma escola...</option>
                                             <% schools.forEach((escola) => { %>
@@ -87,6 +87,14 @@
                                 </div>
 
                                 <div class="form-group">
+                                    <div id="error-list" class="alert alert-danger alert-dismissible fade show" role="alert" hidden >
+                                        <ul>
+
+                                        </ul>
+                                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                            <span aria-hidden="true">&times;</span>
+                                        </button>
+                                    </div>
                                     <button type="submit" class="btn btn-warning">Enviar</button>
                                 </div>
 
@@ -97,6 +105,7 @@
             </div>
         </div>
     </main>
+    <%- include('../public/javascripts/validarChild.js')  %>
     <%- include('includes/footer') %>
 </body>
 </html>
