@@ -17,6 +17,7 @@ router.post('/child', userController.storeChild);
 
 router.get('/edit/:id', userController.edit);
 router.post('/edit/:id', userController.update);
+router.get('/delete/:id', userController.delete);
 
 router.post('/addDriver', userController.adicionaDriver);
 router.post('/addSchool', userController.adicionaSchool);

@@ -320,6 +320,21 @@ const userController = {
         }
     },
 
+    delete: async(req, res) => {
+        const { id } = req.params;
+
+        await User.destroy({
+            where:{
+                id
+            }
+        })
+        .catch((e) => {
+            return res.redirect('/');
+        })
+
+        return res.redirect('/user');
+    },
+
     search: async(req, res) => {
         const { type } = req.params;
 

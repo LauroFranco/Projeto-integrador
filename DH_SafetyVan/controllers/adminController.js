@@ -35,7 +35,17 @@ const adminController = {
     showAllUsers: async(req, res) => {
         await User.findAll()
         .then(users => {
-            return res.render(admin, {users});
+            return res.status(201).json(users);
+        })
+        .catch(error => {
+            return res.redirect(admin, {error});
+        })
+    },
+
+    showAllSchools: async(req, res) => {
+        await School.findAll()
+        .then(schools => {
+            return res.status(201).json(schools);
         })
         .catch(error => {
             return res.redirect(admin, {error});
