@@ -22,7 +22,12 @@
                 </div>
                 <div class="col-md-2">
                     <div class="profile-img">
-                        <img src="/images/avatar-default.png" alt="" height="200px" width="200px" style="grid-row: auto;"/>
+                        <% if (usuario.picture != null) {
+                            var caminhoImagem = "/avatares/" + usuario.picture;
+                        }else{
+                            var caminhoImagem = "/images/avatar-default.png ";
+                        } %>
+                        <img src="<%=caminhoImagem%>" alt="" width="100%" style="grid-row: auto; max-height: 200px;" />
                         <div class="text-dark ml-5 bg-secondary d-inline-block">
                             <span class="fa fa-star checked"></span>
                             <span class="fa fa-star checked"></span>

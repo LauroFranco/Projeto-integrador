@@ -412,7 +412,7 @@ const userController = {
 
         return res.redirect('/user');
     },
-    
+
     editarSobre: async (req, res) => {
 
         await Driver.update({
