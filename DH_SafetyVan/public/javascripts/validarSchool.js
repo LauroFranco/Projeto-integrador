@@ -1,40 +1,42 @@
 <script type="text/javascript">
+
 //busca dos elementos
 
 let form = document.getElementById("form");
 
 let nome = document.getElementById("name");
-let cpf = document.getElementById("cpf");
-let data = document.getElementById("birthdate");
+let nomeEscola = document.getElementById("nameSchool");
+
+let email = document.getElementById("email");
+
 let fone = document.getElementById("fone");
 let cep = document.getElementById("cep");
-let endereco = document.getElementById("end");
+let endereco = document.getElementById("rua");
 let numCasa = document.getElementById("numCasa");
 let bairro = document.getElementById("bairro");
 let cidade = document.getElementById("cidade");
 let estado = document.getElementById("uf");
 
-
-
-
 let errorList = document.querySelector('#error-list');
 let errorlistUL = document.querySelector('#error-list ul')
-
 
 form.addEventListener("submit",function(ev){
     
 
     errorlistUL.innerHTML = "";
 
+    if(nomeEscola.value === ""){
+        errorlistUL.innerHTML += "<li> Preencha o campo <b>Nome da escola</b></li>"
+    }
+
     if(nome.value === ""){
-        errorlistUL.innerHTML += "<li> Preencha o campo <b>Nome</b></li>"
+        errorlistUL.innerHTML += "<li> Preencha o campo <b>Nome do Responsável</b></li>"
     }
-    if(cpf.value === ""){
-        errorlistUL.innerHTML += "<li> Preencha o campo <b>CPF</b></li>"
+
+    if(email.value === ""){
+        errorlistUL.innerHTML += "<li> Preencha o campo <b>Email</b></li>"
     }
-    if(data.value === ""){
-        errorlistUL.innerHTML +="<li> Preencha o campo <b>Data de Nascimento</b></li>"
-    }
+    
     if(fone.value === ""){
         errorlistUL.innerHTML +="<li> Preencha o campo <b>Telefone</b></li>"
     }
@@ -64,9 +66,6 @@ form.addEventListener("submit",function(ev){
         ev.preventDefault();
         errorList.hidden = '';
         
-    }
-    
-    
-    
+    }  
 })
 </script>

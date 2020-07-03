@@ -8,30 +8,30 @@
                 <div class="col-sm-9 col-md-7 col-lg-5 mx-auto">
                     <div class="card card-signin my-5 light bg-dark">
                         <div class="card-body">
-                            <form method="POST">
+                            <form method="POST" id="form">
                                <h2>Cadastrar Escola</h2>
                                <p class="text-warning">É obrigatório preencher todos os campos*</p>
                                 <div class="form-group">
                                     <label for="name">Nome da Escola*</label>
-                                    <input type="text" class="form-control" name="name" placeholder="Digite aqui o nome da escola">
+                                    <input type="text" class="form-control" id="nameSchool" name="name" placeholder="Digite aqui o nome da escola">
                                 </div>
                                 <div class="form-group">
                                     <label for="resp">Nome do Responsável*</label>
-                                    <input type="text" name="resp" class="form-control" placeholder="Digite o nome do responsável da Escola">
+                                    <input type="text" id="name" name="resp" class="form-control" placeholder="Digite o nome do responsável da Escola">
                                 </div>
                                 <div class="form-row">
                                     <div class="form-group col-md-6">
                                         <label for="email">E-mail da Escola*</label>
-                                        <input type="email" class="form-control" name="email" placeholder="E-mail da escola">
+                                        <input type="email" class="form-control" id="email" name="email" placeholder="E-mail da escola">
                                     </div>
                                     <div class="form-group col-md-6">
                                         <label for="phone">Telefone de Contato*</label>
-                                    <input type="tel" name="phone" class="form-control" placeholder="Telefon da Escola">
+                                    <input type="tel" id="fone" name="phone" class="form-control" placeholder="Telefon da Escola">
                                     </div>                                    
                                 </div>
                                 <div class="form-group">
                                     <label for="cep">CEP*</label>
-                                    <input type="text" class="form-control w-50" name="cep" placeholder="00000-000" onblur="pesquisacep(this.value)">
+                                    <input type="text" class="form-control w-50" id="cep" name="cep" placeholder="00000-000" onblur="pesquisacep(this.value)">
                                 </div>
                                 <div class="form-row">
                                     <div class="form-group col-md-9">
@@ -40,7 +40,7 @@
                                     </div>
                                     <div class="form-group col-md-3">
                                         <label for="complemento">Número*</label>
-                                        <input type="text" class="form-control" name="complemento" placeholder="Complemento">
+                                        <input type="text" class="form-control" id="numCasa" name="complemento" placeholder="Complemento">
                                     </div>
                                     <div class="form-group col-md-5">
                                         <label for="bairro">Bairro *</label>
@@ -66,6 +66,14 @@
                                 </div>
 
                                 <div class="form-group">
+                                    <div id="error-list" class="alert alert-danger alert-dismissible fade show" role="alert" hidden >
+                                        <ul>
+
+                                        </ul>
+                                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                            <span aria-hidden="true">&times;</span>
+                                        </button>
+                                    </div>
                                     <button type="submit" class="btn btn-warning">Enviar</button>
                                 </div>
 
@@ -76,6 +84,7 @@
             </div>
         </div>
     </main>
+    <%- include('../public/javascripts/validarSchool.js')  %>
     <%- include('includes/footer') %>
 </body>
 </html>

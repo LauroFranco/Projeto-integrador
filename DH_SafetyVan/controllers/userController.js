@@ -23,7 +23,7 @@ const userController = {
                     model: Kid,
                     include: School,
                 }
-            ],
+                ],
             });
 
             return res.render('usuario', { usuario, parent, moment });
@@ -43,7 +43,7 @@ const userController = {
                 {
                     model: School,
                 }
-            ]
+                ]
             });
 
             return res.render('usuario', { usuario, driver, moment });
@@ -62,16 +62,16 @@ const userController = {
                     users_id: id
                 },
                 include:
-                [
-                    {
-                        model: Driver,
-                        include: User
-                    },
-                    {
-                        model: Kid,
-                        include: School
-                    }
-                ]
+                    [
+                        {
+                            model: Driver,
+                            include: User
+                        },
+                        {
+                            model: Kid,
+                            include: School
+                        }
+                    ]
             });
             return res.render('perfil', { usuario, parent, moment });
         };
@@ -82,16 +82,16 @@ const userController = {
                 {
                     users_id: id
                 },
-                include: 
-                [
-                    {
-                        model: Parent, 
-                        include: User
-                    },
-                    {
-                        model: School,
-                    }
-                ]
+                include:
+                    [
+                        {
+                            model: Parent,
+                            include: User
+                        },
+                        {
+                            model: School,
+                        }
+                    ]
             });
             return res.render('perfil', { usuario, driver, moment });
         }
@@ -224,12 +224,12 @@ const userController = {
         const user = await User.findByPk(req.session.user.id);
         const [endereco] = await user.getAddresses();
         const schools = await School.findAll();
-                
-        return res.render('cadastroChild', {endereco, schools});
+
+        return res.render('cadastroChild', { endereco, schools });
     },
 
     storeChild: async (req, res) => {
-        const {nameCrianca, birthdateCrianca, alergic, idEscola, emailParent} = req.body;
+        const { nameCrianca, birthdateCrianca, alergic, idEscola, emailParent } = req.body;
 
         const user = await User.findOne({
             where: {
@@ -248,38 +248,38 @@ const userController = {
             schools_id: idEscola
         });
 
-        return res.redirect('/user');        
+        return res.redirect('/user');
     },
 
     edit: async (req, res) => {
-        const {id} = req.params;
+        const { id } = req.params;
         const user = await User.findByPk(id);
-        if (user.roles_id == 1) return res.render('editAdmin', {user});
+        if (user.roles_id == 1) return res.render('editAdmin', { user });
         if (user.roles_id == 2) {
             const parent = await Parent.findOne({
                 where: {
                     users_id: user.id
                 },
-                include: {model: User, include: Address}
+                include: { model: User, include: Address }
             })
-            return res.render('editParent', {parent});
+            return res.render('editParent', { parent });
         }
         if (user.roles_id == 3) {
             const driver = await Driver.findOne({
                 where: {
                     users_id: user.id
                 },
-                include: {model: User, include: Address}
+                include: { model: User, include: Address }
             })
-            return res.render('editDriver', {driver});
+            return res.render('editDriver', { driver });
         }
     },
 
-    update: async(req, res) => {
+    update: async (req, res) => {
         const { id } = req.params;
         const { name, cpf, birthdate, phone, about, cep, rua, complemento, bairro, cidade, uf } = req.body;
 
-        const user = await User.findByPk(id, {include: Address});
+        const user = await User.findByPk(id, { include: Address });
 
         user.name = name;
         user.cpf = cpf;
@@ -298,13 +298,13 @@ const userController = {
 
         await user.save();
 
-        if (user.roles_id == 2) {            
+        if (user.roles_id == 2) {
             return res.redirect('/user');
         }
 
         if (user.roles_id == 3) {
             const { cnh, crm, marca, modelo, ano, placa, crmc } = req.body;
-            const driver = await Driver.findOne({where: {users_id: user.id}});
+            const driver = await Driver.findOne({ where: { users_id: user.id } });
 
             driver.cnh = cnh;
             driver.crm = crm;
@@ -335,48 +335,48 @@ const userController = {
         return res.redirect('/user');
     },
 
-    search: async(req, res) => {
+    search: async (req, res) => {
         const { type } = req.params;
 
         if (type == "parent") {
             await Parent.findAll({
                 include: User
             })
-            .then(parents => {
-                return res.render("search", {parents, type});
-            })
-            .catch(error => {
-                return res.render("search", {error});
-            })
+                .then(parents => {
+                    return res.render("search", { parents, type });
+                })
+                .catch(error => {
+                    return res.render("search", { error });
+                })
         }
         if (type == "driver") {
             await Driver.findAll({
                 include: User
             })
-            .then(drivers => {
-                return res.render("search", {drivers, type});
-            })
-            .catch(error => {
-                return res.render("search", {error});
-            })
+                .then(drivers => {
+                    return res.render("search", { drivers, type });
+                })
+                .catch(error => {
+                    return res.render("search", { error });
+                })
         }
         if (type == "school") {
             await School.findAll()
-            .then(schools => {
-                return res.render("search", {schools, type});
-            })
-            .catch(error => {
-                return res.render("search", {error});
-            })
+                .then(schools => {
+                    return res.render("search", { schools, type });
+                })
+                .catch(error => {
+                    return res.render("search", { error });
+                })
         }
     },
 
-    adicionaDriver: async(req, res) => {
+    adicionaDriver: async (req, res) => {
         const { idDriver } = req.body;
-        const parent = await Parent.findOne({where: {users_id: req.session.user.id}});
+        const parent = await Parent.findOne({ where: { users_id: req.session.user.id } });
         const driver = await Driver.findByPk(idDriver);
 
-        if(await parent.hasDriver(driver)) {
+        if (await parent.hasDriver(driver)) {
             return res.redirect('/');
         } else {
             await parent.addDriver(driver);
@@ -384,12 +384,12 @@ const userController = {
         }
     },
 
-    adicionaSchool: async(req, res) => {
+    adicionaSchool: async (req, res) => {
         const { idSchool } = req.body;
-        const driver = await Driver.findOne({where: {users_id: req.session.user.id}});
+        const driver = await Driver.findOne({ where: { users_id: req.session.user.id } });
         const school = await School.findByPk(idSchool);
 
-        if(await driver.hasSchool(school)) {
+        if (await driver.hasSchool(school)) {
             return res.redirect('/');
         } else {
             await driver.addSchool(school);
@@ -404,56 +404,70 @@ const userController = {
             ano: req.body.ano,
             placa: req.body.placa,
             crmc: req.body.crmc
-        },{where:{
-            users_id:req.session.user.id 
-        }}
+        }, {
+            where: {
+                users_id: req.session.user.id
+            }
+        });
 
-        )
         return res.redirect('/user');
-
     },
+    
     editarSobre: async (req, res) => {
 
         await Driver.update({
-            sobre:req.body.sobre
-        },{where:{
-            users_id:req.session.user.id 
-        }}
+            sobre: req.body.sobre
+        }, {
+            where: {
+                users_id: req.session.user.id
+            }
+        });
 
-        )
         return res.redirect('/user');
-
     },
+
     editarEmail: async (req, res) => {
 
-        user.update({
-            phone:req.body.telefone
-        },{where:{
-            users_id:req.session.user.id 
-        }}
+        await user.update({
+            phone: req.body.telefone
+        }, {
+            where: {
+                users_id: req.session.user.id
+            }
+        });
 
-        )
         return res.redirect('/user');
-
     },
+
     editarTelefone: async (req, res) => {
         const { id } = req.params;
         const user = await User.findByPk(id);
-        user.update({
-            telefone:req.body.email
-        },{where:{
-            users_id:req.session.user.id 
-        }}
+        await user.update({
+            telefone: req.body.email
+        }, {
+            where: {
+                users_id: req.session.user.id
+            }
+        });
 
-        )
         return res.redirect('/user');
-
     },
 
-    
     changeInfos: (_req, res) => {
         return res.render('MudarInfosMotoristas');
-    }
+    },
+    postarfoto: async (req, res) => {
+        const [foto] = req.files;
+        await User.update({
+            picture: foto.filename
+        }, {
+            where: {
+                id: req.session.user.id
+            }
+        });
+
+        return res.redirect('/user');
+    },
 };
 
 module.exports = userController;
