@@ -473,7 +473,7 @@ const userController = {
     adicionaisVan: async (req, res) => {
         const driver = await Driver.findOne({ where: { users_id: req.session.user.id } });
         const infodriver = await driverinfo.findOne({ where: { driver_id: driver.id } })
-        console.log(infodriver);
+        
         var cadeira;
         var cadeirinha;
         if (req.body.cadeiraRoda == undefined) { cadeira = false } else { cadeira = true }

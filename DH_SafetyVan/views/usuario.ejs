@@ -16,7 +16,7 @@
                             }else{
                                 var caminhoImagem = "/avatares/" +usuario.picture;
                             } %>
-                            <img src="<%=caminhoImagem%>" alt="" width="100%" style="grid-row: auto; max-height: 200px;" />
+                            <img src="<%=caminhoImagem%>" alt="" height="200px" width="200px" style="grid-row: auto; max-height: 200px;" />
                             <button type="button" class="btn btn-warning mt-2" data-toggle="modal"
                                 data-target="#myModal">Alterar foto de
                                 perfil</button>
@@ -100,7 +100,7 @@
                                     }else{
                                         var caminhoImagem = "/images/avatar-default.png ";
                                     } %>
-                                    <a href="/user/<%= motorista.User.id %>"><img src="<%=caminhoImagem%>" alt="" style="grid-row: auto; max-height: 200px;" /></a>
+                                    <a href="/user/<%= motorista.User.id %>"><img src="<%=caminhoImagem%>" alt="" height="150px" width="150px" style="grid-row: auto; max-height: 200px;" /></a>
                                     <a href="/user/<%= motorista.User.id %>">
                                         <h3><%= motorista.User.name %></h3>
                                     </a>
@@ -131,7 +131,7 @@
                                     }else{
                                         var caminhoImagem = "/images/avatar-default.png ";
                                     } %>
-                                    <a href="/user/<%= parent.User.id %>"><img src="<%=caminhoImagem%>" alt="" style="grid-row: auto; max-height: 200px;" /></a>
+                                    <a href="/user/<%= parent.User.id %>"><img src="<%=caminhoImagem%>" alt="" height="150px" width="150px" style="grid-row: auto; max-height: 200px;" /></a>
                                     <a href="/user/<%= parent.User.id %>">
                                         <h3><%= parent.User.name %></h3>
                                     </a>
@@ -155,11 +155,8 @@
                             <% driver.Schools.forEach(school => { %>
                             <div class="card bg-dark col-md-4 border-0">
                                 <div class="card-body">
-                                    <a href=""><img src="/images/perfil-brown.png" alt="" height="150px" width="150px"
-                                            style="grid-row: auto;" /></a>
-                                    <a href="/user/">
-                                        <h4><%= school.name %> </h4>
-                                    </a>
+                                    <img src="/images/avatar-default.png" alt="" height="150px" width="150px" style="grid-row: auto;" />
+                                    <h4><%= school.name %> </h4>
                                 </div>
                             </div>
                             <% }) %>

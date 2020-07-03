@@ -14,20 +14,20 @@
                                 <p><%= driver.sobre %> </p>
                                 <h3>Idade</h3>
                                 <p><%= (moment().diff(usuario.birthdate, 'years')) %> anos</p>
-                                <h3>Marca e Modelo</h3>
+                                <h3>Marca e Modelo da Van</h3>
                                 <p><%= driver.marca %> <%= driver.modelo %>  </p>
                                 <%if(infodriver != null){%>
-                                <h3>ajudante</h3>
+                                <h3>Ajudante</h3>
                                 <p><%=infodriver.ajudante%></p>
-                                <h3>quantidade de crianças na van</h3>
+                                <h3>Quantidade de crianças na van</h3>
                                 <p><%=infodriver.qntCriancas%></p>
                                 <h3>Fala que idiomas</h3>
                                 <p><%=infodriver.Idiomas%></p>
                                 <%if (infodriver.cadeiraRoda==true){%>
-                                    <h4>tenho acesso a cadeira de roda</h4>
+                                    <h4>Tenho acesso a cadeira de roda</h4>
                                 <%}%>
-                                <%if (infodriver.cadeira==true){%>
-                                    <h4>tenho cadeirinha</h4>
+                                <%if (infodriver.cadeirinha==true){%>
+                                    <h4>Tenho cadeirinha</h4>
                                 <%}}%>
                             </ul>
                         </div>
@@ -40,7 +40,8 @@
                         }else{
                             var caminhoImagem = "/images/avatar-default.png ";
                         } %>
-                        <img src="<%=caminhoImagem%>" alt="" style="grid-row: auto; max-height: 200px;" />
+                        <img src="<%=caminhoImagem%>" alt="" height="200px" width="200px" style="grid-row: auto; max-height: 200px; max-width: 200px;" />
+                        
                         <% if (user.roles_id == 2) { %> 
                         <form action="/user/addDriver" method="post">
                             <input type="hidden" name="idDriver" value="<%= driver.id %>">
@@ -64,9 +65,9 @@
                                                 <% if (parent.User.picture != null) {
                                                     var caminhoImagem = "/avatares/" + parent.User.picture;
                                                 }else{
-                                                    var caminhoImagem = "/images/avatar-default.png ";
+                                                    var caminhoImagem = "/images/avatar-default.png";
                                                 } %>
-                                                <a href="/user/<%= parent.User.id %>"><img src="<%=caminhoImagem%>" alt="" style="grid-row: auto; max-height: 200px;" /></a>
+                                                <a href="/user/<%= parent.User.id %>"><img src="<%=caminhoImagem%>" alt="" height="150px" width="150px" style="grid-row: auto; max-height: 200px; max-width: 200px;" /></a>
                                                 <a href="/user/<%= parent.User.id %>"><h3><%= parent.User.name %></h3></a>
                                             </div>
                                         </div>
@@ -88,8 +89,8 @@
                                         <% driver.Schools.forEach(school => { %>
                                             <div class="card bg-dark col-md-3 border-0">
                                             <div class="card-body">
-                                                <a href=""><img src="/images/perfil-brown.png" alt="" height="150px" width="150px" style="grid-row: auto;"/></a>
-                                                <a href="/user/"><h4> <%= school.name %>  </h4></a>
+                                                <img src="/images/avatar-default.png" alt="" height="150px" width="150px" style="grid-row: auto;"/>
+                                                <h4> <%= school.name %> </h4>
                                             </div>
                                         </div>
                                     <% }) %>
@@ -128,7 +129,7 @@
                         }else{
                             var caminhoImagem = "/images/avatar-default.png ";
                         } %>
-                        <img src="<%= caminhoImagem %>" alt="" style="grid-row: auto; max-height: 200px;" />
+                        <img src="<%= caminhoImagem %>" alt="" height="150px" width="150px" style="grid-row: auto; max-height: 200px;" />
                     </div>
                 </div>
             </div>
@@ -143,7 +144,7 @@
                                     <% parent.Kids.forEach(kid => { %>
                                         <div class="card bg-dark col-md-4 border-0">
                                         <div class="card-body">
-                                            <img src="/images/perfil-brown.png" alt="" height="150px" width="150px" style="grid-row: auto;"/>
+                                            <img src="/images/avatar-default.png" alt="" height="150px" width="150px" style="grid-row: auto;"/>
                                             <h3><%= kid.School.name %></h3>
                                         </div>                                
                                     </div>
@@ -170,9 +171,8 @@
                                                     }else{
                                                         var caminhoImagem = "/images/avatar-default.png ";
                                                     } %>
-                                                <a href="/user/<%= motorista.User.id %>"><img src="<%=caminhoImagem%>" alt="" style="grid-row: auto; max-height: 200px;" /></a>  
+                                                <a href="/user/<%= motorista.User.id %>"><img src="<%=caminhoImagem%>" alt="" height="150px" width="150px" style="grid-row: auto; max-height: 200px;" /></a>  
                                                 <a href="/user/<%= motorista.User.id %>"><h3><%= motorista.User.name %></h3></a>
-                                                <p>-"João tá sempre na hora"</p>
                                             </div>
                                         </div>
                                     <% })  %>
