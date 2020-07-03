@@ -14,8 +14,8 @@
                                 <p><%= driver.sobre %> </p>
                                 <h3>Idade</h3>
                                 <p><%= (moment().diff(usuario.birthdate, 'years')) %> anos</p>
-                                <h3>Possui ajudantes</h3>
-                                <p>Eu trabalho sozinho</p>
+                                <h3>Marca e Modelo</h3>
+                                <p><%= driver.marca %> <%= driver.modelo %>  </p>
                             </ul>
                         </div>
                     </div>
@@ -37,36 +37,6 @@
                     </div>
                 </div>
             </div>
-            <div class="row my-5">
-                <div class="col-md-5">
-                    <div class="card bg-dark h-100">
-                        <div class="card-body">
-                            <h2 class="text-center font-weight-bold">Informações da van</h2>
-                            <h3>Marca e Modelo</h3>
-                            <p><%= driver.marca %> <%= driver.modelo %>  </p>
-                            <h3>Data da última vistoria</h3>
-                            <p>20/04/2020</p>
-                            <h3>Números de alunos na van</h3>
-                            <p>10/15</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-5">
-                    <div class="card bg-dark h-100">
-                        <div class="card-body">
-                            <h2 class="text-center font-weight-bold">Acessibilidade</h2>
-                            <h3>Fala quais idiomas</h3>
-                            <p>Portugues e Ingles</p>
-                            <h3>Possui assento de elevação</h3>
-                            <p>Sim</p>
-                            <h3>Espaço para cadeira de rodas</h3>
-                            <p>Sim</p>
-                            <h3>Modificações na van</h3>
-                            <p>Rampa adaptada</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
             <% if (driver.Parents.length > 0) { %> 
                 <div class="row my-5">
                     <div class="col-md-10">
@@ -78,7 +48,12 @@
                                     <% driver.Parents.forEach(parent => { %>
                                         <div class="card bg-dark col-md-4 border-0">
                                             <div class="card-body">
-                                                <a href="/user/<%= parent.User.id %>"><img src="/images/perfil-brown.png" alt="" height="150px" width="150px" style="grid-row: auto;"/></a>
+                                                <% if (parent.User.picture != null) {
+                                                    var caminhoImagem = "/avatares/" + parent.User.picture;
+                                                }else{
+                                                    var caminhoImagem = "/images/avatar-default.png ";
+                                                } %>
+                                                <a href="/user/<%= parent.User.id %>"><img src="<%=caminhoImagem%>" alt="" width="100%" style="grid-row: auto; max-height: 200px;" /></a>
                                                 <a href="/user/<%= parent.User.id %>"><h3><%= parent.User.name %></h3></a>
                                             </div>
                                         </div>
@@ -177,7 +152,12 @@
                                     <% parent.Drivers.forEach(motorista => { %>
                                         <div class="card bg-dark col-md-3 border-0">
                                             <div class="card-body">
-                                                <a href="/user/<%= motorista.User.id %>"><img src="/images/perfil-brown.png" alt="" height="150px" width="150px" style="grid-row: auto;"/></a>
+                                                <% if (motorista.User.picture != null) {
+                                                    var caminhoImagem = "/avatares/" + motorista.User.picture;
+                                                    }else{
+                                                        var caminhoImagem = "/images/avatar-default.png ";
+                                                    } %>
+                                                <a href="/user/<%= motorista.User.id %>"><img src="<%=caminhoImagem%>" alt="" width="100%" style="grid-row: auto; max-height: 200px;" /></a>  
                                                 <a href="/user/<%= motorista.User.id %>"><h3><%= motorista.User.name %></h3></a>
                                                 <p>-"João tá sempre na hora"</p>
                                             </div>
