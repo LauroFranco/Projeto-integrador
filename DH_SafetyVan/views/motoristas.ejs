@@ -8,7 +8,11 @@
      <% ListDrivers.forEach(listDrivers => { %> 
     <div class="row justify-content-md-center card-body background-card">
         <div class="col-md-1.">
-            <img src="/images/avatar-default.png" alt="" height="100px" width="100px" class="rounded">
+            <%var image = "/images/avatar-default.png";
+            if (listDrivers.User.picture !=null){imagem = "/avatares/" + listDrivers.User.picture} %>
+            <img src="<%=image%>" alt="" height="100px" width="100px" class="rounded">
+            <p><%=listDrivers.User.picture%></p>
+            <p>aaaaaaaaaaaa</p>
         </div>
         <div class="col-md-2 border">
             <br>

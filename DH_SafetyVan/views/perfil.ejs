@@ -16,6 +16,19 @@
                                 <p><%= (moment().diff(usuario.birthdate, 'years')) %> anos</p>
                                 <h3>Marca e Modelo</h3>
                                 <p><%= driver.marca %> <%= driver.modelo %>  </p>
+                                <%if(infodriver != null){%>
+                                <h3>ajudante</h3>
+                                <p><%=infodriver.ajudante%></p>
+                                <h3>quantidade de crianças na van</h3>
+                                <p><%=infodriver.qntCriancas%></p>
+                                <h3>Fala que idiomas</h3>
+                                <p><%=infodriver.Idiomas%></p>
+                                <%if (infodriver.cadeiraRoda==true){%>
+                                    <h4>tenho acesso a cadeira de roda</h4>
+                                <%}%>
+                                <%if (infodriver.cadeira==true){%>
+                                    <h4>tenho cadeirinha</h4>
+                                <%}}%>
                             </ul>
                         </div>
                     </div>

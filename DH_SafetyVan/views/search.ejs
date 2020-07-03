@@ -68,9 +68,11 @@
             <h2>Motoristas</h2>
             <% if (drivers.length > 0) { %>
                 <% drivers.forEach(driver => { %>
+                    <%var image = "/images/avatar-default.png";
+                    if (driver.User.picture !=null){image = "/avatares/" + driver.User.picture} %>
                     <div class="row justify-content-md-center bg-dark my-2 w-75">
                         <div class="col-md-2 border-bottom">
-                            <a href="/user/<%= driver.User.id %>"><img src="/images/avatar-default.png" alt="" height="100px" width="100px" class="rounded"></a>
+                            <a href="/user/<%= driver.User.id %>"><img src=<%=image%> alt="" height="100px" width="100px" class="rounded"></a>
                         </div>
                         <div class="col-md-3 border-bottom">
                             <br>

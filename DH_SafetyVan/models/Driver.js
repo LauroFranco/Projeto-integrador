@@ -45,7 +45,10 @@ module.exports = (sequelize, DataTypes) => {
       Driver.belongsToMany(models.School, {
         through: 'drivers-schools',
         foreignKey: 'drivers_id'
-      })
+      });
+      Driver.hasMany(models.driverinfo, {
+        foreignKey: 'driver_id'
+    });
     }
 
     return Driver;

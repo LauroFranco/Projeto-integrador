@@ -1,6 +1,6 @@
 const bcrypt = require('bcrypt');
 const moment = require('moment');
-const { User, Address, Parent, Driver, Kid, School } = require('../models');
+const { User, Address, Parent, Driver, Kid, School, driverinfo } = require('../models');
 
 const userController = {
     index: async (req, res) => {
@@ -90,10 +90,12 @@ const userController = {
                         },
                         {
                             model: School,
-                        }
+                        },
                     ]
             });
-            return res.render('perfil', { usuario, driver, moment });
+            const infodriver = await driverinfo.findOne({ where: { driver_id: driver.id } })
+            console.log(infodriver);
+            return res.render('perfil', { usuario,infodriver, driver, moment });
         }
     },
 
@@ -320,17 +322,17 @@ const userController = {
         }
     },
 
-    delete: async(req, res) => {
+    delete: async (req, res) => {
         const { id } = req.params;
 
         await User.destroy({
-            where:{
+            where: {
                 id
             }
         })
-        .catch((e) => {
-            return res.redirect('/');
-        })
+            .catch((e) => {
+                return res.redirect('/');
+            })
 
         return res.redirect('/user');
     },
@@ -468,6 +470,39 @@ const userController = {
 
         return res.redirect('/user');
     },
+    adicionaisVan: async (req, res) => {
+        const driver = await Driver.findOne({ where: { users_id: req.session.user.id } });
+        const infodriver = await driverinfo.findOne({ where: { driver_id: driver.id } })
+        console.log(infodriver);
+        var cadeira;
+        var cadeirinha;
+        if (req.body.cadeiraRoda == undefined) { cadeira = false } else { cadeira = true }
+        if (req.body.cadeirinha == undefined) { cadeirinha = false } else { cadeirinha = true }
+
+        if (infodriver != null) {
+            await driverinfo.update({
+                cadeiraRoda: cadeira,
+                cadeirinha: cadeirinha,
+                Idiomas: req.body.idiomas,
+                qntCriancas: req.body.qntCrianca,
+                ajudante: req.body.nameAjudante
+            }, {
+                where: {
+                    driver_id: driver.id
+                }
+            });
+        }else{
+            await driverinfo.create({
+                cadeiraRoda: cadeira,
+                cadeirinha: cadeirinha,
+                Idiomas: req.body.idiomas,
+                qntCriancas: req.body.qntCrianca,
+                ajudante: req.body.nameAjudante,
+                driver_id: driver.id
+            }) 
+        }
+        return res.redirect('/user');
+    }
 };
 
 module.exports = userController;
