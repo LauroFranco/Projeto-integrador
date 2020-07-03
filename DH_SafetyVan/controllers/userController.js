@@ -1,6 +1,7 @@
 const bcrypt = require('bcrypt');
 const moment = require('moment');
 const { User, Address, Parent, Driver, Kid, School } = require('../models');
+const infoVan = require('../models/infoVan');
 
 const userController = {
     index: async (req, res) => {
@@ -320,17 +321,17 @@ const userController = {
         }
     },
 
-    delete: async(req, res) => {
+    delete: async (req, res) => {
         const { id } = req.params;
 
         await User.destroy({
-            where:{
+            where: {
                 id
             }
         })
-        .catch((e) => {
-            return res.redirect('/');
-        })
+            .catch((e) => {
+                return res.redirect('/');
+            })
 
         return res.redirect('/user');
     },
@@ -468,6 +469,22 @@ const userController = {
 
         return res.redirect('/user');
     },
+    adicionaisVan: async (req, res) => {
+        const driver = await Driver.findOne({ where: { users_id: req.session.user.id } });
+        await infoVan.update({           
+            cadeiraRoda:req.body.cadeiraRoda,
+            cadeirinha:req.body.cadeirinha,
+            Idiomas:req.body.idiomas,
+            qntCriancas: req.body.qntCrianca,
+            ajudante: req.body.nameAjudante
+        }, {
+            where: {
+                driver_id: driver.id
+            }
+        });
+
+        return res.redirect('/user');
+    }
 };
 
 module.exports = userController;

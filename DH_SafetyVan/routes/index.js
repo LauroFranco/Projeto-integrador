@@ -26,6 +26,8 @@ router.post('/editar/sobre' ,auth,userController.editarSobre);
 router.post('/editar/email' ,auth ,userController.editarEmail);
 router.post('/editar/telefone' ,auth,userController.editarTelefone);
 router.post('/editar/avatar',auth , upload.any(),userController.postarfoto );
+router.post('/editar/adicionaisVan',auth ,userController.adicionaisVan );
+
 
 
 router.get('/search/:type', userController.search);
