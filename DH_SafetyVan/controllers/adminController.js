@@ -48,7 +48,7 @@ const adminController = {
             return res.status(201).json(schools);
         })
         .catch(error => {
-            return res.redirect(admin, {error});
+            return res.redirect(index, {error});
         })
     }
 };

@@ -27,14 +27,14 @@ escolasTab.addEventListener("click", async function() {
     
     $(escolasTab).tab('show');
     
-    fetch("http://localhost:3000/admin/schools")
+    fetch("http://localhost:3000/admin/allschools")
     .then(function(resposta) {
         return resposta.json();
     })
     .then(function(schools) {
-        
+        escolasContainer.innerHTML = '';
         schools.forEach(school => {
-            escolasContainer.innerHTML = `                        
+            escolasContainer.innerHTML += `                        
             <tr class="mb-5">
                 <td class="ml-2">${school.name}</td>
                 <td class="ml-3 p-2"><a href="admin/school/${school.id}"><button class="btn btn-warning">Visualizar</button></a>
@@ -42,7 +42,6 @@ escolasTab.addEventListener("click", async function() {
                 <a href="admin/school/delete/${school.id}"><button class="btn btn-danger">Excluir</button></a></td>
             </tr>
         `
-            console.log(usuario.name);
         });
     });
 })
