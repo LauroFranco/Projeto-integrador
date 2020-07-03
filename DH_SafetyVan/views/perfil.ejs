@@ -27,7 +27,7 @@
                         }else{
                             var caminhoImagem = "/images/avatar-default.png ";
                         } %>
-                        <img src="<%=caminhoImagem%>" alt="" width="100%" style="grid-row: auto; max-height: 200px;" />
+                        <img src="<%=caminhoImagem%>" alt="" style="grid-row: auto; max-height: 200px;" />
                         <% if (user.roles_id == 2) { %> 
                         <form action="/user/addDriver" method="post">
                             <input type="hidden" name="idDriver" value="<%= driver.id %>">
@@ -53,7 +53,7 @@
                                                 }else{
                                                     var caminhoImagem = "/images/avatar-default.png ";
                                                 } %>
-                                                <a href="/user/<%= parent.User.id %>"><img src="<%=caminhoImagem%>" alt="" width="100%" style="grid-row: auto; max-height: 200px;" /></a>
+                                                <a href="/user/<%= parent.User.id %>"><img src="<%=caminhoImagem%>" alt="" style="grid-row: auto; max-height: 200px;" /></a>
                                                 <a href="/user/<%= parent.User.id %>"><h3><%= parent.User.name %></h3></a>
                                             </div>
                                         </div>
@@ -115,7 +115,7 @@
                         }else{
                             var caminhoImagem = "/images/avatar-default.png ";
                         } %>
-                        <img src="<%= caminhoImagem %>" alt="" width="100%" style="grid-row: auto; max-height: 200px;" />
+                        <img src="<%= caminhoImagem %>" alt="" style="grid-row: auto; max-height: 200px;" />
                     </div>
                 </div>
             </div>
@@ -157,7 +157,7 @@
                                                     }else{
                                                         var caminhoImagem = "/images/avatar-default.png ";
                                                     } %>
-                                                <a href="/user/<%= motorista.User.id %>"><img src="<%=caminhoImagem%>" alt="" width="100%" style="grid-row: auto; max-height: 200px;" /></a>  
+                                                <a href="/user/<%= motorista.User.id %>"><img src="<%=caminhoImagem%>" alt="" style="grid-row: auto; max-height: 200px;" /></a>  
                                                 <a href="/user/<%= motorista.User.id %>"><h3><%= motorista.User.name %></h3></a>
                                                 <p>-"João tá sempre na hora"</p>
                                             </div>
