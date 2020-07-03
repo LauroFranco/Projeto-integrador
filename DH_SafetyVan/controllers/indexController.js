@@ -17,6 +17,7 @@ const indexController = {
         const ListDrivers = await Driver.findAll( {
             include: User,
         });
+        console.log(ListDrivers)
         return res.render("motoristas" , {ListDrivers , moment});
       },
 };

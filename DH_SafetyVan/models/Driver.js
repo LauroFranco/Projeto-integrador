@@ -48,7 +48,7 @@ module.exports = (sequelize, DataTypes) => {
       });
       Driver.hasMany(models.driverinfo, {
         foreignKey: 'driver_id'
-    })
+    });
     }
 
     return Driver;
