@@ -28,13 +28,6 @@
                             var caminhoImagem = "/images/avatar-default.png ";
                         } %>
                         <img src="<%=caminhoImagem%>" alt="" width="100%" style="grid-row: auto; max-height: 200px;" />
-                        <div class="text-dark ml-5 bg-secondary d-inline-block">
-                            <span class="fa fa-star checked"></span>
-                            <span class="fa fa-star checked"></span>
-                            <span class="fa fa-star checked"></span>
-                            <span class="fa fa-star"></span>
-                            <span class="fa fa-star"></span>
-                        </div>
                         <% if (user.roles_id == 2) { %> 
                         <form action="/user/addDriver" method="post">
                             <input type="hidden" name="idDriver" value="<%= driver.id %>">
@@ -118,38 +111,6 @@
                     </div>
                 </div>
                 <% } %> 
-            <div class="row">
-                <div class="col-md-10">
-                    <div class="card bg-dark">
-                        <div class="card-body">
-                            <h2 class="text-center font-weight-bold">Comentários</h2>
-                            <div class="row justify-content-around">                                
-                                <div class="card bg-dark col-md-3 border-0">
-                                    <div class="card-body">
-                                        <img src="/images/perfil-brown.png" alt="" height="150px" width="150px" style="grid-row: auto;"/>
-                                        <h3>Jorge </h3>
-                                        <p>-"Jõao ta sempre na hora"</p>
-                                    </div>                                
-                                </div>
-                                <div class="card bg-dark col-md-3 border-0">
-                                    <div class="card-body">
-                                        <img src="/images/perfil-brown.png" alt="" height="150px" width="150px" style="grid-row: auto;"/>
-                                        <h3>Maria </h3>
-                                        <p>-"Sempre atencioso com meu filho, um amor de pessoa"</p>
-                                    </div>                                
-                                </div>
-                                <div class="card bg-dark col-md-3 border-0">
-                                    <div class="card-body">
-                                        <img src="/images/perfil-brown.png" alt="" height="150px" width="150px" style="grid-row: auto;"/>
-                                        <h3>Romario </h3>
-                                        <p>-"Cara incrivel, minha filha adora ele"</p>
-                                    </div>                                
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
         <% } %>
         <% if(usuario.roles_id == 2) { %>
             <div class="row">
@@ -174,14 +135,12 @@
                 </div>
                 <div class="col-md-2">
                     <div class="profile-img">
-                        <img src="/images/avatar-default.png" alt="" height="200px" width="200px" style="grid-row: auto;"/>
-                        <div class="text-dark ml-5 bg-secondary">
-                            <span class="fa fa-star checked"></span>
-                            <span class="fa fa-star checked"></span>
-                            <span class="fa fa-star checked"></span>
-                            <span class="fa fa-star"></span>
-                            <span class="fa fa-star"></span>
-                        </div>
+                        <% if (usuario.picture != null) {
+                            var caminhoImagem = "/avatares/" + usuario.picture;
+                        }else{
+                            var caminhoImagem = "/images/avatar-default.png ";
+                        } %>
+                        <img src="<%= caminhoImagem %>" alt="" width="100%" style="grid-row: auto; max-height: 200px;" />
                     </div>
                 </div>
             </div>

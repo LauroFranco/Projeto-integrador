@@ -19,15 +19,7 @@
                             <button type="button" class="btn btn-warning mt-2" data-toggle="modal"
                                 data-target="#myModal">Alterar foto de
                                 perfil</button>
-
                             <h2 class="font-weight-bold text-center"><%= usuario.name %></h2>
-                            <div class="text-dark text-center mb-2">
-                                <span class="fa fa-star checked"></span>
-                                <span class="fa fa-star checked"></span>
-                                <span class="fa fa-star checked"></span>
-                                <span class="fa fa-star checked"></span>
-                                <span class="fa fa-star"></span>
-                            </div>
                         </div>
                         <% if (user.roles_id == 2) { %>
                         <a href="/user/edit/<%= user.id %>" class="d-block">Editar informações</a>
